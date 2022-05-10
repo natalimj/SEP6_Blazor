@@ -1,3 +1,2 @@
 # SEP6_Blazor
-
-https://sep6blazor.azurewebsites.net
+https://sep6blazorapp.azurewebsites.net/
