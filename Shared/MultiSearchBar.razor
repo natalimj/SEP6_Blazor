@@ -1,0 +1,28 @@
+﻿<div class="search-bar-main">
+    <div class="search-bar-select">
+        <select name="search-options" id="search-options">
+            <option value="all">All</option>
+            <option value="movies">Movies</option>
+            <option value="tvseries">TV Series</option>
+            <option value="genre">Genre</option>
+            <option value="actors">Actors</option>
+            <option value="crew">Crew</option>
+        </select>
+    </div>
+    <div class="search-bar-input">
+        <input type="text" placeholder="Search..."/>
+    </div>
+    <div class="search-bar-button">
+        <button @onclick="TestFunc">
+            <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
+        </button>
+    </div>
+</div>
+
+@code
+{
+    private void TestFunc()
+    {
+        
+    }
+}

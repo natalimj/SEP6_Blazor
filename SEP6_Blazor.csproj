@@ -12,4 +12,12 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.4" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\Assets\film-slate.svg" />
+    <None Include="wwwroot\Assets\list.svg" />
+    <None Include="wwwroot\Assets\magnifying-glass.svg" />
+    <None Include="wwwroot\Assets\monitor-play.svg" />
+    <None Include="wwwroot\Assets\user.svg" />
+  </ItemGroup>
+
 </Project>

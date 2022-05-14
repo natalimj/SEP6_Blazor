@@ -1,0 +1,79 @@
+﻿@using System.Text.Json
+<div class="search-bar-main">
+    <div class="search-bar-select">
+        <select @bind="@selectedQueryType" name="search-options" id="search-options">
+            <option value="all">All</option>
+            <option value="movies">Movies</option>
+            <option value="tvseries">TV Series</option>
+            <option value="genre">Genre</option>
+            <option value="actors">Actors</option>
+            <option value="crew">Crew</option>
+        </select>
+    </div>
+    <div class="search-bar-input">
+        <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" type="text" placeholder="Search..."/>
+    </div>
+    <div class="search-bar-button">
+        <button type="submit" @onclick="SendQuery">
+            <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
+        </button>
+    </div>
+</div>
+
+@code
+{
+    private string? queryData { get; set; }
+    private string selectedQueryType { get; set; } = "all";
+
+    [Parameter]
+    public string[] Result { get; set; }
+    
+    [Parameter]
+    public EventCallback<string[]> ResultChanged { get; set; }
+
+    private async Task Search(KeyboardEventArgs e)
+    {
+        if (e.Code is "Enter" or "NumpadEnter")
+        {
+            await SendQuery();
+        }
+    }
+    
+    private async Task<Task> SendQuery()
+    {
+        /*if (queryData is not "")
+        {
+            string queryUri = selectedQueryType switch
+            {
+                "all" => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch/" + queryData + "?",
+                "movies" => "https://sep6azurefunctions.azurewebsites.net/api/getMovies?" + queryData + "?",
+                "tvseries" => "https://sep6azurefunctions.azurewebsites.net/api/getSeries?" + queryData + "?",
+                "genre" => "https://sep6azurefunctions.azurewebsites.net/api/getGenre?" + queryData + "?",
+                "actors" => "https://sep6azurefunctions.azurewebsites.net/api/getActors?" + queryData + "?",
+                "crew" => "https://sep6azurefunctions.azurewebsites.net/api/getCrew?" + queryData + "?",
+                _ => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch?" + queryData + "?"
+                };
+
+            HttpClient client = new HttpClient {BaseAddress = new Uri(queryUri)};
+
+            HttpResponseMessage response = null;
+            response = await client.GetAsync(client.BaseAddress);
+
+            if (response.Content is object && response.Content.Headers.ContentType.MediaType == "application/json" && response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                
+                //they might unpack into different models here too
+                searchResults = JsonSerializer.Deserialize<string[]>(content, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+                queryData = String.Empty;
+                return ValuesChanged.InvokeAsync(searchResults);
+            }
+            else
+            {
+    //show no results message here
+            }
+        }*/
+        Result = new[] {"no items",queryData,selectedQueryType}!;
+        return ResultChanged.InvokeAsync(Result);
+    }
+}

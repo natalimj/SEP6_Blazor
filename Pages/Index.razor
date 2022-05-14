@@ -2,8 +2,21 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<div class="main-content">
+    <SimpleSearchBar @bind-Result="searchResults"/>
+    <div>
+        @if (searchResults != null)
+        {
+            @foreach (string result in searchResults)
+            {
+                <div>@result</div>
+            }
+        }
+    </div>
+</div>
 
-Welcome to our movie app.
 
-
+@code
+{
+    private string[] searchResults { get; set; }
+}

@@ -1,35 +1,109 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">SEP6_Blazor</a>
-        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    </div>
-</div>
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="/TestAuthorizationPage">
-                <span class="oi oi-home" aria-hidden="true"></span> Test Authorization
-            </NavLink>
-        </div>
-    </nav>
+@inject SignOutSessionStateManager SignOutManager
+@inject NavigationManager Navigation
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="navbar">
+    <div class="nav-item">
+        <a href="/MoviesPage" @onclick="() => ToggleIconSelection(0)">
+            <figure class="icon-item @iconSelectedClass[0]">
+                <img class="icon-item-img" src="Assets/film-slate.svg" alt="movies-menu-item"/>
+                <figcaption class="icon-item-caption">Movies</figcaption>
+            </figure>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="/TVSeriesPage" @onclick="() => ToggleIconSelection(1)">
+            <figure class="icon-item @iconSelectedClass[1]">
+                <img class="icon-item-img" src="Assets/monitor-play.svg" alt="tv-series-menu-item"/>
+                <figcaption class="icon-item-caption">TV Series</figcaption>
+            </figure>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="" @onclick="() => ToggleIconSelection(-1)">
+            <figure class="icon-item">
+                <img class="icon-item-logo" src="https://fontmeme.com/permalink/220512/38943b6258e84fbee1bab2ffbb7af0c2.png" alt="home-logo-menu-item">
+            </figure>
+        </a>
+    </div>
+    <div class="nav-item">
+        <a href="/ListsPage" @onclick="() => ToggleIconSelection(2)">
+            <figure class="icon-item @iconSelectedClass[2]">
+                <img class="icon-item-img" src="Assets/list.svg" alt="my-lists-menu-item"/>
+                <figcaption class="icon-item-caption">My Lists</figcaption>
+            </figure>
+        </a>
+    </div>
+    <AuthorizeView>
+        <Authorizing>
+            <div class="nav-item"></div>
+        </Authorizing>
+        <Authorized>
+            <div class="nav-item nav-auth">
+                <div class="dropdown">
+                    <a>
+                        <figure class="icon-item">
+                            <img class="icon-item-img" src="Assets/user.svg" alt="profile-menu-item"/>
+                            <figcaption class="icon-item-caption">Profile</figcaption>
+                        </figure>
+                    </a>
+                    <div class="dropdown-content">
+                        <span>@context.User.Identity.Name</span>
+                        <hr/>
+                        <a class="first-option" href="/ContributionsPage">My Contributions</a>
+                        <a href="">Settings</a>
+                        <hr/>
+                        <a href="#" @onclick="BeginSignOut" class="last-option">Log out</a>
+                    </div>
+                </div>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div class="nav-item nav-auth">
+                <a href="authentication/login">
+                    <figure class="icon-item">
+                        <img class="icon-item-img" src="Assets/user.svg" alt="profile-menu-item"/>
+                        <figcaption class="icon-item-caption">Log In</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </NotAuthorized>
+    </AuthorizeView>
 </div>
 
 @code {
-    private bool collapseNavMenu = true;
+    private string[]? iconSelectedClass = new string[4];
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
-
-    private void ToggleNavMenu()
+    //private string user_id = "";
+    protected override async Task OnInitializedAsync()
     {
-        collapseNavMenu = !collapseNavMenu;
+        //var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        /*user_id = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
+        Console.WriteLine(user_id);*/
     }
 
+    private void ToggleIconSelection(int value)
+    {
+        Array.Clear(iconSelectedClass, 0, iconSelectedClass.Length);
+        switch (value)
+        {
+            case 0:
+                iconSelectedClass[0] = "iconSelected";
+                break;
+            case 1:
+                iconSelectedClass[1] = "iconSelected";
+                break;
+            case 2:
+                iconSelectedClass[2] = "iconSelected";
+                break;
+        }
+    }
+
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
+    }
 }
