@@ -13,10 +13,8 @@ namespace SEP6_Blazor.Data
         //https://api.themoviedb.org/3/person/17628?api_key=63335424114024b0bdbf981fe8c972e0&language=en-US
         public async Task<Person> GetPerson(string id)
         {
-            Task<string> stringAsync = _client.GetStringAsync(uri + "person/" + id + apiKey);
-            string message = await stringAsync;
+            string message = await _client.GetStringAsync(uri + "person/" + id + apiKey);
             Person person = JsonSerializer.Deserialize<Person>(message);
-
             person.MovieCredits = await GetMovieCredits(id);
             
             return person;
@@ -25,10 +23,11 @@ namespace SEP6_Blazor.Data
         //https://api.themoviedb.org/3/person/17628/movie_credits?api_key=63335424114024b0bdbf981fe8c972e0&language=en-US
         public async Task<MovieCredits> GetMovieCredits(string id)
         {
-            Task<string> stringAsync = _client.GetStringAsync(uri + "person/" + id + "/movie_credits" + apiKey);
-            string message = await stringAsync;
+            string message = await _client.GetStringAsync(uri + "person/" + id + "/movie_credits" + apiKey);
             MovieCredits result = JsonSerializer.Deserialize<MovieCredits>(message);
             return result;
         }
+
+      
     }
 }

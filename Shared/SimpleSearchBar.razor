@@ -1,4 +1,9 @@
 ﻿@using System.Text.Json
+@using SEP6_Blazor.Data
+@using SEP6_Blazor.Models
+
+@inject IMovieService MovieService;
+
 <div class="search-bar-main">
     <div class="search-bar-select">
         <div class="select-query-type @borderRadiusClass">
@@ -29,15 +34,15 @@
 
     private bool isFocused = false;
     private string? focusClass => isFocused ? "searchFocused" : null;
-    
+
     private bool isActive = false;
     private string? borderRadiusClass => isActive ? "borderRadius" : null;
 
     [Parameter]
-    public string[] Result { get; set; }
+    public Results Result { get; set; }
 
     [Parameter]
-    public EventCallback<string[]> ResultChanged { get; set; }
+    public EventCallback<Results> ResultChanged { get; set; }
 
     private void SetFocused()
     {
@@ -53,7 +58,7 @@
     {
         isActive = false;
     }
-    
+
     private void CalculateBorder()
     {
         isActive = !isActive;
@@ -69,39 +74,30 @@
 
     private async Task<Task> SendQuery()
     {
-    /*if (queryData is not "")
+        if (queryData is not "")
         {
-            string queryUri = selectedQueryType switch
+            switch (selectedQueryType)
             {
-                "all" => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch/" + queryData + "?",
-                "movies" => "https://sep6azurefunctions.azurewebsites.net/api/getMovies?" + queryData + "?",
-                "tvseries" => "https://sep6azurefunctions.azurewebsites.net/api/getSeries?" + queryData + "?",
-                "genre" => "https://sep6azurefunctions.azurewebsites.net/api/getGenre?" + queryData + "?",
-                "actors" => "https://sep6azurefunctions.azurewebsites.net/api/getActors?" + queryData + "?",
-                "crew" => "https://sep6azurefunctions.azurewebsites.net/api/getCrew?" + queryData + "?",
-                _ => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch?" + queryData + "?"
-                };
-
-            HttpClient client = new HttpClient {BaseAddress = new Uri(queryUri)};
-
-            HttpResponseMessage response = null;
-            response = await client.GetAsync(client.BaseAddress);
-
-            if (response.Content is object && response.Content.Headers.ContentType.MediaType == "application/json" && response.IsSuccessStatusCode)
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                
-                //they might unpack into different models here too
-                searchResults = JsonSerializer.Deserialize<string[]>(content, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
-                queryData = String.Empty;
-                return ValuesChanged.InvokeAsync(searchResults);
+                case "all":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
+                case "movies":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
+                case "tvseries":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
+                case "genre":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
+                case "actors":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
+                case "crew":
+                    Result = await MovieService.SearchMovie(queryData);
+                    break;
             }
-            else
-            {
-    //show no results message here
-            }
-        }*/
-        Result = new[] {"no items", queryData, selectedQueryType}!;
+        }
         return ResultChanged.InvokeAsync(Result);
     }
 }

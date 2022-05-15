@@ -5,18 +5,10 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pages/MoviesPage.razor.css" afterDir="false" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 multi search main design and filter model">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/MoviesPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MoviesPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SEP6_Blazor.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/SEP6_Blazor.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/MainLayout.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MainLayout.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +23,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="TC-14-app-design" />
+      </map>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,7 +94,7 @@
       <workItem from="1652207807636" duration="1011000" />
       <workItem from="1652379439040" duration="44495000" />
       <workItem from="1652535708189" duration="20155000" />
-      <workItem from="1652615337662" duration="307000" />
+      <workItem from="1652615337662" duration="21217000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -138,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652465038505</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="TC-14 multisearch bar">
+      <created>1652617713667</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1652617713667</updated>
+    </task>
+    <task id="LOCAL-00008" summary="TC-14 multi search main design and filter model">
+      <created>1652639756632</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1652639756632</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -165,6 +179,8 @@
     <MESSAGE value="TC-14 added main navigation bar mockup + profile auth button" />
     <MESSAGE value="TC-14 added main navigation bar mockup + profile auth button + removed old auth bar" />
     <MESSAGE value="TC-14 main nav + simple search bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-14 main nav + simple search bar" />
+    <MESSAGE value="TC-14 multisearch bar" />
+    <MESSAGE value="TC-14 multi search main design and filter model" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-14 multi search main design and filter model" />
   </component>
 </project>
