@@ -19,7 +19,6 @@ namespace SEP6_Blazor.Data
         Task AddList(UserList userList); //create an empty list
         Task AddMovieToList(UserList userList, string movieId); 
         Task DeleteList(string listId);
-        Task<List<string>> GetUserListNames(string userId); //get User lists - only list names
         Task<List<UserList>> GetUserLists(string userId);  // get user lists
         Task<List<string>> GetMoviesInList(string userId, string listName);
 

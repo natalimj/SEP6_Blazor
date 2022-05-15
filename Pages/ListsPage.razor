@@ -1,7 +1,31 @@
 ﻿@page "/ListsPage"
+@using SEP6_Blazor.Data
+@using SEP6_Blazor.Models
 @attribute [Authorize]
+
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IMovieService MovieService
+@inject IUserService UserService
+
+
 <h3>ListsPage</h3>
 
+
+
 @code {
-    
+
+    //private List<UserList> userLists;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        string userId = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
+        userId = userId.Replace("google-oauth2|", "");
+        Console.WriteLine(userId);
+
+        //userLists = await UserService.GetUserLists(userId);
+
+    }
 }
