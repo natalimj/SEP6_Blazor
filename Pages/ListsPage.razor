@@ -22,8 +22,8 @@
 
         var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
         string userId = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
-        userId = userId.Replace("google-oauth2|", "");
-        Console.WriteLine(userId);
+        userId =  userId.Substring(userId.IndexOf("|")+1);
+        //Console.WriteLine(userId);
 
         //userLists = await UserService.GetUserLists(userId);
 
