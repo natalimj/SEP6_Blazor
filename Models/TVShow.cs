@@ -2,9 +2,9 @@
 
 namespace SEP6_Blazor.Models
 {
-    public class Movie
+    public class TVShow
     {
-        [JsonPropertyName("id")] 
+        [JsonPropertyName("id")]
         public int Id { get; set; }
 
         [JsonPropertyName("original_language")]
@@ -18,11 +18,5 @@ namespace SEP6_Blazor.Models
 
         [JsonPropertyName("poster_path")]
         public string poster_path { get; set; }
-
-        [JsonPropertyName("vote_average")]
-        public double VoteAverage { get; set; }
-
-        [JsonPropertyName("genres")]
-        public List<Genre> Genres { get; set; }
     }
 }

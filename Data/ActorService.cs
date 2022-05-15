@@ -9,8 +9,7 @@ namespace SEP6_Blazor.Data
         private string apiKey = "?api_key=63335424114024b0bdbf981fe8c972e0";
         private readonly HttpClient _client = new();
 
-
-        //https://api.themoviedb.org/3/person/17628?api_key=63335424114024b0bdbf981fe8c972e0&language=en-US
+        //https://api.themoviedb.org/3/person/17628?api_key=63335424114024b0bdbf981fe8c972e0
         public async Task<Person> GetPerson(string id)
         {
             string message = await _client.GetStringAsync(uri + "person/" + id + apiKey);
@@ -20,7 +19,7 @@ namespace SEP6_Blazor.Data
             return person;
         }
 
-        //https://api.themoviedb.org/3/person/17628/movie_credits?api_key=63335424114024b0bdbf981fe8c972e0&language=en-US
+        //https://api.themoviedb.org/3/person/17628/movie_credits?api_key=63335424114024b0bdbf981fe8c972e0
         public async Task<MovieCredits> GetMovieCredits(string id)
         {
             string message = await _client.GetStringAsync(uri + "person/" + id + "/movie_credits" + apiKey);
@@ -28,6 +27,12 @@ namespace SEP6_Blazor.Data
             return result;
         }
 
-      
+        //https://api.themoviedb.org/3/person/17628/tv_credits?api_key=63335424114024b0bdbf981fe8c972e0
+        public async Task<MovieCredits> GetTVCredits(string id)
+        {
+            string message = await _client.GetStringAsync(uri + "person/" + id + "/tv_credits" + apiKey);
+            MovieCredits result = JsonSerializer.Deserialize<MovieCredits>(message);
+            return result;
+        }
     }
 }
