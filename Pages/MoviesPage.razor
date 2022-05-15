@@ -1,6 +1,25 @@
 ﻿@page "/MoviesPage"
-<h3>MoviesPage</h3>
+@using SEP6_Blazor.Models
+
+<div class="main-content-article">
+    <MultiSearchBar @bind-Result="SearchResults"/>
+    <div>
+        @if (SearchResults.MovieResults.Count > 0)
+        {
+            @foreach (Movie result in SearchResults.MovieResults)
+            {
+                <div>@result.OriginalTitle - @result.Overview</div>
+            }
+        }
+    </div>
+</div>
 
 @code {
-    
+    private Results SearchResults { get; set; } = new Results();
+
+    protected override void OnInitialized()
+    {
+        SearchResults.MovieResults = new List<Movie>();
+    }
+
 }
