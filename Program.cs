@@ -14,4 +14,6 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = "code";
 });
 
+// builder.Services.AddBootstrapBlazor();
+
 await builder.Build().RunAsync();

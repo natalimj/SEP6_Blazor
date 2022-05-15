@@ -1,20 +1,22 @@
 ﻿@using System.Text.Json
 <div class="search-bar-main">
     <div class="search-bar-select">
-        <select @bind="@selectedQueryType" name="search-options" id="search-options">
-            <option value="all">All</option>
-            <option value="movies">Movies</option>
-            <option value="tvseries">TV Series</option>
-            <option value="genre">Genre</option>
-            <option value="actors">Actors</option>
-            <option value="crew">Crew</option>
-        </select>
+        <div class="select-query-type @borderRadiusClass">
+            <select @bind="@selectedQueryType" @onblur="SetNoBorder" @onclick="CalculateBorder" name="search-options" id="search-options">
+                <option value="all">All</option>
+                <option value="movies">Movies</option>
+                <option value="tvseries">TV Series</option>
+                <option value="genre">Genre</option>
+                <option value="actors">Actors</option>
+                <option value="crew">Crew</option>
+            </select>
+        </div>
     </div>
     <div class="search-bar-input">
-        <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" type="text" placeholder="Search..."/>
+        <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Search..."/>
     </div>
     <div class="search-bar-button">
-        <button type="submit" @onclick="SendQuery">
+        <button type="submit" @onclick="SendQuery" class="@focusClass">
             <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
         </button>
     </div>
@@ -25,11 +27,37 @@
     private string? queryData { get; set; }
     private string selectedQueryType { get; set; } = "all";
 
+    private bool isFocused = false;
+    private string? focusClass => isFocused ? "searchFocused" : null;
+    
+    private bool isActive = false;
+    private string? borderRadiusClass => isActive ? "borderRadius" : null;
+
     [Parameter]
     public string[] Result { get; set; }
-    
+
     [Parameter]
     public EventCallback<string[]> ResultChanged { get; set; }
+
+    private void SetFocused()
+    {
+        isFocused = true;
+    }
+
+    private void SetUnfocused()
+    {
+        isFocused = false;
+    }
+
+    private void SetNoBorder()
+    {
+        isActive = false;
+    }
+    
+    private void CalculateBorder()
+    {
+        isActive = !isActive;
+    }
 
     private async Task Search(KeyboardEventArgs e)
     {
@@ -38,10 +66,10 @@
             await SendQuery();
         }
     }
-    
+
     private async Task<Task> SendQuery()
     {
-        /*if (queryData is not "")
+    /*if (queryData is not "")
         {
             string queryUri = selectedQueryType switch
             {
@@ -73,7 +101,7 @@
     //show no results message here
             }
         }*/
-        Result = new[] {"no items",queryData,selectedQueryType}!;
+        Result = new[] {"no items", queryData, selectedQueryType}!;
         return ResultChanged.InvokeAsync(Result);
     }
 }

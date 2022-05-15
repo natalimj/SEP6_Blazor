@@ -1,28 +1,114 @@
-﻿<div class="search-bar-main">
+﻿@using System.Text.Json
+@using Microsoft.Extensions.Localization
+@using Console = System.Console
+
+@using BootstrapBlazor.Components;
+@using System.Diagnostics.CodeAnalysis
+@using ArbitraryValues
+@using Microsoft.AspNetCore.Components
+
+
+<div class="search-bar-main">
     <div class="search-bar-select">
-        <select name="search-options" id="search-options">
-            <option value="all">All</option>
-            <option value="movies">Movies</option>
-            <option value="tvseries">TV Series</option>
-            <option value="genre">Genre</option>
-            <option value="actors">Actors</option>
-            <option value="crew">Crew</option>
-        </select>
+        <div name="search-options" id="search-options" class="@borderRadiusLeftClass">
+            <button @onclick="ToggleDropdown">
+                <div class="dropdown">
+                    <div>Filter...</div>
+                </div>
+            </button>
+        </div>
     </div>
     <div class="search-bar-input">
-        <input type="text" placeholder="Search..."/>
+        <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Search..."/>
     </div>
     <div class="search-bar-button">
-        <button @onclick="TestFunc">
+        <button type="submit" @onclick="SendQuery" class="@focusClass @borderRadiusRightClass">
             <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
         </button>
+    </div>
+    <div class="dropdown-content @dropdownShownClass">
+        <a class="dropdown-option first-option" href="/ContributionsPage">My Contributions</a>
+        <a class="dropdown-option last-option" href="">Settings</a>
     </div>
 </div>
 
 @code
 {
-    private void TestFunc()
+    private string selectedQueryType { get; set; } = "all";
+    private string? queryData { get; set; }
+
+    private bool isFocused = false;
+    private string? focusClass => isFocused ? "searchFocused" : null;
+
+    private bool dropdownToggled = false;
+    private string? dropdownShownClass => dropdownToggled ? "showDropdown" : null;
+    private string? borderRadiusLeftClass => dropdownToggled ? "borderRadiusLeft" : null;
+    private string? borderRadiusRightClass => dropdownToggled ? "borderRadiusRight" : null;
+
+    [Parameter]
+    public string[] Result { get; set; }
+
+    [Parameter]
+    public EventCallback<string[]> ResultChanged { get; set; }
+
+    private void ToggleDropdown()
     {
-        
+        dropdownToggled = !dropdownToggled;
+    }
+
+    private void SetFocused()
+    {
+        isFocused = true;
+    }
+
+    private void SetUnfocused()
+    {
+        isFocused = false;
+    }
+
+    private async Task Search(KeyboardEventArgs e)
+    {
+        if (e.Code is "Enter" or "NumpadEnter")
+        {
+            await SendQuery();
+        }
+    }
+
+    private async Task<Task> SendQuery()
+    {
+    /*if (queryData is not "")
+        {
+            string queryUri = selectedQueryType switch
+            {
+                "all" => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch/" + queryData + "?",
+                "movies" => "https://sep6azurefunctions.azurewebsites.net/api/getMovies?" + queryData + "?",
+                "tvseries" => "https://sep6azurefunctions.azurewebsites.net/api/getSeries?" + queryData + "?",
+                "genre" => "https://sep6azurefunctions.azurewebsites.net/api/getGenre?" + queryData + "?",
+                "actors" => "https://sep6azurefunctions.azurewebsites.net/api/getActors?" + queryData + "?",
+                "crew" => "https://sep6azurefunctions.azurewebsites.net/api/getCrew?" + queryData + "?",
+                _ => "https://sep6azurefunctions.azurewebsites.net/api/getMultiSearch?" + queryData + "?"
+                };
+
+            HttpClient client = new HttpClient {BaseAddress = new Uri(queryUri)};
+
+            HttpResponseMessage response = null;
+            response = await client.GetAsync(client.BaseAddress);
+
+            if (response.Content is object && response.Content.Headers.ContentType.MediaType == "application/json" && response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                
+                //they might unpack into different models here too
+                searchResults = JsonSerializer.Deserialize<string[]>(content, new JsonSerializerOptions {PropertyNameCaseInsensitive = true});
+                queryData = String.Empty;
+                return ValuesChanged.InvokeAsync(searchResults);
+            }
+            else
+            {
+    //show no results message here
+            }
+        }*/
+        Result = new[] {"no items", queryData, selectedQueryType}!;
+        return ResultChanged.InvokeAsync(Result);
     }
 }

@@ -1,6 +1,18 @@
 ﻿@page "/MoviesPage"
-<h3>MoviesPage</h3>
+
+<div class="main-content">
+    <MultiSearchBar @bind-Result="searchResults"/>
+    <div>
+        @if (searchResults != null)
+        {
+            @foreach (string result in searchResults)
+            {
+                <div>@result</div>
+            }
+        }
+    </div>
+</div>
 
 @code {
-    
+    private string[] searchResults { get; set; }
 }
