@@ -7,10 +7,11 @@ namespace SEP6_Blazor.Data
     public class UserService : IUserService
     {
 
-        //private string uri = "http://localhost:7071/api";
+      //  private string uri = "http://localhost:7071/api";
 
         private string uri = "https://sep6azurefunctions.azurewebsites.net/api"; 
         private readonly HttpClient client = new ();
+
 
         //ADD
         public async Task AddRating(Rating rating)
@@ -86,14 +87,16 @@ namespace SEP6_Blazor.Data
         // GET
         public async Task<List<Rating>> GetUserRatings(string userId)
         {
-            string message = await client.GetStringAsync(uri + "/GetUserRatings/{userId}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserRatings/" + userId);
+            string message = await stringAsync;
             List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
             return result;
         }
 
-        public async Task<List<Rating>> GetMovieRatings(string umovieID)
+        public async Task<List<Rating>> GetMovieRatings(string movieId)
         {
-            string message = await client.GetStringAsync(uri + "/GetMovieRatings/{movieId}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMovieRatings/" + movieId);
+            string message = await stringAsync;
             List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
             return result;
         }
@@ -101,34 +104,33 @@ namespace SEP6_Blazor.Data
 
         public async Task<List<Review>> GetUserReviews(string userId)
         {
-            string message = await client.GetStringAsync(uri + "/UserReviews/{userId}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/UserReviews/"+userId);
+            string message = await stringAsync;
             List<Review> result = JsonSerializer.Deserialize<List<Review>>(message);
             return result;
 
         }
         public async Task<List<Review>> GetMovieReviews(string movieId)
         {
-            string message = await client.GetStringAsync(uri + "/MovieReviews/{movieId}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/MovieReviews/" + movieId);
+            string message = await stringAsync;
             List<Review> result = JsonSerializer.Deserialize<List<Review>>(message);
             return result;
 
         }
-        public async Task<List<string>> GetUserListNames(string userId)
-        {
-            string message = await client.GetStringAsync(uri + "/GetUserListNames/{userId}");
-            List<string> result = JsonSerializer.Deserialize<List<string>>(message);
-            return result;
-        }
         public async Task<List<UserList>> GetUserLists(string userId)
         {
-            string message = await client.GetStringAsync(uri + "/GetUserLists/{userId}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserLists/"+userId);
+            string message = await stringAsync;
             List<UserList> result = JsonSerializer.Deserialize<List<UserList>>(message);
             return result;
+            
         }
 
         public async Task<List<string>> GetMoviesInList(string userId, string listName)
         {
-            string message = await client.GetStringAsync(uri + "/GetMoviesInList/{listName}");
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMoviesInList/" + userId+"/"+listName);
+            string message = await stringAsync;
             List<string> result = JsonSerializer.Deserialize<List<string>>(message);
             return result;
 

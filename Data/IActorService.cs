@@ -6,6 +6,7 @@ namespace SEP6_Blazor.Data
     {
         Task<Person> GetPerson(string id);
         Task<MovieCredits> GetMovieCredits(string id);
+        Task<MovieCredits> GetTVCredits(string id);
 
     }
 }
