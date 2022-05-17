@@ -1,11 +1,53 @@
 ﻿@page "/MovieInfoPage/{id}"
+@using SEP6_Blazor.Data
+@using SEP6_Blazor.Models
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUserService UserService
+@inject IProductionService ProductionService
+
 <h3>MovieInfoPage</h3>
 
+@if(Movie != null)
+{
+    <h6>@Movie.MovieName</h6>
+    <h6>@Movie.VoteAverage</h6>
+}
 
 
 
 @code {
-    
+
     [Parameter]
-    public int id { get; set; }
+    public string id { get; set; }
+
+    private Production Movie;
+    private string UserId { get; set; } = "";
+    private List<Review> Reviews = new List<Review>();
+    private Rating UserRating;
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserId =  await UserService.GetUserId(AuthenticationStateProvider);
+        Movie = await ProductionService.GetProduction(id, "movie");
+        Reviews = await UserService.GetMovieReviews(id);
+        UserRating = await UserService.GetUserMovieRating(UserId, id);
+    }
+
+
+    //delete method parameter if you use value binding
+    private async Task AddReview(string reviewStr)
+    {
+        Review review = new Review();
+        review.UserId = UserId;
+        review.MovieId = Movie.Id.ToString();
+        review.UserReview = reviewStr;
+        await UserService.AddReview(review);
+    }
+
+    //TODO: check get-add user rating  -from database
+    //TODO: reviews for movie -from database
+    //average rating is in movie object
+
 }
+
+

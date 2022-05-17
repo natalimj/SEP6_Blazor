@@ -1,6 +1,30 @@
-﻿@page "/TVSeriesPage"
+﻿@page "/TVSeriesPage/{id}"
+@using SEP6_Blazor.Data
+@using SEP6_Blazor.Models
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IUserService UserService
+@inject IProductionService ProductionService
 <h3>TVSeriesPage</h3>
 
+
+
+@if(TVShow != null)
+{
+    <h3>@TVShow.TVShowName</h3>
+}
+
+
 @code {
-    
+    [Parameter]
+    public string id { get; set; }
+
+
+    private Production TVShow;
+    private string UserId { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        UserId =  await UserService.GetUserId(AuthenticationStateProvider);
+        TVShow = await ProductionService.GetProduction(id, "tv");
+    }
 }

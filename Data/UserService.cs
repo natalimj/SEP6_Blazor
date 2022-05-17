@@ -1,4 +1,5 @@
-﻿using SEP6_Blazor.Models;
+﻿using Microsoft.AspNetCore.Components.Authorization;
+using SEP6_Blazor.Models;
 using System.Text;
 using System.Text.Json;
 
@@ -12,6 +13,7 @@ namespace SEP6_Blazor.Data
         private string uri = "https://sep6azurefunctions.azurewebsites.net/api"; 
         private readonly HttpClient client = new ();
 
+        private readonly IProductionService productionService = new ProductionService();
 
         //ADD
         public async Task AddRating(Rating rating)
@@ -101,6 +103,14 @@ namespace SEP6_Blazor.Data
             return result;
         }
 
+        public async Task<Rating> GetUserMovieRating(string userId, string movieId)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserMovieRating/" + movieId+"/"+userId);
+            string message = await stringAsync;
+            List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
+            return result[0];
+        }
+
 
         public async Task<List<Review>> GetUserReviews(string userId)
         {
@@ -135,6 +145,45 @@ namespace SEP6_Blazor.Data
             return result;
 
         }
+
+
+        public async Task<List<string>> GetProductionIdsInListById(string listId)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMoviesInListById/" + listId);
+            string message = await stringAsync;
+            List<string> result = JsonSerializer.Deserialize<List<string>>(message);
+            return result;
+
+        }
+
+
+        //TODO: implement GetProductionsInListById - add tvshows
+        public async Task<List<Production>> GetProductionsInListById(string listId)
+        {
+            List<string> ProductionIds = await GetProductionIdsInListById(listId);
+
+            List<Production> result = new List<Production>();
+            Production prod;
+            foreach(string id in ProductionIds)
+            {
+                prod = await productionService.GetProduction(id, "movie");
+                result.Add(prod);
+            }
+            
+            return result;
+
+        }
+
+
+        public async Task<string> GetUserId(AuthenticationStateProvider authenticationStateProvider)
+        {
+            var state = await authenticationStateProvider.GetAuthenticationStateAsync();
+            string userId = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
+            userId = userId.Substring(userId.IndexOf("|") + 1);
+            return userId;
+        }
+
+    
     }
 }
 

@@ -1,16 +1,18 @@
 ﻿@page "/"
+@using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
+@inject IProductionService ProductionService
 
 <PageTitle>Index</PageTitle>
 
 <div class="main-content-article">
     <SimpleSearchBar @bind-Result="SearchResults"/>
     <div>
-        @if (SearchResults.MovieResults.Count > 0)
+        @if (SearchResults.ProductionResults.Count > 0)
         {
-            @foreach (Movie result in SearchResults.MovieResults)
+            @foreach (Production result in SearchResults.ProductionResults)
             {
-                <div>@result.OriginalTitle, @result.Overview</div>
+                <div>@result.TVShowName, @result.Overview</div>
             }
         }
         else
@@ -25,8 +27,28 @@
 {
     private Results SearchResults { get; set; } = new Results();
 
-    protected override void OnInitialized()
+    private Results PopularMovies { get; set; } = new Results();
+    private Results LatestMovies { get; set; } = new Results();
+    private Results TopRatedMovies { get; set; } = new Results();
+    private Results UpcomingMovies { get; set; } = new Results();
+    private Results PopularTVShows { get; set; } = new Results();
+    private Results LatestTVShows { get; set; } = new Results();
+    private Results TopRatedTVShows { get; set; } = new Results();
+
+    protected override async Task OnInitializedAsync()
     {
-        SearchResults.MovieResults = new List<Movie>();
+        SearchResults.ProductionResults = new List<Production>();
+
+        PopularMovies = await ProductionService.GetPopularProductions("movie");
+        LatestMovies = await ProductionService.GetLatestProductions("movie");
+        TopRatedMovies = await ProductionService.GetTopRatedProduction("movie");
+        UpcomingMovies = await ProductionService.GetUpcomingMovies();
+        PopularTVShows = await ProductionService.GetPopularProductions("tv");
+        LatestTVShows = await ProductionService.GetLatestProductions("tv");
+        TopRatedTVShows = await ProductionService.GetTopRatedProduction("tv");
+
     }
+
+
+
 }

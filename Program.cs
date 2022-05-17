@@ -10,8 +10,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IMovieService, MovieService>();
-builder.Services.AddScoped<ITVService, TVService>();
+builder.Services.AddScoped<IProductionService, ProductionService>();
 builder.Services.AddScoped<IActorService, ActorService>();
 
 builder.Services.AddOidcAuthentication(options =>
@@ -20,9 +19,7 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = "code";
 });
 
-builder.Services.AddSingleton<IMovieService, MovieService>();
-builder.Services.AddSingleton<IActorService, ActorService>();
-builder.Services.AddSingleton<IUserService, UserService>();
+
 
 // builder.Services.AddBootstrapBlazor();
 
