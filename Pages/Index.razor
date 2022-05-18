@@ -1,22 +1,2 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
-
-<div class="main-content">
-    <SimpleSearchBar @bind-Result="searchResults"/>
-    <div>
-        @if (searchResults != null)
-        {
-            @foreach (string result in searchResults)
-            {
-                <div>@result</div>
-            }
-        }
-    </div>
-</div>
-
-
-@code
-{
-    private string[] searchResults { get; set; }
-}
