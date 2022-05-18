@@ -149,35 +149,32 @@ namespace SEP6_Blazor.Data
             string listJson = JsonSerializer.Serialize(userList);
             HttpContent content = new StringContent(listJson, Encoding.UTF8, "application/json");
             HttpResponseMessage response = await client.PutAsync(uri + "/UpdateList", content);
-            Console.WriteLine(response.ToString());
         }
 
         public async Task<List<ListItem>> GetListItemsById(String listId)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "/GetProductionsInListById/" + listId);
             string message = await stringAsync;
-            List<ListItem> result = JsonSerializer.Deserialize<List<ListItem>>(message);
-            return result;
+            List<UserList>  result = JsonSerializer.Deserialize<List<UserList>>(message);
+            return result[0].ListItems;
         }
 
         public async Task<List<Production>> GetProductionsInList(string listId)
         {
             List<ListItem> ListItems = await GetListItemsById(listId);
-
             List<Production> result = new List<Production>();
-
             Production prod;
             foreach (ListItem item in ListItems)
             {
                 if (item.Type.Equals("movie"))
-                {
-                    prod = await productionService.GetProduction(item.ProductionId, "movie");
-                    result.Add(prod);
-                } else
-                {
-                    prod = await productionService.GetProduction(item.ProductionId, "tv");
-                    result.Add(prod);
-                }              
+                  {
+                      prod = await productionService.GetProduction(item.ProductionId, "movie");
+                      result.Add(prod);
+                  } else
+                  {
+                      prod = await productionService.GetProduction(item.ProductionId, "tv");
+                      result.Add(prod);
+                  }      
             }
             return result;
         }
