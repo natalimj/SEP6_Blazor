@@ -1,0 +1,199 @@
+﻿.search-bar-main {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    height: 2.5rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#search-options {
+    color: #086788;
+    width: 7rem;
+    padding-inline-start: 15px;
+    height: 100%;
+    background: url("Assets/caret-down-blue.svg") no-repeat right #FFF6E9;
+    background-size: 20px;
+    background-position-x: 5.5rem;
+    border-right: 1px solid;
+    border-radius: 30px 0 0 30px;
+}
+
+.borderRadiusLeft {
+    border-radius: 20px 0 0 0 !important;
+}
+
+#search-options button {
+    width: inherit;
+    border-radius: inherit;
+    background: transparent no-repeat;
+    text-align: start;
+}
+
+#search-options:hover, #search-options:active {
+    cursor: pointer;
+    background: url("Assets/caret-down-orange.svg") no-repeat right #FFF6E9;
+    background-size: 20px;
+    background-position-x: 5.5rem;
+}
+
+.search-bar-input {
+    width: 100%;
+}
+
+.search-bar-input input {
+    background-color: #FFF6E9;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 5px;
+}
+
+.search-bar-input input:focus-visible, #search-options:focus-visible {
+    outline: none;
+}
+
+.search-bar-main button {
+    background-color: #FFF6E9;
+    width: 2.5rem;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0 30px 30px 0;
+}
+
+.borderRadiusRight {
+    border-radius: 0 20px 0 0 !important;
+}
+
+.search-bar-button button:hover img, .search-bar-button button:active img {
+    filter: invert(55%) sepia(18%) saturate(7314%) hue-rotate(0deg) brightness(102%) contrast(106%);
+}
+
+.search-bar-button button img {
+    filter: invert(21%) sepia(50%) saturate(5998%) hue-rotate(181deg) brightness(81%) contrast(94%);
+    width: 2rem;
+    padding-inline-end: 5px;
+}
+
+.search-bar-button .searchFocused img {
+    /*#E97B0C*/
+    filter: invert(49%) sepia(100%) saturate(3135%) hue-rotate(12deg) brightness(108%) contrast(91%);
+}
+
+.dropdown {
+    display: inline-block;
+    position: relative;
+    color: #086788;
+}
+
+.dropdown-content {
+    color: #086788;
+    display: none;
+    position: absolute;
+    margin-top: 2.5rem;
+    background-color: #FFF6E9;
+    width: inherit;
+    z-index: 10;
+    overflow-wrap: break-word;
+    overflow: auto;
+    border-radius: 0 0 30px 30px;
+    border-top: 1px solid #086788;
+}
+
+.dropdown-holder {
+    display: flex;
+    flex-flow: wrap;
+}
+
+.showDropdown {
+    display: block;
+}
+
+.dropdown-content .dropdown-option {
+    cursor: default;
+    display: flex;
+    flex-direction: row;
+    padding: 0.4rem;
+    text-decoration: none;
+    width: 50%;
+    height: auto;
+    align-items: center;
+}
+
+.dropdown-option-item {
+    margin-right: 1rem;
+}
+
+.showCheck {
+    display: block;
+}
+
+.dropdown-option .dropdown-option-label {
+    width: 35%;
+    font-size: smaller;
+}
+
+.dropdown-option .dropdown-option-input {
+    width: 100%;
+}
+
+.dropdown-option .dropdown-option-input input{
+    border: 1px solid #086788;
+    border-radius: 10px;
+    padding-inline-start: 5px;
+    background-color: #FFF6E9;
+    width: inherit;
+    font-size: smaller;
+}
+
+.dropdown-option .dropdown-option-input input:invalid {
+    border: 1px solid #b35050;
+}
+
+.dropdown-option .dropdown-option-input input:focus-visible{
+    outline: none;
+    border-color: #FF7D00;
+}
+
+.dropdown-content .first-option {
+    margin-top: 0.5rem;
+}
+
+.dropdown-content .last-option {
+    margin-bottom: 0.5rem;
+}
+
+.dropdown-content .dropdown-option:hover {
+    color: #FF7D00;
+    background-color: #FFEBD4;
+}
+
+.dropdown-content .dropdown-hint:hover, .dropdown-content .first-option:hover{
+    color: #7FB069;
+    background-color: #FFF6E9;
+    cursor: default;
+}
+
+.dropdown-hint {
+    color: #7FB069;
+    font-size: small;
+    justify-content: end;
+    padding-right: 1.4rem !important;
+    width: 100% !important;
+}
+
+@media (max-width: 670px) {
+    .dropdown-option .dropdown-option-label {
+        width: 30%;
+    }
+
+    .dropdown-content .dropdown-option {
+        width: 100%;
+    }
+
+    .dropdown-hint {
+        justify-content: center;
+    }
+}

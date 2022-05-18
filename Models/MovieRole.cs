@@ -6,6 +6,9 @@ namespace SEP6_Blazor.Models
     {
         [JsonPropertyName("original_title")]
         public string OriginalTitle { get; set; }
+        
+        [JsonPropertyName("original_name")]
+        public string OriginalName { get; set; }
 
         [JsonPropertyName("character")]
         public string Character { get; set; }

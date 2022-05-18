@@ -1,19 +1,80 @@
-﻿@page "/MovieInfoPage/{id}"
+﻿@page "/MovieInfoPage/{id}/{type}"
 @using SEP6_Blazor.Models
 @using SEP6_Blazor.Data
 
 @inject IProductionService ProductionService;
 
 <div class="main-content-article">
+
+    @if (Production != null)
+    {
+        <div class="header-main">
+            <div class="header-image">
+                @if (Production.Poster_path == null)
+                {
+                    <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
+                }
+                else
+                {
+                    <img src="https://image.tmdb.org/t/p/original/@Production.Poster_path" alt="movie-poster" class="poster-image">
+                }
+            </div>
+            <div class="header-description">
+                @if (Type.Equals("movie"))
+                {
+                    <div class="header-desc-text header-name">@Production.MovieName</div>
+                }
+                else
+                {
+                    <div class="header-desc-text header-name">@Production.TVShowName</div>
+                }
+                <div class="header-desc-text">@Production.Overview</div>
+                <div class="header-rating">
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
+                        <label for="star5" title="text" @onclick="() => SubmitRating(5)">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
+                        <label for="star4" title="text" @onclick="() => SubmitRating(4)">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
+                        <label for="star3" title="text" @onclick="() => SubmitRating(3)">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
+                        <label for="star2" title="text" @onclick="() => SubmitRating(2)">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
+                        <label for="star1" title="text" @onclick="() => SubmitRating(1)">1 star</label>
+                    </div>
+                    <div class="add-list">
+                        <button class="add-list-button" @onclick="AddToList">
+                            <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-rating-small">
+            <div class="rate">
+                <input type="radio" id="star5-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
+                <label for="star5-2" title="text2" @onclick="() => SubmitRating(5)">5 stars</label>
+                <input type="radio" id="star4-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
+                <label for="star4-2" title="text2" @onclick="() => SubmitRating(4)">4 stars</label>
+                <input type="radio" id="star3-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
+                <label for="star3-2" title="text2" @onclick="() => SubmitRating(3)">3 stars</label>
+                <input type="radio" id="star2-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
+                <label for="star2-2" title="text2" @onclick="() => SubmitRating(2)">2 stars</label>
+                <input type="radio" id="star1-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
+                <label for="star1-2" title="text2" @onclick="() => SubmitRating(1)">1 star</label>
+            </div>
+        </div>
+    }
+
     <div class="content">
-        @if (Movie == null)
+        @if (Production == null)
         {
-            <p>Nothing to show :(</p>
+            <p>Loading...</p>
         }
         else
         {
             <div class="content-header-title">
-                <span>Poster Images</span>
+                <span>Gallery</span>
             </div>
             <ul class="hs full">
                 @foreach (var result in Images.Backdrops)
@@ -22,18 +83,21 @@
                 }
             </ul>
 
-            <div class="content-header-title">
-                <span>Crew</span>
-            </div>
-            <div>
-                @foreach (var result in Crew)
-                {
-                    <div class="crew-member">
-                        <span class="crew-member-name">@result.Name</span>
-                        <span>- @result.Job</span>
-                    </div>
-                }
-            </div>
+            @if (Crew.Count > 0)
+            {
+                <div class="content-header-title">
+                    <span>Director(s)</span>
+                </div>
+                <div>
+                    @foreach (var result in Crew)
+                    {
+                        <div class="crew-member">
+                            <span class="crew-member-name">@result.Name</span>
+                            <span>- @result.Job</span>
+                        </div>
+                    }
+                </div>
+            }
 
             <div class="content-header-title">
                 <span>Cast</span>
@@ -53,17 +117,33 @@
     [Parameter]
     public string Id { get; set; }
 
-    private Production Movie { get; set; }
+    [Parameter]
+    public string Type { get; set; }
+
+    private Production Production { get; set; }
     private List<Director> Crew { get; set; }
     private Cast Cast { get; set; }
     private Images Images { get; set; }
 
+    private int RatingValue { get; set; } = -1;
+
     protected override async Task OnInitializedAsync()
     {
-        Movie = await ProductionService.GetProduction(Id, "movie");
-        Crew = await ProductionService.GetDirector(Id, "movie");
-        Cast = await ProductionService.GetCast(Id, "movie");
-        Images = await ProductionService.GetProductionImagesUrl(Id, "movie");
+        Production = await ProductionService.GetProduction(Id, Type);
+        Crew = await ProductionService.GetDirector(Id, Type);
+        Cast = await ProductionService.GetCast(Id, Type);
+        Images = await ProductionService.GetProductionImagesUrl(Id, Type);
+    }
+
+    private async Task SubmitRating(int rating)
+    {
+        RatingValue = rating;
+        
+    }
+
+    private async Task AddToList()
+    {
+        
     }
 
 }

@@ -81,3 +81,112 @@ ul {
     font-weight: bold;
     margin: 1rem;
 }
+
+/*movie info header*/
+
+.header-main {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+}
+
+.header-image {
+    width: 40%;
+    max-height: 30rem;
+    max-width: 25rem;
+    min-width: 10rem;
+}
+
+.header-image img {
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    margin-inline-start: 2rem;
+}
+
+.header-description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    margin-inline-start: 3rem;
+    margin-inline-end: 2rem;
+}
+
+.header-desc-text {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: #FF7D00;
+    font-family: "Book Antiqua", serif;
+}
+
+.header-name {
+    font-size: xx-large;
+    color: #FFF6E9;
+}
+
+.header-rating-small {
+    display: none;
+}
+
+/*rating - author: https://codepen.io/hesguru/pen/BaybqXv*/
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+@media (max-width: 640px) {
+    .header-desc-text {
+        font-size: small;
+    }
+
+    .header-name {
+        font-size: large;
+    }
+    
+    .header-rating {
+        display: none;
+    }
+    
+    .header-rating-small {
+        display: flex;
+        margin: 1rem;
+        align-items: center;
+        justify-content: space-between;
+    }
+}

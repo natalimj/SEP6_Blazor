@@ -9,7 +9,7 @@
     <div class="content">
         @if (Person == null)
         {
-            <p>Nothing to show :(</p>
+            <p>Loading...</p>
         }
         else
         {
@@ -21,7 +21,7 @@
                 {
                     <div class="crew-member">
                         <span class="crew-member-name">@result.Character</span>
-                        <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id))"> in "@result.OriginalTitle"</span>
+                        <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "movie"))"> in "@result.OriginalTitle"</span>
                     </div>
                 }
             </div>
@@ -34,7 +34,7 @@
                 {
                     <div class="crew-member">
                         <span class="crew-member-name">@result.Character</span>
-                        <span> in "@result.OriginalTitle"</span>
+                        <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "tv"))"> in "@result.OriginalName"</span>
                     </div>
                 }
             </div>
@@ -57,10 +57,10 @@
         MovieCredits = await ActorService.GetMovieCredits(Id);
         TVCredits = await ActorService.GetTVCredits(Id);
     }
-    
-    private void GoToDetailsPage(int id)
+
+    private void GoToDetailsPage(int id, string type)
     {
-        Navigation.NavigateTo("/MovieInfoPage/" + id);
+        Navigation.NavigateTo("/MovieInfoPage/" + id + "/" + type);
     }
 
 }
