@@ -183,7 +183,25 @@ namespace SEP6_Blazor.Data
             return userId;
         }
 
-    
+        public Task<List<Rating>> GetProductionRatings(string productionId, string productiontype)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Rating> GetUserProductionRating(string userId, string productionId, string productiontype)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<Review>> GetProductionReviews(string productionId, string productiontype)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddProductionToList(UserList userList, string productionId, string productiontype)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
