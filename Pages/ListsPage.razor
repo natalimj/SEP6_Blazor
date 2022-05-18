@@ -1,4 +1,4 @@
-﻿@page "/ListsPage"
+@page "/ListsPage"
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
 @attribute [Authorize]
@@ -26,15 +26,20 @@
             }
             else
             {
-                @foreach (var result in @CurrentlyDisplayedMoviesList)
+                @foreach (var result in CurrentlyDisplayedMoviesList)
                 {
-                    <li>@result.Id</li>
+                    @if(result.MovieName != null)
+                    {
+                        <li>@result.MovieName</li>
+                    } else
+                    {
+                        <li>@result.TVShowName</li>
+                    }
                 }
             }
         </ul>
     </div>
 </div>
-
 
 
 @code {
@@ -45,16 +50,8 @@
 
     protected override async Task OnInitializedAsync()
     {
-
-        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-
         userId = await UserService.GetUserId(AuthenticationStateProvider);
-
         UserListResults = await UserService.GetUserLists(userId);
-    //Console.WriteLine(userId);
-
-    //userLists = await UserService.GetUserLists(userId);
-
     }
 
     private async Task OnListSelected(string id)
