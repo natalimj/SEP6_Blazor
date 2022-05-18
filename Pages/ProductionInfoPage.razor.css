@@ -128,8 +128,20 @@ ul {
     color: #FFF6E9;
 }
 
+.header-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
 .header-rating-small {
     display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
 }
 
 /*rating - author: https://codepen.io/hesguru/pen/BaybqXv*/
@@ -139,35 +151,156 @@ ul {
     height: 46px;
     padding: 0 10px;
 }
+
 .rate:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
+    position: absolute;
+    top: -9999px;
 }
+
 .rate:not(:checked) > label {
-    float:right;
-    width:1em;
-    overflow:hidden;
-    white-space:nowrap;
-    cursor:pointer;
-    font-size:30px;
-    color:#ccc;
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
 }
+
 .rate:not(:checked) > label:before {
     content: '★ ';
 }
+
 .rate > input:checked ~ label {
     color: #ffc700;
 }
+
 .rate:not(:checked) > label:hover,
 .rate:not(:checked) > label:hover ~ label {
     color: #deb217;
 }
+
 .rate > input:checked + label:hover,
 .rate > input:checked + label:hover ~ label,
 .rate > input:checked ~ label:hover,
 .rate > input:checked ~ label:hover ~ label,
 .rate > label:hover ~ input:checked ~ label {
     color: #c59b08;
+}
+
+/*add to list*/
+
+.add-list {
+    margin-inline-start: 2rem;
+}
+
+.add-list-button {
+    width: 3rem;
+    height: 3rem;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 10px;
+}
+
+.add-list-button img {
+    height: 80%;
+    filter: invert(21%) sepia(50%) saturate(5998%) hue-rotate(181deg) brightness(81%) contrast(94%);
+}
+
+.add-list-button:hover img {
+    filter: invert(55%) sepia(18%) saturate(7314%) hue-rotate(0deg) brightness(102%) contrast(106%);
+}
+
+.select-list-holder {
+    display: none;
+    position: relative;
+    z-index: 9999;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: 0;
+    width: 60%;
+    height: auto;
+    top: 50%;
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-color: #FFF6E9;
+    color: #086788;
+    border-radius: 20px;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+}
+
+.showDropdown {
+    display: block;
+}
+
+.existing-lists {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.dropdown-content a {
+    cursor: default;
+    display: block;
+    color: #FF7D00;
+    padding: 0.4rem;
+    text-decoration: none;
+    min-width: 7rem;
+    text-align: center;
+}
+
+.dropdown-content a:hover, a:focus {
+    background-color: #FFEBD4;
+    cursor: pointer;
+}
+
+.add-new-list-holder input {
+    width: 100%;
+    border: 1px solid #086788;
+    border-radius: 10px;
+    background-color: #FFF6E9;
+    padding: 0.4rem;
+    color: #FF7D00;
+}
+
+.add-new-list-holder input:focus-visible {
+    outline: #FF7D00 1px solid;
+    color: #086788;
+}
+
+.add-to-list-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-top: 0.5rem;
+}
+
+.add-to-list-button {
+    margin-inline-end: 1rem;
+}
+
+.add-to-list-buttons button {
+    background-color: #FF7D00;
+    color: #FFF6E9;
+    width: 8rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+}
+
+.add-to-list-buttons button:hover {
+    background-color: #E97B0C;
 }
 
 @media (max-width: 640px) {
@@ -178,15 +311,17 @@ ul {
     .header-name {
         font-size: large;
     }
-    
+
     .header-rating {
         display: none;
     }
-    
+
     .header-rating-small {
         display: flex;
         margin: 1rem;
-        align-items: center;
-        justify-content: space-between;
+    }
+
+    .add-list {
+        margin-inline-start: 1rem;
     }
 }

@@ -3,6 +3,8 @@
 @using SEP6_Blazor.Data
 
 @inject IProductionService ProductionService;
+@inject IUserService UserService;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
 
 <div class="main-content-article">
 
@@ -32,18 +34,18 @@
                 <div class="header-rating">
                     <div class="rate">
                         <input type="radio" id="star5" name="rate" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
-                        <label for="star5" title="text" @onclick="() => SubmitRating(5)">5 stars</label>
+                        <label for="star5" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
                         <input type="radio" id="star4" name="rate" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
-                        <label for="star4" title="text" @onclick="() => SubmitRating(4)">4 stars</label>
+                        <label for="star4" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
                         <input type="radio" id="star3" name="rate" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
-                        <label for="star3" title="text" @onclick="() => SubmitRating(3)">3 stars</label>
+                        <label for="star3" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
                         <input type="radio" id="star2" name="rate" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
-                        <label for="star2" title="text" @onclick="() => SubmitRating(2)">2 stars</label>
+                        <label for="star2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
                         <input type="radio" id="star1" name="rate" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
-                        <label for="star1" title="text" @onclick="() => SubmitRating(1)">1 star</label>
+                        <label for="star1" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
                     </div>
-                    <div class="add-list">
-                        <button class="add-list-button" @onclick="AddToList">
+                    <div title="Add to a list" class="add-list">
+                        <button class="add-list-button" @onclick="ToggleDropdown">
                             <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
                         </button>
                     </div>
@@ -53,18 +55,64 @@
         <div class="header-rating-small">
             <div class="rate">
                 <input type="radio" id="star5-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
-                <label for="star5-2" title="text2" @onclick="() => SubmitRating(5)">5 stars</label>
+                <label for="star5-2" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
                 <input type="radio" id="star4-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
-                <label for="star4-2" title="text2" @onclick="() => SubmitRating(4)">4 stars</label>
+                <label for="star4-2" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
                 <input type="radio" id="star3-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
-                <label for="star3-2" title="text2" @onclick="() => SubmitRating(3)">3 stars</label>
+                <label for="star3-2" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
                 <input type="radio" id="star2-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
-                <label for="star2-2" title="text2" @onclick="() => SubmitRating(2)">2 stars</label>
+                <label for="star2-2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
                 <input type="radio" id="star1-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
-                <label for="star1-2" title="text2" @onclick="() => SubmitRating(1)">1 star</label>
+                <label for="star1-2" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
+            </div>
+            <div title="Add to a list" class="add-list">
+                <button class="add-list-button" @onclick="ToggleDropdown">
+                    <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
+                </button>
             </div>
         </div>
     }
+
+    <div class="select-list-holder @dropdownShownClass">
+        <div class="dropdown-content">
+            <div class="existing-lists">
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>this is a pretty long name bc why not heheheheheh</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                <a>My List</a>
+                <a>Another List</a>
+                
+                @if (UserLists != null)
+                {
+                    @foreach (var item in UserLists)
+                    {
+                        <a @onclick="() => AddToList(item, false)">@item.ListName</a>
+                    }
+                }
+            </div>
+            <hr/>
+            <div class="add-new-list-holder">
+                <input type="text" @bind-value="@NewListName" @bind-value:event="oninput" placeholder="Add list name..."/>
+            </div>
+            <div class="add-to-list-buttons">
+                <button class="add-to-list-button" @onclick="() => AddToList(new UserList(userId, NewListName, new List<ListItem>()), true)">Add to new list</button>
+                <button @onclick="ToggleDropdown">Cancel</button>
+            </div>
+        </div>
+    </div>
 
     <div class="content">
         @if (Production == null)
@@ -120,30 +168,63 @@
     [Parameter]
     public string Type { get; set; }
 
+    private bool dropdownToggled = false;
+    private string? dropdownShownClass => dropdownToggled ? "showDropdown" : null;
+
     private Production Production { get; set; }
     private List<Director> Crew { get; set; }
     private Cast Cast { get; set; }
     private Images Images { get; set; }
 
+    private Rating? UserRating { get; set; }
+    private string userId { get; set; }
     private int RatingValue { get; set; } = -1;
+
+    private List<UserList> UserLists { get; set; }
+    private string? NewListName { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
+        userId = await UserService.GetUserId(AuthenticationStateProvider);
         Production = await ProductionService.GetProduction(Id, Type);
         Crew = await ProductionService.GetDirector(Id, Type);
         Cast = await ProductionService.GetCast(Id, Type);
         Images = await ProductionService.GetProductionImagesUrl(Id, Type);
+
+        UserLists = await UserService.GetUserLists(userId);
+        List<Rating> list = await UserService.GetUserRatings(userId);
+        UserRating = list.Find(rating => rating.ProductionId.Equals(Id));
+        if (UserRating != null)
+        {
+            RatingValue = UserRating.UserRating;
+        }
     }
 
     private async Task SubmitRating(int rating)
     {
         RatingValue = rating;
-        
+        await UserService.AddRating(new Rating(userId, Id, Type, rating));
+    //todo: have a rating added message here?
     }
 
-    private async Task AddToList()
+    private async Task AddToList(UserList list, bool newList)
     {
-        
+        if (newList)
+        {
+    //todo: get list id
+            await UserService.AddList(list);
+        }
+        if (list != null)
+        {
+            await UserService.AddProductionToList(list, Id, Type);
+        }
+        NewListName = null; 
+        ToggleDropdown();
+    }
+
+    private void ToggleDropdown()
+    {
+        dropdownToggled = !dropdownToggled;
     }
 
 }

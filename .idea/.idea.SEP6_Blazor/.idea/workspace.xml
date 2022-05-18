@@ -5,7 +5,38 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ActorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ActorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/IActorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IActorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/IProductionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IProductionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ProductionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ProductionService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Actor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Cast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Cast.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Crew.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Crew.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Director.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Director.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Genre.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Genre.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Image.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Images.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Images.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ListItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/MovieCredits.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MovieCredits.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/MovieRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MovieRole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Person.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Person.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Production.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Production.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Rating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Rating.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Results.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Results.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Review.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Review.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/SearchFilterItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/SearchFilterItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/UserList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserList.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Authentication.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Authentication.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,24 +58,8 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/SimpleSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ActorInfoPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/SimpleSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ListsPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ListsPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/MultiSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/MoviesPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/MultiSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/ActorService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/MoviesPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -55,11 +70,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="preferences.environmentSetup" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
@@ -108,6 +119,8 @@
       <workItem from="1652535708189" duration="20155000" />
       <workItem from="1652615337662" duration="22700000" />
       <workItem from="1652807231650" duration="23073000" />
+      <workItem from="1652904334055" duration="9288000" />
+      <workItem from="1652958451897" duration="4723000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -186,7 +199,42 @@
       <option name="project" value="LOCAL" />
       <updated>1652877175798</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="TC-12 adding mock rating">
+      <created>1652904748250</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652904748250</updated>
+    </task>
+    <task id="LOCAL-00013" summary="TC-12 productionDetailsPage + adding/viewing reviews">
+      <created>1652907727469</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652907727469</updated>
+    </task>
+    <task id="LOCAL-00014" summary="TC-12 productionDetailsPage + adding/viewing reviews">
+      <created>1652907764114</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652907764114</updated>
+    </task>
+    <task id="LOCAL-00015" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup">
+      <created>1652909510584</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652909510584</updated>
+    </task>
+    <task id="LOCAL-00016" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup">
+      <created>1652958413520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652958413520</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +268,8 @@
     <MESSAGE value="TC-14 TC-12 frontend and test part + simple search fix" />
     <MESSAGE value="Merge branch 'master' of https://github.com/natalimj/SEP6_Blazor into TC-12_Test&#10;&#10; Conflicts:&#10;&#9;Pages/MoviesPage.razor&#10;&#9;Shared/MultiSearchBar.razor" />
     <MESSAGE value="TC-12 adding mock rating" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 adding mock rating" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup" />
   </component>
 </project>

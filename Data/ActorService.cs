@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SEP6_Blazor.Data
 {
-    public class ActorService :IActorService
+    public class ActorService : IActorService
     {
         private string uri = "https://api.themoviedb.org/3/";
         private string apiKey = "?api_key=63335424114024b0bdbf981fe8c972e0";
@@ -20,7 +20,7 @@ namespace SEP6_Blazor.Data
             string message = await stringAsync;
             Person person = JsonSerializer.Deserialize<Person>(message);
             person.MovieCredits = await GetMovieCredits(id);
-            
+
             return person;
         }
 

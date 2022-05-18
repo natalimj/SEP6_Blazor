@@ -1,4 +1,4 @@
-﻿@page "/ListsPage"
+@page "/ListsPage"
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
 @attribute [Authorize]
@@ -8,24 +8,55 @@
 @inject IUserService UserService
 
 
-<h3>ListsPage</h3>
-
+<h3>My Lists</h3>
+<div id="content">
+    <div id="leftList">
+        <ul>
+            @foreach (var result in @UserListResults)
+            {
+                <li @onclick="() => OnListSelected(result.Id)">@result.ListName</li>
+            }
+        </ul>
+    </div>
+    <div id="rightItems">
+        <ul>
+            @if (CurrentlyDisplayedMoviesList == null)
+            {
+            }
+            else
+            {
+                @foreach (var result in CurrentlyDisplayedMoviesList)
+                {
+                    @if (result.MovieName != null)
+                    {
+                        <li>@result.MovieName</li>
+                    }
+                    else
+                    {
+                        <li>@result.TVShowName</li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>
 
 
 @code {
 
-    //private List<UserList> userLists;
-
+    private List<UserList>? UserListResults { get; set; } = new List<UserList>();
+    private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
+    private string userId { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
-
-        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        string userId = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
-        userId =  userId.Substring(userId.IndexOf("|")+1);
-        //Console.WriteLine(userId);
-
-        //userLists = await UserService.GetUserLists(userId);
-
+        userId = await UserService.GetUserId(AuthenticationStateProvider);
+        UserListResults = await UserService.GetUserLists(userId);
     }
+
+    private async Task OnListSelected(string id)
+    {
+        CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(id);
+    }
+
 }

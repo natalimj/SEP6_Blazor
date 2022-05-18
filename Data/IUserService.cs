@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Components.Authorization;
+﻿using Microsoft.AspNetCore.Components.Authorization;
 using SEP6_Blazor.Models;
 
 namespace SEP6_Blazor.Data
@@ -11,26 +9,21 @@ namespace SEP6_Blazor.Data
         Task UpdateRating(Rating rating);
         Task DeleteRating(string ratingId);
         Task<List<Rating>> GetUserRatings(string userId);
-        Task<List<Rating>> GetMovieRatings(string movieId); // only from DB 
-
-        Task<Rating> GetUserMovieRating(string userId, string movieId);
+        Task<List<Rating>> GetProductionRatings(string productionId, string productionType); // only from DB 
 
         Task AddReview(Review review);
         Task UpdateReview(Review review);
         Task DeleteReview(string reviewId);
         Task<List<Review>> GetUserReviews(string userId);
-        Task<List<Review>> GetMovieReviews(string movieId); //Only from DB 
+        Task<List<Review>> GetProductionReviews(string productionId, string productionType); //Only from DB 
+
 
         Task AddList(UserList userList); //create an empty list
-        Task AddMovieToList(UserList userList, string movieId); 
+        Task AddProductionToList(UserList userList, string productionId, string productionType);
         Task DeleteList(string listId);
-        Task<List<UserList>> GetUserLists(string userId);  // get user lists
-        Task<List<string>> GetMoviesInList(string userId, string listName);
-
-        Task<List<string>> GetProductionIdsInListById(string listId);
-        Task<List<Production>> GetProductionsInListById(string listId);
+        Task<List<UserList>> GetUserLists(string userId); // get user lists
+        Task<List<Production>> GetProductionsInList(string listId);
 
         Task<string> GetUserId(AuthenticationStateProvider authenticationStateProvider);
-
     }
 }

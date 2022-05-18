@@ -86,3 +86,53 @@ ul {
     font-weight: bold;
     margin: 1rem;
 }
+
+/*movie info header*/
+
+.header-main {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+}
+
+.header-image {
+    width: 40%;
+    max-height: 30rem;
+    max-width: 25rem;
+    min-width: 10rem;
+}
+
+.header-image img {
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    margin-inline-start: 2rem;
+}
+
+.header-description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    margin-inline-start: 3rem;
+    margin-inline-end: 2rem;
+}
+
+.header-desc-text {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: #FF7D00;
+    font-family: "Book Antiqua", serif;
+}
+
+.header-name {
+    font-size: xx-large;
+    color: #FFF6E9;
+}
+
+.header-birthplace {
+    color: #FFF6E9;
+}

@@ -5,16 +5,19 @@ namespace SEP6_Blazor.Models
 {
     public class UserList
     {
-        [JsonPropertyName("id")]
-        public string Id { get; set; }
+        [JsonPropertyName("id")] public string Id { get; set; }
 
-        [JsonPropertyName("userid")]
-        public string UserId { get; set; }
+        [JsonPropertyName("userid")] public string UserId { get; set; }
 
-        [JsonPropertyName("listname")]
-        public string ListName { get; set; }
+        [JsonPropertyName("listname")] public string ListName { get; set; }
 
-        [JsonPropertyName("movies")]
-        public List<string> Movies { get; set; }
+        [JsonPropertyName("listItems")] public List<ListItem> ListItems { get; set; }
+
+        public UserList(string userId, string listName, List<ListItem> listItems)
+        {
+            UserId = userId;
+            ListName = listName;
+            ListItems = listItems;
+        }
     }
 }

@@ -13,6 +13,29 @@
         }
         else
         {
+            <div class="header-main">
+                <div class="header-image">
+                    @if (Person.ProfilePath == null)
+                    {
+                        <img src="Assets/user.svg" alt="actor-poster" class="poster-image">
+                    }
+                    else
+                    {
+                        <img src="https://image.tmdb.org/t/p/original/@Person.ProfilePath" alt="movie-poster" class="poster-image">
+                    }
+                </div>
+                <div class="header-description">
+                    <div class="header-desc-text header-name">@Person.Name</div>
+                    @if (Person.PlaceOfBirth != null)
+                    {
+                        <div class="header-desc-text header-birthplace">Born in @Person.PlaceOfBirth</div> 
+                    }
+                    @if (Person.Biography != null)
+                    {
+                        <div class="header-desc-text">@Person.Biography</div>
+                    }
+                </div>
+            </div>
             <div class="content-header-title">
                 <span>Movie Roles</span>
             </div>
