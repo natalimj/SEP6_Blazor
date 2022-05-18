@@ -1,4 +1,6 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Collections.Generic;
+using System.Net.Http;
 using SEP6_Blazor.Models;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -20,6 +22,18 @@ namespace SEP6_Blazor.Data
             person.MovieCredits = await GetMovieCredits(id);
             
             return person;
+        }
+
+        public async Task<List<Person>> SearchPerson(string query)
+        {
+            //todo: implement this
+            Task<string> stringAsync = client.GetStringAsync(uri + "person/" + 17628 + apiKey);
+            string message = await stringAsync;
+            Person person = JsonSerializer.Deserialize<Person>(message);
+            List<Person> list = new List<Person>();
+            list.Add(person);
+
+            return list;
         }
 
         //https://api.themoviedb.org/3/person/17628/movie_credits?api_key=63335424114024b0bdbf981fe8c972e0

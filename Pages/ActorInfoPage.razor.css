@@ -2,6 +2,19 @@
     margin-top: 2.5rem;
 }
 
+.crew-member {
+    margin: 2rem;
+}
+
+.crew-member-name {
+    color: #FF7D00;
+}
+
+.crew-member-movie {
+    cursor: pointer;
+    text-decoration: underline 1px #086788;
+}
+
 /* scrollbar */
 ::-webkit-scrollbar {
     width: 1rem;

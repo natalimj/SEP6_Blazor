@@ -1,11 +1,69 @@
 ﻿@page "/MovieInfoPage/{id}"
-<h3>MovieInfoPage</h3>
+@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
 
+@inject IProductionService ProductionService;
 
+<div class="main-content-article">
+    <div class="content">
+        @if (Movie == null)
+        {
+            <p>Nothing to show :(</p>
+        }
+        else
+        {
+            <div class="content-header-title">
+                <span>Poster Images</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in Images.Backdrops)
+                {
+                    <ImageGallery result="result"/>
+                }
+            </ul>
 
+            <div class="content-header-title">
+                <span>Crew</span>
+            </div>
+            <div>
+                @foreach (var result in Crew)
+                {
+                    <div class="crew-member">
+                        <span class="crew-member-name">@result.Name</span>
+                        <span>- @result.Job</span>
+                    </div>
+                }
+            </div>
+
+            <div class="content-header-title">
+                <span>Cast</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in Cast.Actors)
+                {
+                    <PersonPosterItem result="result"/>
+                }
+            </ul>
+        }
+    </div>
+</div>
 
 @code {
-    
+
     [Parameter]
-    public int id { get; set; }
+    public string Id { get; set; }
+
+    private Production Movie { get; set; }
+    private List<Director> Crew { get; set; }
+    private Cast Cast { get; set; }
+    private Images Images { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Movie = await ProductionService.GetProduction(Id, "movie");
+        Crew = await ProductionService.GetDirector(Id, "movie");
+        Cast = await ProductionService.GetCast(Id, "movie");
+        Images = await ProductionService.GetProductionImagesUrl(Id, "movie");
+    }
+
 }

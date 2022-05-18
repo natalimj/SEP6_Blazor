@@ -1,0 +1,26 @@
+﻿@using SEP6_Blazor.Models
+@inject NavigationManager Navigation
+
+<li class="item" @onclick="GoFullScreen">
+    <div class="poster-container">
+        <img src="https://image.tmdb.org/t/p/original/@result.FilePath" alt="movie-poster" class="poster-image @fullscreenClass">
+        <div class="poster-title-container">
+            <div class="poster-title">See Image</div>
+        </div>
+    </div>
+</li>
+
+
+@code {
+    
+    [Parameter] public Image result { get; set; }
+    
+    private bool fullscreen { get; set; }
+    private string? fullscreenClass => fullscreen ? "fullscreen" : null;
+    
+    private void GoFullScreen()
+    {
+        fullscreen = !fullscreen;
+    }
+
+}

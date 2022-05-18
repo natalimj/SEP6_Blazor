@@ -1,0 +1,92 @@
+﻿.search-bar-main {
+    display: flex;
+    justify-content: start;
+    flex-direction: row;
+    height: 2.5rem;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.select-query-type {
+    color: #086788;
+    width: 7rem;
+    height: 100%;
+    border: 0;
+    background: url("Assets/caret-down-blue.svg") no-repeat right #FFF6E9;
+    background-size: 20px;
+    background-position-x: 5.5rem;
+    border-right: 1px solid;
+    border-radius: 30px 0 0 30px;
+}
+
+#search-options {
+    color: #086788;
+    width: 7rem;
+    padding-inline-start: 15px;
+    margin-inline-start: -2px;
+    height: 100%;
+    border: 0;
+    background: transparent no-repeat;
+    -webkit-appearance: none;
+    border-radius: inherit;
+}
+
+#search-options * {
+    background-color: #FFF6E9;
+}
+
+.select-query-type:hover {
+    cursor: pointer;
+    background: url("Assets/caret-down-orange.svg") no-repeat right #FFF6E9;
+    background-size: 20px;
+    background-position-x: 5.5rem;
+}
+
+.borderRadius {
+    border-radius: 20px 0 0 0 !important;
+}
+
+.search-bar-input {
+    width: 100%;
+}
+
+.search-bar-input input {
+    background-color: #FFF6E9;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    padding: 5px;
+}
+
+.search-bar-input input:focus-visible, #search-options:focus-visible {
+    outline: none;
+}
+
+.search-bar-button button {
+    background-color: #FFF6E9;
+    width: 2.5rem;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0 30px 30px 0;
+}
+
+.search-bar-button button:hover img, .search-bar-button button:active img {
+    filter: invert(55%) sepia(18%) saturate(7314%) hue-rotate(0deg) brightness(102%) contrast(106%);
+}
+
+.search-bar-button button img {
+    filter: invert(21%) sepia(50%) saturate(5998%) hue-rotate(181deg) brightness(81%) contrast(94%);
+    width: 2rem;
+    padding-inline-end: 5px;
+}
+
+.search-bar-button .searchFocused img {
+    /*#E97B0C*/
+    filter: invert(49%) sepia(100%) saturate(3135%) hue-rotate(12deg) brightness(108%) contrast(91%);
+}
+
+.no-results {
+    margin-inline-start: 1rem;
+}
