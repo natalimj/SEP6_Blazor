@@ -4,16 +4,19 @@ namespace SEP6_Blazor.Models
 {
     public class Review
     {
-        [JsonPropertyName ("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
         [JsonPropertyName("userid")]
         public string UserId { get; set; }
 
-        [JsonPropertyName("movieid")]
-        public string MovieId { get; set; }
+        [JsonPropertyName("productionid")]
+        public string ProductionId { get; set; }
 
-        [JsonPropertyName ("review")]
+        [JsonPropertyName("type")]
+        public string Type { get; set; }
+
+        [JsonPropertyName("review")]
         public string UserReview { get; set; }
     }
 }
