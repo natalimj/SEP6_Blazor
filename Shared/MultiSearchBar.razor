@@ -21,7 +21,7 @@
         </div>
     </div>
     <div class="search-bar-input">
-        <input @bind-value="@keywordsData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Keywords..."/>
+        <input @bind-value="@keywordsData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Keywords separated by commas (,)"/>
     </div>
     <div class="search-bar-button">
         <button type="submit" @onclick="SendQuery" class="@focusClass @borderRadiusRightClass">
@@ -139,7 +139,7 @@
     private async Task<Task> SendQuery()
     {
         Result = new Results();
-        Result.MovieResults = new List<Movie>();
+        Result.ProductionResults = new List<Production>();
         return ResultChanged.InvokeAsync(Result);
     }
 }

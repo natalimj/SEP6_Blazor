@@ -1,5 +1,9 @@
+using System;
+using System.Net.Http;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SEP6_Blazor;
 using SEP6_Blazor.Data;
 
@@ -19,7 +23,7 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = "code";
 });
 
-builder.Services.AddSingleton<IMovieService, MovieService>();
+builder.Services.AddSingleton<IProductionService, ProductionService>();
 builder.Services.AddSingleton<IActorService, ActorService>();
 builder.Services.AddSingleton<IUserService, UserService>();
 

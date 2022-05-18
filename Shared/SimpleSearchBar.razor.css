@@ -86,3 +86,7 @@
     /*#E97B0C*/
     filter: invert(49%) sepia(100%) saturate(3135%) hue-rotate(12deg) brightness(108%) contrast(91%);
 }
+
+.no-results {
+    margin-inline-start: 1rem;
+}

@@ -1,0 +1,52 @@
+﻿@using SEP6_Blazor.Models
+@inject NavigationManager Navigation
+
+@if (result != null)
+{
+    <li class="item" @onclick="@(() => GoToDetailsPage(result.Id))">
+        <div class="poster-container">
+            @if (result.ProfilePath == null)
+            {
+                <img src="Assets/user.svg" alt="movie-poster" class="poster-image">
+            }
+            else
+            {
+                <img src="https://image.tmdb.org/t/p/original/@result.ProfilePath" alt="movie-poster" class="poster-image">
+            }
+            <div class="poster-title-container">
+                <div class="poster-title">@result.Name "@result.Character"</div>
+            </div>
+        </div>
+    </li>
+}
+else
+{
+    <li class="item" @onclick="@(() => GoToDetailsPage(personResult.Id))">
+        <div class="poster-container">
+            @if (personResult.ProfilePath == null)
+            {
+                <img src="Assets/user.svg" alt="movie-poster" class="poster-image">
+            }
+            else
+            {
+                <img src="https://image.tmdb.org/t/p/original/@personResult.ProfilePath" alt="movie-poster" class="poster-image">
+            }
+            <div class="poster-title-container">
+                <div class="poster-title">@personResult.Name</div>
+            </div>
+        </div>
+    </li>
+}
+
+
+@code {
+    
+    [Parameter] public Actor result { get; set; }
+    [Parameter] public Person personResult { get; set; }
+    
+    private void GoToDetailsPage(int id)
+    {
+        Navigation.NavigateTo("/ActorInfoPage/" + id);
+    }
+
+}

@@ -1,0 +1,45 @@
+﻿@using SEP6_Blazor.Models
+@inject NavigationManager Navigation
+
+<li class="item" @onclick="@(() => GoToDetailsPage(result.Id))">
+    <div class="poster-container">
+        @if (result.Poster_path == null)
+        {
+            <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
+        }
+        else
+        {
+            <img src="https://image.tmdb.org/t/p/original/@result.Poster_path" alt="movie-poster" class="poster-image">
+        }
+        <div class="poster-title-container">
+            @if (result.MovieName == null)
+            {
+                <div class="poster-title">@result.TVShowName</div>
+            }
+            else
+            {
+                <div class="poster-title">@result.MovieName</div>
+            }
+        </div>
+    </div>
+</li>
+
+
+@code {
+    
+    [Parameter] public Production result { get; set; }
+    
+    private void GoToDetailsPage(int id)
+    {
+        if (result.MovieName!=null)
+        {
+            Navigation.NavigateTo("/MovieInfoPage/" + id);
+        }
+        else
+        {
+            //todo: add tv series details page here
+        }
+        
+    }
+
+}

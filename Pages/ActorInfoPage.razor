@@ -1,0 +1,66 @@
+﻿@page "/ActorInfoPage/{id}"
+@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+
+@inject IActorService ActorService;
+@inject NavigationManager Navigation
+
+<div class="main-content-article">
+    <div class="content">
+        @if (Person == null)
+        {
+            <p>Nothing to show :(</p>
+        }
+        else
+        {
+            <div class="content-header-title">
+                <span>Movie Roles</span>
+            </div>
+            <div>
+                @foreach (var result in MovieCredits.Roles)
+                {
+                    <div class="crew-member">
+                        <span class="crew-member-name">@result.Character</span>
+                        <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id))"> in "@result.OriginalTitle"</span>
+                    </div>
+                }
+            </div>
+
+            <div class="content-header-title">
+                <span>TV Series Roles</span>
+            </div>
+            <div>
+                @foreach (var result in TVCredits.Roles)
+                {
+                    <div class="crew-member">
+                        <span class="crew-member-name">@result.Character</span>
+                        <span> in "@result.OriginalTitle"</span>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string Id { get; set; }
+
+    private Person Person { get; set; }
+    private MovieCredits MovieCredits { get; set; }
+    private MovieCredits TVCredits { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        Person = await ActorService.GetPerson(Id);
+        MovieCredits = await ActorService.GetMovieCredits(Id);
+        TVCredits = await ActorService.GetTVCredits(Id);
+    }
+    
+    private void GoToDetailsPage(int id)
+    {
+        Navigation.NavigateTo("/MovieInfoPage/" + id);
+    }
+
+}

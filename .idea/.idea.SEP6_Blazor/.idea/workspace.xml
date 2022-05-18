@@ -5,10 +5,13 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 multi search main design and filter model">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 TC-12 frontend and test part">
+      <change afterPath="$PROJECT_DIR$/Models/ComplexResult.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/ActorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ActorService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/SimpleSearchBar.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +29,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-14-app-design" />
+        <entry key="$PROJECT_DIR$" value="TC-14-app-desing-cont" />
       </map>
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -94,7 +96,8 @@
       <workItem from="1652207807636" duration="1011000" />
       <workItem from="1652379439040" duration="44495000" />
       <workItem from="1652535708189" duration="20155000" />
-      <workItem from="1652615337662" duration="21217000" />
+      <workItem from="1652615337662" duration="22700000" />
+      <workItem from="1652807231650" duration="22305000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -152,7 +155,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652639756632</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="TC-14 multi search main design and filter model - add basic form validation">
+      <created>1652643088781</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1652643088781</updated>
+    </task>
+    <task id="LOCAL-00010" summary="TC-14 TC-12 frontend and test part">
+      <created>1652874515563</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1652874515563</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +198,8 @@
     <MESSAGE value="TC-14 main nav + simple search bar" />
     <MESSAGE value="TC-14 multisearch bar" />
     <MESSAGE value="TC-14 multi search main design and filter model" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-14 multi search main design and filter model" />
+    <MESSAGE value="TC-14 multi search main design and filter model - add basic form validation" />
+    <MESSAGE value="TC-14 TC-12 frontend and test part" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-14 TC-12 frontend and test part" />
   </component>
 </project>
