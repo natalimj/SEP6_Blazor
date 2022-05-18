@@ -19,7 +19,6 @@ builder.Services.AddOidcAuthentication(options =>
     options.ProviderOptions.ResponseType = "code";
 });
 
-builder.Services.AddSingleton<IMovieService, MovieService>();
 builder.Services.AddSingleton<IActorService, ActorService>();
 builder.Services.AddSingleton<IUserService, UserService>();
 
