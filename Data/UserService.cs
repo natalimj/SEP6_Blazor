@@ -151,13 +151,13 @@ namespace SEP6_Blazor.Data
             HttpResponseMessage response = await client.PutAsync(uri + "/UpdateList", content);
             Console.WriteLine(response.ToString());
         }
-
+        
         public async Task<List<ListItem>> GetListItemsById(String listId)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "/GetProductionsInListById/" + listId);
             string message = await stringAsync;
-            List<ListItem> result = JsonSerializer.Deserialize<List<ListItem>>(message);
-            return result;
+            UserList  result = JsonSerializer.Deserialize<UserList>(message);
+            return result.ListItems;
         }
 
         public async Task<List<Production>> GetProductionsInList(string listId)
