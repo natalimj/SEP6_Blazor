@@ -5,8 +5,12 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 TC-12 frontend and test part + simple search fix">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 multi search main design and filter model">
+      <change afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,24 +28,9 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-14-app-desing-cont" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/SimpleSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Shared/SimpleSearchBar.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ListsPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/Index.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ListsPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/ActorService.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -51,14 +40,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="preferences.environmentSetup" />
-    <property name="vue.rearranger.settings.migration" value="true" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
     <configuration name="SEP6_Blazor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SEP6_Blazor.csproj" />
