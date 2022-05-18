@@ -139,7 +139,7 @@
     private async Task<Task> SendQuery()
     {
         Result = new Results();
-        Result.ProductionResults = new List<Production>();
+        Result.MovieResults = new List<Movie>();
         return ResultChanged.InvokeAsync(Result);
     }
 }

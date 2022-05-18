@@ -4,11 +4,11 @@
 <div class="main-content-article">
     <MultiSearchBar @bind-Result="SearchResults"/>
     <div>
-        @if (SearchResults.ProductionResults.Count > 0)
+        @if (SearchResults.MovieResults.Count > 0)
         {
-            @foreach (Production result in SearchResults.ProductionResults)
+            @foreach (Movie result in SearchResults.MovieResults)
             {
-                <div>@result.TVShowName - @result.Overview</div>
+                <div>@result.OriginalTitle - @result.Overview</div>
             }
         }
     </div>
@@ -19,7 +19,7 @@
 
     protected override void OnInitialized()
     {
-        SearchResults.ProductionResults = new List<Production>();
+        SearchResults.MovieResults = new List<Movie>();
     }
 
 }

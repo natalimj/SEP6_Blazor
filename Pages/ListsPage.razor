@@ -4,42 +4,28 @@
 @attribute [Authorize]
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
-@inject IUserService UserService
-@inject IProductionService ProductionService
+@inject IMovieService MovieService
 @inject IUserService UserService
 
 
 <h3>ListsPage</h3>
 
 
- @if (UserLists.Count > 0){
-     @foreach (UserList List in UserLists){
-                <h5>@List.ListName</h5>
-                <p> @List.Id</p>
-       }
- }
-
 
 @code {
 
+    //private List<UserList> userLists;
 
-    private List<UserList> UserLists = new List<UserList>();
-    private string UserId { get; set; } = "";
-    private List<Production> Productions = new List<Production>();
 
     protected override async Task OnInitializedAsync()
     {
-        UserId =  await UserService.GetUserId(AuthenticationStateProvider);
-        UserLists = await UserService.GetUserLists(UserId);
+
+        var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        string userId = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
+        userId =  userId.Substring(userId.IndexOf("|")+1);
+        //Console.WriteLine(userId);
+
+        //userLists = await UserService.GetUserLists(userId);
 
     }
-
-    //when clicking a list name -get movies and tvshows
-    private async Task getProductionsInList(string ListId)
-    {
-        //--------- GetProductionsInListById is not correctly implemented yet----
-        Productions = await UserService.GetProductionsInListById(ListId);
-    }
-   
-
 }

@@ -2,7 +2,7 @@
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
 
-@inject IProductionService ProductionService
+@inject IMovieService MovieService;
 
 <div class="search-bar-main">
     <div class="search-bar-select">
@@ -79,22 +79,22 @@
             switch (selectedQueryType)
             {
                 case "all":
-                    Result = await ProductionService.SearchProduction(queryData,"");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
                 case "movies":
-                    Result = await ProductionService.SearchProduction(queryData,"movie");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
                 case "tvseries":
-                    Result = await ProductionService.SearchProduction(queryData,"tv");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
                 case "genre":
-                    Result = await ProductionService.SearchProduction(queryData,"");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
                 case "actors":
-                    Result = await ProductionService.SearchProduction(queryData,"");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
                 case "crew":
-                    Result = await ProductionService.SearchProduction(queryData,"");
+                    Result = await MovieService.SearchMovie(queryData);
                     break;
             }
         }
