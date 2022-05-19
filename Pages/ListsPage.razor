@@ -1,4 +1,4 @@
-﻿@page "/ListsPage"
+@page "/ListsPage"
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
 @attribute [Authorize]
@@ -42,9 +42,8 @@
 </div>
 
 
-
 @code {
-
+    
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
     private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
     private string userId { get; set; }

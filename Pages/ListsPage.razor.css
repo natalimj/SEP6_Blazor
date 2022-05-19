@@ -1,0 +1,39 @@
+﻿#content {
+    position: absolute;
+    height: 80%;
+    overflow: hidden;
+}
+
+#leftList {
+    width: 30%;
+    height: 100%;
+    float: left;
+    overflow-y: scroll;
+    position: relative;
+    
+}
+
+#rightItems {
+    width: 70%;
+    height: 100%;
+    float: left;
+    overflow-y: scroll;
+    position: relative;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #012436;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #086788;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #075876;
+}

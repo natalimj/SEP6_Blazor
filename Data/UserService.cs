@@ -168,11 +168,12 @@ namespace SEP6_Blazor.Data
             HttpResponseMessage response = await client.PostAsync(uri + "/UpdateList", content);
             Console.WriteLine(response.ToString());
         }
-
+        
         public async Task<List<ListItem>> GetListItemsById(String listId)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "/GetProductionsInListById/" + listId);
             string message = await stringAsync;
+
             List<UserList>  result = JsonSerializer.Deserialize<List<UserList>>(message);
 
             if (result != null && result.Count > 0)
