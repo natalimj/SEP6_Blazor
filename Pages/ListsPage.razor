@@ -22,16 +22,16 @@
         <ul>
             @if (CurrentlyDisplayedMoviesList == null)
             {
-
             }
             else
             {
                 @foreach (var result in CurrentlyDisplayedMoviesList)
                 {
-                    @if(result.MovieName != null)
+                    @if (result.MovieName != null)
                     {
                         <li>@result.MovieName</li>
-                    } else
+                    }
+                    else
                     {
                         <li>@result.TVShowName</li>
                     }
@@ -43,7 +43,7 @@
 
 
 @code {
-    
+
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
     private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
     private string userId { get; set; }
@@ -58,4 +58,5 @@
     {
         CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(id);
     }
+
 }

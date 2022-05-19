@@ -25,6 +25,7 @@ namespace SEP6_Blazor.Data
             HttpResponseMessage response = await client.PostAsync(uri + "/AddRating", content);
             Console.WriteLine(response.ToString());
         }
+
         public async Task AddReview(Review review)
         {
             string reviewJson = JsonSerializer.Serialize(review);
@@ -182,6 +183,7 @@ namespace SEP6_Blazor.Data
             {
                 return result[0].ListItems;
             }
+
             return new UserList().ListItems;
 
         }

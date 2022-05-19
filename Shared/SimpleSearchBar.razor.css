@@ -1,4 +1,9 @@
-﻿.search-bar-main {
+﻿.search-bar-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-bar-main {
     display: flex;
     justify-content: start;
     flex-direction: row;
@@ -34,6 +39,10 @@
 
 #search-options * {
     background-color: #FFF6E9;
+}
+
+#search-options:hover{
+    cursor: pointer;
 }
 
 .select-query-type:hover {
@@ -89,4 +98,18 @@
 
 .no-results {
     margin-inline-start: 1rem;
+}
+
+.searchHints {
+    display: none;
+    text-align: center;
+    color: #086788;
+}
+
+.loadingHint {
+    display: block;
+}
+
+.noResultsHint {
+    display: block;
 }

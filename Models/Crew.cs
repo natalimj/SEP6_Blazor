@@ -5,8 +5,7 @@ namespace SEP6_Blazor.Models
 {
     public class Crew
     {
-        [JsonPropertyName("crew")]
-        public List<Director> Directors { get; set; }
+        [JsonPropertyName("crew")] public List<Director> Directors { get; set; }
 
         public Crew()
         {
