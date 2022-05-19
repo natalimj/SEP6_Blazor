@@ -15,6 +15,6 @@ namespace SEP6_Blazor.Models
         public string ListName { get; set; }
 
         [JsonPropertyName("listItems")]
-        public List<ListItem> ListItems { get; set; }
+        public List<ListItem> ListItems { get; set; } = new List<ListItem>();
     }
 }
