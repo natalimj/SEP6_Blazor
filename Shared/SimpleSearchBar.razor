@@ -5,24 +5,32 @@
 @inject IProductionService ProductionService;
 @inject IActorService ActorService;
 
-<div class="search-bar-main">
-    <div class="search-bar-select">
-        <div class="select-query-type @borderRadiusClass">
-            <select @bind="@selectedQueryType" @onblur="SetNoBorder" @onclick="CalculateBorder" name="search-options" id="search-options">
-                <option value="all">All</option>
-                <option value="movies">Movies</option>
-                <option value="tvseries">TV Series</option>
-                <option value="actors">Actors</option>
-            </select>
+<div class="search-bar-body">
+    <div class="search-bar-main">
+        <div class="search-bar-select">
+            <div class="select-query-type @borderRadiusClass">
+                <select @bind="@selectedQueryType" @onblur="SetNoBorder" @onclick="CalculateBorder" name="search-options" id="search-options">
+                    <option value="all">All</option>
+                    <option value="movies">Movies</option>
+                    <option value="tvseries">TV Series</option>
+                    <option value="actors">Actors</option>
+                </select>
+            </div>
+        </div>
+        <div class="search-bar-input">
+            <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Search..."/>
+        </div>
+        <div class="search-bar-button">
+            <button type="submit" @onclick="SendQuery" class="@focusClass">
+                <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
+            </button>
         </div>
     </div>
-    <div class="search-bar-input">
-        <input @bind-value="@queryData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Search..."/>
+    <div class="searchHints @showLoadingClass">
+        Loading...
     </div>
-    <div class="search-bar-button">
-        <button type="submit" @onclick="SendQuery" class="@focusClass">
-            <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
-        </button>
+    <div class="searchHints @showNoResultsClass">
+        Could not find results for your query.
     </div>
 </div>
 
@@ -46,18 +54,23 @@ else if (Result.ProductionResults.Count == 0 && queryMade)
 
     private bool isActive = false;
     private string? borderRadiusClass => isActive ? "borderRadius" : null;
-    
-    private bool queryMade { get; set; } 
 
-    [Parameter] public Results Result { get; set; }
-    [Parameter] public  List<Person> Actors { get; set; }
-    [Parameter] public ComplexResult ComplexResult { get; set; }
+    private bool showLoading = false;
+    private string? showLoadingClass => showLoading ? "loadingHint" : null;
+
+    private bool showNoResults = false;
+    private string? showNoResultsClass => showNoResults ? "noResultsHint" : null;
+
+    private bool queryMade { get; set; }
     
+    private Results Result { get; set; }
+    private List<Person> Actors { get; set; }
     private Results TvResults { get; set; }
 
-    [Parameter] public EventCallback<Results> ResultChanged { get; set; }
-    [Parameter] public EventCallback<List<Person>> ActorsChanged { get; set; }
-    [Parameter] public EventCallback<ComplexResult> ComplexResultChanged { get; set; }
+    [Parameter]
+    public ComplexResult ComplexResult { get; set; } = new ComplexResult(new Results(), new Results(), new List<Person>());
+    [Parameter]
+    public EventCallback<ComplexResult> ComplexResultChanged { get; set; }
 
     private void SetFocused()
     {
@@ -89,31 +102,66 @@ else if (Result.ProductionResults.Count == 0 && queryMade)
 
     private async Task<Task> SendQuery()
     {
+        showNoResults = false;
         if (queryData is not "")
         {
+            showLoading = true;
             switch (selectedQueryType)
             {
                 case "all":
-                    Result = await ProductionService.SearchProduction(queryData,"movie");
+                    Result = await ProductionService.SearchProduction(queryData, "movie");
                     TvResults = await ProductionService.SearchProduction(queryData, "tv");
                     Actors = await ActorService.SearchPerson(queryData);
                     ComplexResult.movieResults = Result;
                     ComplexResult.tvSeriesResult = TvResults;
                     ComplexResult.actorResuls = Actors;
+                    showLoading = false;
+                    if (ComplexResult.actorResuls.Count == 0 &&
+                        ComplexResult.movieResults.ProductionResults.Count == 0 &&
+                        ComplexResult.tvSeriesResult.ProductionResults.Count == 0)
+                    {
+                        showNoResults = true;
+                    }
                     return ComplexResultChanged.InvokeAsync(ComplexResult);
                 case "movies":
                     Result = await ProductionService.SearchProduction(queryData, "movie");
-                    return ResultChanged.InvokeAsync(Result);
+                    showLoading = false;
+                    if (Result.ProductionResults.Count == 0)
+                    {
+                        showNoResults = true;
+                    }
+                    ComplexResult.movieResults = Result;
+                    ComplexResult.actorResuls = new List<Person>();
+                    ComplexResult.tvSeriesResult = new Results();
+                    return ComplexResultChanged.InvokeAsync(ComplexResult);
                 case "tvseries":
                     Result = await ProductionService.SearchProduction(queryData, "tv");
-                    return ResultChanged.InvokeAsync(Result);
-    //todo: implement this actors part
+                    showLoading = false;
+                    if (Result.ProductionResults.Count == 0)
+                    {
+                        showNoResults = true;
+                    }
+                    ComplexResult.tvSeriesResult = Result;
+                    ComplexResult.actorResuls = new List<Person>();
+                    ComplexResult.movieResults = new Results();
+                    return ComplexResultChanged.InvokeAsync(ComplexResult);
                 case "actors":
                     Actors = await ActorService.SearchPerson(queryData);
-                    return ActorsChanged.InvokeAsync(Actors);
+                    showLoading = false;
+                    if (Actors.Count == 0)
+                    {
+                        showNoResults = true;
+                    }
+                    ComplexResult.actorResuls = Actors;
+                    ComplexResult.movieResults = new Results();
+                    ComplexResult.tvSeriesResult = new Results();
+                    return ComplexResultChanged.InvokeAsync(ComplexResult);
             }
             queryMade = true;
         }
-        return ResultChanged.InvokeAsync(Result);
+        ComplexResult.movieResults = new Results();
+        ComplexResult.actorResuls = new List<Person>();
+        ComplexResult.tvSeriesResult = new Results();
+        return ComplexResultChanged.InvokeAsync(ComplexResult);
     }
 }

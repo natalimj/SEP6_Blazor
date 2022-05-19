@@ -13,7 +13,6 @@ namespace SEP6_Blazor.Data
         private string apiKey = "?api_key=63335424114024b0bdbf981fe8c972e0";
         private readonly HttpClient client = new();
 
-        //https://api.themoviedb.org/3/person/17628?api_key=63335424114024b0bdbf981fe8c972e0
         public async Task<Person> GetPerson(string id)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "person/" + id + apiKey);
@@ -26,17 +25,22 @@ namespace SEP6_Blazor.Data
 
         public async Task<List<Person>> SearchPerson(string query)
         {
-            //todo: implement this
-            Task<string> stringAsync = client.GetStringAsync(uri + "person/" + 17628 + apiKey);
+            Task<string> stringAsync = client.GetStringAsync(uri + "search/person" + apiKey + "&query=" + query);
             string message = await stringAsync;
-            Person person = JsonSerializer.Deserialize<Person>(message);
-            List<Person> list = new List<Person>();
-            list.Add(person);
-
-            return list;
+            PersonResults personResults = JsonSerializer.Deserialize<PersonResults>(message);         
+            List<Person> results = new List<Person>();  
+            Person person = new Person();
+            if(personResults != null)
+            {
+                foreach (PersonResult personResult in personResults.Results)
+                {
+                    person = await GetPerson(personResult.Id.ToString());
+                    results.Add(person);
+                }
+            }
+            return results;
         }
 
-        //https://api.themoviedb.org/3/person/17628/movie_credits?api_key=63335424114024b0bdbf981fe8c972e0
         public async Task<MovieCredits> GetMovieCredits(string id)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "person/" + id + "/movie_credits" + apiKey);
@@ -45,7 +49,6 @@ namespace SEP6_Blazor.Data
             return result;
         }
 
-        //https://api.themoviedb.org/3/person/17628/tv_credits?api_key=63335424114024b0bdbf981fe8c972e0
         public async Task<MovieCredits> GetTVCredits(string id)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + "person/" + id + "/tv_credits" + apiKey);

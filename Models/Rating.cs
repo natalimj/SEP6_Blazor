@@ -14,6 +14,8 @@ namespace SEP6_Blazor.Models
 
         [JsonPropertyName("rating")] public int UserRating { get; set; }
 
+        public Rating()
+        {}
         public Rating(string userId, string productionId, string type, int userRating)
         {
             UserId = userId;

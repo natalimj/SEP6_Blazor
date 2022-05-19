@@ -8,58 +8,12 @@
 <PageTitle>Index</PageTitle>
 
 <div class="main-content-article">
-    <SimpleSearchBar @bind-Result="SearchResults" @bind-Actors="SearchResultsActors" @bind-ComplexResult="ComplexSearchResults"/>
-
-    @if (SearchResults == null)
-    {
-    }
-    else if (SearchResults.ProductionResults.Count > 0)
-    {
-        SearchResultsActors = null;
-        ComplexSearchResults = null;
-
-        <div class="content">
-            <div class="content-header-title">
-                <span>Search Results</span>
-            </div>
-            <ul class="hs full">
-                @foreach (var result in SearchResults.ProductionResults)
-                {
-                    <ProductionPosterItem result="result"/>
-                }
-            </ul>
-        </div>
-    }
-    @if (SearchResultsActors == null)
-    {
-    }
-    else if (SearchResultsActors.Count > 0)
-    {
-        ComplexSearchResults = null;
-        SearchResults = null;
-
-        <div class="content">
-            <div class="content-header-title">
-                <span>Search Results - Actors</span>
-            </div>
-            <ul class="hs full">
-                @foreach (var result in SearchResultsActors)
-                {
-                    <PersonPosterItem personResult="result"/>
-                }
-            </ul>
-        </div>
-    }
-    @if (ComplexSearchResults == null)
-    {
-    }
-    else if (ComplexSearchResults.actorResuls.Count > 0 ||
+    <SimpleSearchBar @bind-ComplexResult="ComplexSearchResults"/>
+    
+    @if (ComplexSearchResults.actorResuls.Count > 0 ||
              ComplexSearchResults.movieResults.ProductionResults.Count > 0 ||
              ComplexSearchResults.tvSeriesResult.ProductionResults.Count > 0)
     {
-        SearchResults = null;
-        SearchResultsActors = null;
-
         <div class="content">
             @if (ComplexSearchResults.actorResuls.Count > 0)
             {
@@ -99,7 +53,6 @@
             }
         </div>
     }
-
 
     @if (PopularProductions == null)
     {
@@ -167,10 +120,7 @@
 
 @code
 {
-    private Results? SearchResults { get; set; } = new Results();
-    private List<Person>? SearchResultsActors { get; set; } = new List<Person>();
-    private ComplexResult? ComplexSearchResults { get; set; } = new ComplexResult(new Results(), new Results(), new List<Person>());
-    private bool queryMade { get; set; }
+    private ComplexResult ComplexSearchResults { get; set; } = new ComplexResult(new Results(), new Results(), new List<Person>());
 
     private Results PopularProductions { get; set; }
     private Results UpcomingMovies { get; set; }
@@ -186,7 +136,5 @@
     }
 
     protected override void OnInitialized()
-    {
-        SearchResults.ProductionResults = new List<Production>();
-    }
+    {}
 }

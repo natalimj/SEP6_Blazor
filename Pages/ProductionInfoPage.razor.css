@@ -303,6 +303,38 @@ ul {
     background-color: #E97B0C;
 }
 
+/*reviews*/
+
+.reviews-content {
+    max-height: 20rem;
+    overflow-y: auto;
+    margin: 0 1rem;
+    padding-bottom: 1rem;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #FFF6E9;
+    border-radius: 10px;
+    min-height: 5.5rem;
+    margin: 1rem;
+    color: #086788;
+    padding: 1rem;
+}
+
+.reviews-header span{
+    color: #FF7D00;
+}
+
+.reviews-text {
+    height: 100%;
+    padding: 0 2rem;
+    font-size: larger;
+    font-style: italic;
+}
+
 @media (max-width: 640px) {
     .header-desc-text {
         font-size: small;

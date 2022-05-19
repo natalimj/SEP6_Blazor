@@ -18,8 +18,7 @@ namespace SEP6_Blazor.Data
 
         public async Task<Results> SearchProduction(string query, string productionType)
         {
-            Task<string> stringAsync =
-                client.GetStringAsync(uri + "search/" + productionType + apiKey + "&query=" + query);
+            Task<string> stringAsync = client.GetStringAsync(uri + "search/" + productionType + apiKey + "&query=" + query);
             string message = await stringAsync;
             Results result = JsonSerializer.Deserialize<Results>(message);
             return result;
@@ -63,8 +62,7 @@ namespace SEP6_Blazor.Data
 
         public async Task<Results> GetRecommendedProductions(string id, string productionType)
         {
-            Task<string> stringAsync =
-                client.GetStringAsync(uri + productionType + "/" + id + "/recommendations" + apiKey);
+            Task<string> stringAsync = client.GetStringAsync(uri + productionType + "/" + id + "/recommendations" + apiKey);
             string message = await stringAsync;
             Results result = JsonSerializer.Deserialize<Results>(message);
             return result;
@@ -108,6 +106,16 @@ namespace SEP6_Blazor.Data
             string message = await stringAsync;
             Results result = JsonSerializer.Deserialize<Results>(message);
             return result;
+        }
+
+
+        public async Task<TMDBReview> GetProductionReviews(string id, string productionType)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + productionType + "/" + id + "/reviews" + apiKey);
+            string message = await stringAsync;
+            TMDBReview result = JsonSerializer.Deserialize<TMDBReview>(message);
+            return result;
+
         }
     }
 }

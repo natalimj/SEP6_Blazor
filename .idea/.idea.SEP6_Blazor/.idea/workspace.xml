@@ -5,35 +5,8 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 Adding to list + reviews + actors info page">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ActorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ActorService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/IActorService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IActorService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/IProductionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IProductionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IUserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ProductionService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ProductionService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Actor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Actor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Cast.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Cast.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Crew.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Crew.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Director.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Director.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Genre.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Genre.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Image.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Image.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Images.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Images.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/ListItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ListItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/MovieCredits.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MovieCredits.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/MovieRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MovieRole.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Person.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Person.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Production.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Production.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Rating.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Rating.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Results.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Results.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Review.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Review.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/SearchFilterItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/SearchFilterItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/UserList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/UserList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Authentication.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Authentication.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
     </list>
@@ -58,8 +31,17 @@
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/ProductionService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/ProductionService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/IActorService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/UserService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/UserService.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ActorInfoPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Models/UserList.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Data/IActorService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Models/UserList.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -120,7 +102,7 @@
       <workItem from="1652615337662" duration="22700000" />
       <workItem from="1652807231650" duration="23073000" />
       <workItem from="1652904334055" duration="9288000" />
-      <workItem from="1652958451897" duration="4723000" />
+      <workItem from="1652958451897" duration="23275000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -234,7 +216,21 @@
       <option name="project" value="LOCAL" />
       <updated>1652958413520</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup + add to list">
+      <created>1652963496611</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652963496611</updated>
+    </task>
+    <task id="LOCAL-00018" summary="TC-12 Adding to list + reviews + actors info page">
+      <created>1652984048717</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1652984048717</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +266,8 @@
     <MESSAGE value="TC-12 adding mock rating" />
     <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews" />
     <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup + add to list" />
+    <MESSAGE value="TC-12 Adding to list + reviews + actors info page" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 Adding to list + reviews + actors info page" />
   </component>
 </project>

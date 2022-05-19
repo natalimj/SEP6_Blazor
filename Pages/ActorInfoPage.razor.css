@@ -3,7 +3,7 @@
 }
 
 .crew-member {
-    margin: 2rem;
+    padding: 1rem;
 }
 
 .crew-member-name {
@@ -82,16 +82,17 @@ ul {
 }
 
 .content-header-title span {
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
     margin: 1rem;
+    background-color: #FFF6E9;
+    color: #086788;
 }
 
 /*movie info header*/
 
 .header-main {
-    display: flex;
-    flex-direction: row;
+    
     margin-bottom: 3rem;
 }
 
@@ -100,6 +101,7 @@ ul {
     max-height: 30rem;
     max-width: 25rem;
     min-width: 10rem;
+    background-color: #012436;
 }
 
 .header-image img {
@@ -107,6 +109,8 @@ ul {
     height: 100%;
     margin: 1rem;
     margin-inline-start: 2rem;
+    float: left;
+    background-color: inherit;
 }
 
 .header-description {
