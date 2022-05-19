@@ -277,7 +277,7 @@
         else if (list != null)
         {
             list.ListItems.Add(new ListItem(Id, Type));
-            await UserService.AddProductionToList(list);
+            await UserService.AddProductionToList(list,Id,Type);
         }
         NewListName = null;
         ToggleDropdown();
