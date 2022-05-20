@@ -5,15 +5,9 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 reviews,lists, and actors detail page">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-23 added reviews">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IUserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/Review.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Review.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-12_Test" />
+        <entry key="$PROJECT_DIR$" value="TC-12-app-design-details-page" />
       </map>
     </option>
   </component>
@@ -113,7 +107,7 @@
       <workItem from="1652615337662" duration="22700000" />
       <workItem from="1652807231650" duration="23073000" />
       <workItem from="1652904334055" duration="9288000" />
-      <workItem from="1652958451897" duration="37517000" />
+      <workItem from="1652958451897" duration="40048000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -255,7 +249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652995414042</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="TC-23 added reviews">
+      <created>1653048421073</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1653048421073</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +295,7 @@
     <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup + add to list" />
     <MESSAGE value="TC-12 Adding to list + reviews + actors info page" />
     <MESSAGE value="TC-12 reviews,lists, and actors detail page" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 reviews,lists, and actors detail page" />
+    <MESSAGE value="TC-23 added reviews" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-23 added reviews" />
   </component>
 </project>

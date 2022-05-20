@@ -203,7 +203,7 @@
             </div>
         }
 
-        @if (UserReviews.Count > 0 || ProductionReviews.Reviews.Count > 0)
+        @if (!userId.Equals(String.Empty) || ProductionReviews.Reviews.Count > 0)
         {
             <div id="reviews-body">
                 <div class="content-header-title">
