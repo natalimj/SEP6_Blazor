@@ -137,7 +137,7 @@ namespace SEP6_Blazor.Data
             return new Rating();
         }
 
-        public async Task<Review> GetUserReview(string userId, string productionId, string productionType)
+        public async Task<List<Review>> GetUserReview(string userId, string productionId, string productionType)
         {
             List<Review> result = new List<Review>();
             Task<string> stringAsync = client.GetStringAsync(uri + "/UserReview/" + productionId + "/" + userId + "/" + productionType);
@@ -146,9 +146,9 @@ namespace SEP6_Blazor.Data
 
             if(result != null && result.Count > 0)
             {
-                return result[0];
+                return result;
             }
-            return new Review();
+            return new List<Review>();
         }
 
 

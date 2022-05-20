@@ -8,190 +8,250 @@
 
 <div class="main-content-article">
 
-    @if (Production != null)
-    {
-        <div class="header-main">
-            <div class="header-image">
-                @if (Production.Poster_path == null)
-                {
-                    <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
-                }
-                else
-                {
-                    <img src="https://image.tmdb.org/t/p/original/@Production.Poster_path" alt="movie-poster" class="poster-image">
-                }
-            </div>
-            <div class="header-description">
-                @if (Type.Equals("movie"))
-                {
-                    <div class="header-desc-text header-name">@Production.MovieName</div>
-                }
-                else
-                {
-                    <div class="header-desc-text header-name">@Production.TVShowName</div>
-                }
-                <div class="header-desc-text">@Production.Overview</div>
-
-                <AuthorizeView>
-                    <Authorized>
-                        <div class="header-rating">
-                            <div class="rate">
-                                <input type="radio" id="star5" name="rate" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
-                                <label for="star5" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
-                                <input type="radio" id="star4" name="rate" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
-                                <label for="star4" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
-                                <input type="radio" id="star3" name="rate" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
-                                <label for="star3" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
-                                <input type="radio" id="star2" name="rate" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
-                                <label for="star2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
-                                <input type="radio" id="star1" name="rate" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
-                                <label for="star1" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
-                            </div>
-                            <div title="Add to a list" class="add-list">
-                                <button class="add-list-button" @onclick="ToggleDropdown">
-                                    <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
-                                </button>
-                            </div>
-                        </div>
-                    </Authorized>
-                    <NotAuthorized>
-                        <div class="header-rating">Log in to leave ratings</div>
-                    </NotAuthorized>
-                </AuthorizeView>
-            </div>
+@if (Production != null)
+{
+    <div class="header-main">
+        <div class="header-image">
+            @if (Production.Poster_path == null)
+            {
+                <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
+            }
+            else
+            {
+                <img src="https://image.tmdb.org/t/p/original/@Production.Poster_path" alt="movie-poster" class="poster-image">
+            }
         </div>
-        <AuthorizeView>
-            <Authorized>
-                <div class="header-rating-small">
-                    <div class="rate">
-                        <input type="radio" id="star5-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
-                        <label for="star5-2" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
-                        <input type="radio" id="star4-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
-                        <label for="star4-2" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
-                        <input type="radio" id="star3-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
-                        <label for="star3-2" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
-                        <input type="radio" id="star2-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
-                        <label for="star2-2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
-                        <input type="radio" id="star1-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
-                        <label for="star1-2" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
-                    </div>
-                    <div title="Add to a list" class="add-list">
-                        <button class="add-list-button" @onclick="ToggleDropdown">
-                            <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
-                        </button>
-                    </div>
-                </div>
-            </Authorized>
-            <NotAuthorized>
-                <div class="header-rating-small">Log in to leave ratings</div>
-            </NotAuthorized>
-        </AuthorizeView>
-    }
-
-    <AuthorizeView>
-        <Authorized>
-            <div class="select-list-holder @dropdownShownClass">
-                <div class="dropdown-content">
-                    <div class="existing-lists">
-                        @if (UserLists != null)
+        <div class="header-description">
+            @if (Type.Equals("movie"))
+            {
+                <div class="header-desc-text header-name">
+                    @Production.MovieName
+                    <div class="header-desc-text header-genre">
+                        @foreach (var item in @Production.MovieGenres)
                         {
-                            @foreach (var item in UserLists)
-                            {
-                                <a @onclick="() => AddToList(item, false)">@item.ListName</a>
-                            }
+                            <div>@item.Name</div>
                         }
                     </div>
-                    <hr/>
-                    <div class="add-new-list-holder">
-                        <input type="text" @bind-value="@NewListName" @bind-value:event="oninput" placeholder="Add list name..."/>
+                    @if (Production.VoteAverage != 0)
+                    {
+                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage</div>
+                    }
+                    else
+                    {
+                        <div class="header-desc-text">Average IMDB Rating: N/A</div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="header-desc-text header-name">
+                    @Production.TVShowName
+                    @if (Production.VoteAverage != 0)
+                    {
+                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage</div>
+                    }
+                    else
+                    {
+                        <div class="header-desc-text">Average IMDB Rating: N/A</div>
+                    }
+                </div>
+            }
+            <div class="header-desc-text">@Production.Overview</div>
+
+            <AuthorizeView>
+                <Authorized>
+                    <div class="header-rating">
+                        <div class="rate">
+                            <input type="radio" id="star5" name="rate" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
+                            <label for="star5" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
+                            <label for="star4" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
+                            <label for="star3" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
+                            <label for="star2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
+                            <label for="star1" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
+                        </div>
+                        <div title="Add to a list" class="add-list">
+                            <button class="add-list-button" @onclick="ToggleDropdown">
+                                <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
+                            </button>
+                        </div>
                     </div>
-                    <div class="add-to-list-buttons">
-                        <button class="add-to-list-button" @onclick="() => AddToList(new UserList(userId, NewListName, new List<ListItem>()), true)">Add to new list</button>
-                        <button @onclick="ToggleDropdown">Cancel</button>
-                    </div>
+                </Authorized>
+                <NotAuthorized>
+                    <div class="header-rating">Log in to leave ratings</div>
+                </NotAuthorized>
+            </AuthorizeView>
+        </div>
+    </div>
+    <AuthorizeView>
+        <Authorized>
+            <div class="header-rating-small">
+                <div class="rate">
+                    <input type="radio" id="star5-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(5)"/>
+                    <label for="star5-2" title="Great!" @onclick="() => SubmitRating(5)">5 stars</label>
+                    <input type="radio" id="star4-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(4)"/>
+                    <label for="star4-2" title="Good" @onclick="() => SubmitRating(4)">4 stars</label>
+                    <input type="radio" id="star3-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(3)"/>
+                    <label for="star3-2" title="Meh" @onclick="() => SubmitRating(3)">3 stars</label>
+                    <input type="radio" id="star2-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(2)"/>
+                    <label for="star2-2" title="Bad" @onclick="() => SubmitRating(2)">2 stars</label>
+                    <input type="radio" id="star1-2" name="rate2" value="@RatingValue" checked="@RatingValue.Equals(1)"/>
+                    <label for="star1-2" title="Horrible!" @onclick="() => SubmitRating(1)">1 star</label>
+                </div>
+                <div title="Add to a list" class="add-list">
+                    <button class="add-list-button" @onclick="ToggleDropdown">
+                        <img src="Assets/user-list.svg" alt="add-to-list-button-icon"/>
+                    </button>
                 </div>
             </div>
         </Authorized>
-        <NotAuthorized></NotAuthorized>
+        <NotAuthorized>
+            <div class="header-rating-small">Log in to leave ratings</div>
+        </NotAuthorized>
     </AuthorizeView>
+}
 
-    <div class="content">
-        @if (Production == null)
-        {
-            <p>Loading...</p>
-        }
-        else
-        {
-            <div class="content-header-title">
-                <span>Gallery</span>
+<AuthorizeView>
+    <Authorized>
+        <div class="select-list-holder @dropdownShownClass">
+            <div class="dropdown-content">
+                <div class="existing-lists">
+                    @if (UserLists != null)
+                    {
+                        @foreach (var item in UserLists)
+                        {
+                            <a @onclick="() => AddToList(item, false)">@item.ListName</a>
+                        }
+                    }
+                </div>
+                <hr/>
+                <div class="add-new-list-holder">
+                    <input type="text" @bind-value="@NewListName" @bind-value:event="oninput" placeholder="Add list name..."/>
+                </div>
+                <div class="add-to-list-buttons">
+                    <button class="add-to-list-button" @onclick="() => AddToList(new UserList(userId, NewListName, new List<ListItem>()), true)">Add to new list</button>
+                    <button @onclick="ToggleDropdown">Cancel</button>
+                </div>
             </div>
+        </div>
+    </Authorized>
+    <NotAuthorized></NotAuthorized>
+</AuthorizeView>
+
+<div class="content">
+    @if (Production == null)
+    {
+        <p>Loading...</p>
+    }
+    else
+    {
+        <div class="content-header-title">
+            <span>Gallery</span>
+        </div>
+        @if (Images.Backdrops.Count > 0)
+        {
             <ul class="hs full">
                 @foreach (var result in Images.Backdrops)
                 {
                     <ImageGallery result="result"/>
                 }
             </ul>
-
-            @if (Crew.Count > 0)
-            {
-                <div class="content-header-title">
-                    <span>Director(s)</span>
-                </div>
-                <div>
-                    @foreach (var result in Crew)
-                    {
-                        <div class="crew-member">
-                            <span class="crew-member-name">@result.Name</span>
-                            <span>- @result.Job</span>
-                        </div>
-                    }
-                </div>
-            }
-
-            <div class="content-header-title">
-                <span>Cast</span>
+        }
+        else
+        {
+            <div class="nothing-to-show">
+                <span>Nothing to show</span>
             </div>
+        }
+
+        @if (Crew.Count > 0)
+        {
+            <div class="content-header-title">
+                <span>Director(s)</span>
+            </div>
+            <div>
+                @foreach (var result in Crew)
+                {
+                    <div class="crew-member">
+                        <span class="crew-member-name">@result.Name</span>
+                        <span>- @result.Job</span>
+                    </div>
+                }
+            </div>
+        }
+
+
+        <div class="content-header-title">
+            <span>Cast</span>
+        </div>
+        @if (Cast.Actors.Count > 0)
+        {
             <ul class="hs full">
                 @foreach (var result in Cast.Actors)
                 {
                     <PersonPosterItem result="result"/>
                 }
             </ul>
+        }
+        else
+        {
+            <div class="nothing-to-show">
+                <span>Nothing to show</span>
+            </div>
+        }
 
-            @if (UserReview != null || ProductionReviews.Count > 0)
-            {
-                <div id="reviews-body">
-                    <div class="content-header-title">
-                        <span>Reviews</span>
-                    </div>
-                    <div class="reviews-content">
-                        @if (UserReview != null)
+        @if (UserReviews.Count > 0 || ProductionReviews.Reviews.Count > 0)
+        {
+            <div id="reviews-body">
+                <div class="content-header-title">
+                    <span>Reviews</span>
+                </div>
+                <div class="reviews-content">
+                    @if (UserReviews.Count > 0)
+                    {
+                        @foreach (var review in UserReviews)
                         {
                             <div class="review-item review-item-user">
                                 <div class="reviews-header reviews-header-user">
                                     <span>YOU </span> said:
                                 </div>
                                 <div class="reviews-text reviews-text-user">
-                                    @UserReview.UserReview
-                                </div>
-                            </div>
-                        }
-                        @foreach (var review in ProductionReviews)
-                        {
-                            <div class="review-item">
-                                <div class="reviews-header">
-                                    <span>@review.UserId </span> said:
-                                </div>
-                                <div class="reviews-text">
                                     @review.UserReview
                                 </div>
                             </div>
                         }
-                    </div>
+                    }
+                    @foreach (var review in ProductionReviews.Reviews)
+                    {
+                        <div class="review-item">
+                            <div class="reviews-header">
+                                <span>@review.Author </span> said:
+                            </div>
+                            <div class="reviews-text">
+                                @review.Content
+                            </div>
+                        </div>
+                    }
+
+                    <AuthorizeView>
+                        <Authorized>
+                            <div class="footer add-review">
+                                <div class="add-review-content">
+                                    <div class="add-review-text">Write a review:</div>
+                                    <input class="add-review-input" @bind-value="@UserReviewText" @bind-value:event="oninput" type="text" placeholder="Add..."/>
+                                    <button class="add-review-button" @onclick="AddReview">Add</button>
+                                </div>
+                            </div>
+                        </Authorized>
+                    </AuthorizeView>
                 </div>
-            }
+            </div>
         }
-    </div>
+    }
+</div>
 </div>
 
 @code {
@@ -217,8 +277,9 @@
     private List<UserList> UserLists { get; set; }
     private string? NewListName { get; set; }
 
-    private List<Review> ProductionReviews { get; set; }
-    private Review? UserReview { get; set; }
+    private TMDBReview ProductionReviews { get; set; }
+    private List<Review> UserReviews { get; set; }
+    private string? UserReviewText { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -226,16 +287,12 @@
         Crew = await ProductionService.GetDirector(Id, Type);
         Cast = await ProductionService.GetCast(Id, Type);
         Images = await ProductionService.GetProductionImagesUrl(Id, Type);
-        ProductionReviews = await UserService.GetProductionReviews(Id, Type);
+        ProductionReviews = await ProductionService.GetProductionReviews(Id, Type);
 
         userId = await UserService.GetUserId(AuthenticationStateProvider);
         if (!userId.Equals(String.Empty))
         {
-            UserReview = await UserService.GetUserReview(userId, Id, Type);
-            if (UserReview.Id == null)
-            {
-                UserReview = null;
-            }
+            UserReviews = await UserService.GetUserReview(userId, Id, Type);
             UserLists = await UserService.GetUserLists(userId);
             UserRating = await UserService.GetUserRating(userId, Id, Type);
             if (UserRating != null && UserRating.UserRating != 0)
@@ -276,11 +333,22 @@
         }
         else if (list != null)
         {
-            list.ListItems.Add(new ListItem(Id, Type));
-            await UserService.AddProductionToList(list,Id,Type);
+            await UserService.AddProductionToList(list, Id, Type);
         }
         NewListName = null;
         ToggleDropdown();
+    }
+
+    private async Task AddReview()
+    {
+        if (UserReviewText != null)
+        {
+            if (!UserReviewText.Replace(" ", "").Equals(String.Empty))
+            {
+                await UserService.AddReview(new Review(userId, Id, Type, UserReviewText));
+                UserReviews = await UserService.GetUserReview(userId, Id, Type);
+            }
+        }
     }
 
     private void ToggleDropdown()

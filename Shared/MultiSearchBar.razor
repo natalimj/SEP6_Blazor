@@ -46,7 +46,7 @@
                                 <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="1888" max="@DateTime.Now.Year" placeholder="Add..."/>
                                 break;
                             case "rating":
-                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0" max="5" step="0.1" placeholder="Add..."/>
+                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0.1" max="10" step="1" placeholder="Add..."/>
                                 break;
                             case "runtime":
                                 <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0" max="5000" placeholder="Add..."/>
@@ -103,7 +103,6 @@
     //Items below require extra queries to get ID's
             new("People*", "with_people", getId()),
             new("Genre*", "with_genre", getId()),
-            new("Produced By*", "with_companies", getId()),
         });
     }
 
