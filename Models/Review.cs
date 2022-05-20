@@ -13,5 +13,15 @@ namespace SEP6_Blazor.Models
         [JsonPropertyName("type")] public string Type { get; set; }
 
         [JsonPropertyName("review")] public string UserReview { get; set; }
+        
+        public Review(){}
+
+        public Review(string userId, string productionId, string type, string userReview)
+        {
+            UserId = userId;
+            ProductionId = productionId;
+            Type = type;
+            UserReview = userReview;
+        }
     }
 }

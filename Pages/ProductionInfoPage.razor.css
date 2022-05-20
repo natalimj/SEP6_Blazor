@@ -34,6 +34,7 @@
 
 .content {
     padding: var(--gutter) 0;
+    padding-bottom: 1rem;
 }
 
 .content > * {
@@ -102,6 +103,7 @@ ul {
     height: 100%;
     margin: 1rem;
     margin-inline-start: 2rem;
+    background-color: #012436;
 }
 
 .header-description {
@@ -121,6 +123,12 @@ ul {
     font-size: large;
     color: #FF7D00;
     font-family: "Book Antiqua", serif;
+}
+
+.nothing-to-show {
+    color: #FF7D00;
+    margin-inline-start: 2rem;
+    margin-top: 1rem;
 }
 
 .header-name {
@@ -202,6 +210,7 @@ ul {
     margin: 0;
     border: 0;
     border-radius: 10px;
+    background-color: transparent;
 }
 
 .add-list-button img {
@@ -306,10 +315,15 @@ ul {
 /*reviews*/
 
 .reviews-content {
-    max-height: 20rem;
+    max-height: 25rem;
     overflow-y: auto;
+    overflow-x: hidden;
     margin: 0 1rem;
-    padding-bottom: 1rem;
+    border: 2px solid rgb(8 103 106 / 70%);
+}
+
+.reviews-header {
+    font-size: large;
 }
 
 .review-item {
@@ -324,15 +338,82 @@ ul {
     padding: 1rem;
 }
 
-.reviews-header span{
+.reviews-header span {
     color: #FF7D00;
 }
 
 .reviews-text {
     height: 100%;
     padding: 0 2rem;
-    font-size: larger;
+    font-size: medium;
     font-style: italic;
+}
+
+.footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 4rem;
+    background-color: #086788;
+    color: #FFF6E9;
+    text-align: center;
+}
+
+.add-review-content {
+    display: flex;
+    min-height: 4rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add-review-text {
+    color: #FFF6E9;
+}
+
+.add-review-input {
+    width: 70%;
+    border: 1px solid #086788;
+    border-radius: 10px;
+    background-color: #FFF6E9;
+    padding: 0.4rem;
+    color: #086788;
+}
+
+.add-review-input:focus-visible {
+    outline: #FF7D00 1px solid;
+    color: #FF7D00;
+}
+
+.add-review-button {
+    width: 4rem;
+    background-color: #FFF6E9;
+    color: #086788;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+}
+
+.add-review-button:hover {
+    color: #FF7D00;
+}
+
+/*genre tags*/
+
+.header-genre {
+    font-size: medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header-genre div {
+    background-color: #FFF6E9;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px;
 }
 
 @media (max-width: 640px) {
@@ -350,7 +431,7 @@ ul {
 
     .header-rating-small {
         display: flex;
-        margin: 1rem;
+        padding-inline-start: 1rem;
     }
 
     .add-list {
