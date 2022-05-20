@@ -3,7 +3,7 @@
 }
 
 .crew-member {
-    margin: 2rem;
+    padding: 1rem;
 }
 
 .crew-member-name {
@@ -82,7 +82,61 @@ ul {
 }
 
 .content-header-title span {
-    font-size: larger;
+    font-size: x-large;
     font-weight: bold;
     margin: 1rem;
+    background-color: #FFF6E9;
+    color: #086788;
+}
+
+/*movie info header*/
+
+.header-main {
+    
+    margin-bottom: 3rem;
+}
+
+.header-image {
+    width: 40%;
+    max-height: 30rem;
+    max-width: 25rem;
+    min-width: 10rem;
+    background-color: #012436;
+}
+
+.header-image img {
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    margin-inline-start: 2rem;
+    float: left;
+    background-color: inherit;
+}
+
+.header-description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    margin-inline-start: 3rem;
+    margin-inline-end: 2rem;
+}
+
+.header-desc-text {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: #FF7D00;
+    font-family: "Book Antiqua", serif;
+}
+
+.header-name {
+    font-size: xx-large;
+    color: #FFF6E9;
+}
+
+.header-birthplace {
+    color: #FFF6E9;
 }

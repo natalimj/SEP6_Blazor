@@ -1,9 +1,5 @@
-using System;
-using System.Net.Http;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using SEP6_Blazor;
 using SEP6_Blazor.Data;
 

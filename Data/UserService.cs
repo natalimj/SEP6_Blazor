@@ -13,26 +13,24 @@ namespace SEP6_Blazor.Data
     public class UserService : IUserService
     {
 
-      //  private string uri = "http://localhost:7071/api";
-
         private string uri = "https://sep6azurefunctions.azurewebsites.net/api"; 
         private readonly HttpClient client = new ();
 
         private readonly IProductionService productionService = new ProductionService();
 
-        //ADD
         public async Task AddRating(Rating rating)
         {
             string ratingJson = JsonSerializer.Serialize(rating);
             HttpContent content = new StringContent(ratingJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/AddOrUpdateRating", content);
+            HttpResponseMessage response = await client.PostAsync(uri + "/AddRating", content);
             Console.WriteLine(response.ToString());
         }
+
         public async Task AddReview(Review review)
         {
             string reviewJson = JsonSerializer.Serialize(review);
             HttpContent content = new StringContent(reviewJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/AddOrUpdateReview", content);
+            HttpResponseMessage response = await client.PostAsync(uri + "/AddReview", content);
             Console.WriteLine(response.ToString());
         }
 
@@ -41,26 +39,29 @@ namespace SEP6_Blazor.Data
         {
             string listJson = JsonSerializer.Serialize(userList);
             HttpContent content = new StringContent(listJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/CreateList", content);
+            HttpResponseMessage response = await client.PostAsync(uri + "/CreateList", content);
             Console.WriteLine(response.ToString());
         }
 
         //DELETE
         public async Task DeleteRating(string ratingId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{uri}/DeleteRatingById/{ratingId}");
+            HttpContent content = new StringContent(ratingId, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri+"/DeleteRatingById/"+ratingId,content);
             Console.WriteLine(response.ToString());
         }
 
         public async Task DeleteReview(string reviewId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{uri}/DeleteReviewById/{reviewId}");
+            HttpContent content = new StringContent(reviewId, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri+"/DeleteReviewById/"+reviewId,content);
             Console.WriteLine(response.ToString());
         }
 
         public async Task DeleteList(string listId)
         {
-            HttpResponseMessage response = await client.DeleteAsync($"{uri}/DeleteListById/{listId}");
+            HttpContent content = new StringContent(listId, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri+"/DeleteListById/"+listId,content);
             Console.WriteLine(response.ToString());
         }
 
@@ -69,7 +70,7 @@ namespace SEP6_Blazor.Data
         {
             string ratingJson = JsonSerializer.Serialize(rating);
             HttpContent content = new StringContent(ratingJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/UpdateRating", content);
+            HttpResponseMessage response = await client.PostAsync(uri + "/UpdateRating", content);
             Console.WriteLine(response.ToString());
         }
 
@@ -77,45 +78,19 @@ namespace SEP6_Blazor.Data
         {
             string reviewJson = JsonSerializer.Serialize(review);
             HttpContent content = new StringContent(reviewJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/UpdateReview", content);
+            HttpResponseMessage response = await client.PostAsync(uri + "/UpdateReview", content);
             Console.WriteLine(response.ToString());
         }
 
-        // only updates movie list - not list name 
-        public async Task AddMovieToList(UserList userList, string movieId)
-        {
-            userList.Movies.Add(movieId);
-            string listJson = JsonSerializer.Serialize(userList);
-            HttpContent content = new StringContent(listJson, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = await client.PutAsync(uri + "/UpdateList", content);
-            Console.WriteLine(response.ToString());
-        }
 
         // GET
         public async Task<List<Rating>> GetUserRatings(string userId)
         {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserRatings/" + userId);
+            Task<string> stringAsync = client.GetStringAsync(uri + "/UserRatings/" + userId);
             string message = await stringAsync;
             List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
             return result;
         }
-
-        public async Task<List<Rating>> GetMovieRatings(string movieId)
-        {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMovieRatings/" + movieId);
-            string message = await stringAsync;
-            List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
-            return result;
-        }
-
-        public async Task<Rating> GetUserMovieRating(string userId, string movieId)
-        {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserMovieRating/" + movieId+"/"+userId);
-            string message = await stringAsync;
-            List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
-            return result[0];
-        }
-
 
         public async Task<List<Review>> GetUserReviews(string userId)
         {
@@ -125,60 +100,15 @@ namespace SEP6_Blazor.Data
             return result;
 
         }
-        public async Task<List<Review>> GetMovieReviews(string movieId)
-        {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/MovieReviews/" + movieId);
-            string message = await stringAsync;
-            List<Review> result = JsonSerializer.Deserialize<List<Review>>(message);
-            return result;
 
-        }
         public async Task<List<UserList>> GetUserLists(string userId)
         {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetUserLists/"+userId);
+            Task<string> stringAsync = client.GetStringAsync(uri + "/UserLists/"+userId);
             string message = await stringAsync;
             List<UserList> result = JsonSerializer.Deserialize<List<UserList>>(message);
             return result;
             
         }
-
-        public async Task<List<string>> GetMoviesInList(string userId, string listName)
-        {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMoviesInList/" + userId+"/"+listName);
-            string message = await stringAsync;
-            List<string> result = JsonSerializer.Deserialize<List<string>>(message);
-            return result;
-
-        }
-
-
-        public async Task<List<string>> GetProductionIdsInListById(string listId)
-        {
-            Task<string> stringAsync = client.GetStringAsync(uri + "/GetMoviesInListById/" + listId);
-            string message = await stringAsync;
-            List<string> result = JsonSerializer.Deserialize<List<string>>(message);
-            return result;
-
-        }
-
-
-        //TODO: implement GetProductionsInListById - add tvshows
-        public async Task<List<Production>> GetProductionsInListById(string listId)
-        {
-            List<string> ProductionIds = await GetProductionIdsInListById(listId);
-
-            List<Production> result = new List<Production>();
-            Production prod;
-            foreach(string id in ProductionIds)
-            {
-                prod = await productionService.GetProduction(id, "movie");
-                result.Add(prod);
-            }
-            
-            return result;
-
-        }
-
 
         public async Task<string> GetUserId(AuthenticationStateProvider authenticationStateProvider)
         {
@@ -188,7 +118,115 @@ namespace SEP6_Blazor.Data
             return userId;
         }
 
-    
+        public async Task<List<Rating>> GetProductionRatings(string productionId, string productionType)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/ProductionRatings/" + productionId + "/" + productionType);
+            string message = await stringAsync;
+            List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
+            return result;
+        }
+        public async Task<Rating> GetUserRating(string userId, string productionId, string productionType)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/UserRating/" + productionId + "/" + userId + "/" + productionType);
+            string message = await stringAsync;
+            List<Rating> result = JsonSerializer.Deserialize<List<Rating>>(message);
+            if(result != null && result.Count > 0)
+            {
+                return result[0];
+            }
+            return new Rating();
+        }
+
+        public async Task<Review> GetUserReview(string userId, string productionId, string productionType)
+        {
+            List<Review> result = new List<Review>();
+            Task<string> stringAsync = client.GetStringAsync(uri + "/UserReview/" + productionId + "/" + userId + "/" + productionType);
+            string message = await stringAsync;
+            result = JsonSerializer.Deserialize<List<Review>>(message);
+
+            if(result != null && result.Count > 0)
+            {
+                return result[0];
+            }
+            return new Review();
+        }
+
+
+        public async Task<List<Review>> GetProductionReviews(string productionId, string productionType)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/ProductionReview/" + productionId + "/" + productionType);
+            string message = await stringAsync;
+            List<Review> result = JsonSerializer.Deserialize<List<Review>>(message);
+            return result;
+        }
+
+        public async Task AddProductionToList(UserList userList, string productionId, string productionType)
+        {         
+            ListItem item = new ListItem();
+            item.ProductionId=productionId;
+            item.Type = productionType;
+            userList.ListItems.Add(item);
+            string listJson = JsonSerializer.Serialize(userList);
+            HttpContent content = new StringContent(listJson, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync(uri + "/UpdateList", content);
+            Console.WriteLine(response.ToString());
+        }
+        
+        public async Task<List<ListItem>> GetListItemsById(String listId)
+        {
+            Task<string> stringAsync = client.GetStringAsync(uri + "/GetProductionsInListById/" + listId);
+            string message = await stringAsync;
+
+            List<UserList>  result = JsonSerializer.Deserialize<List<UserList>>(message);
+
+            if (result != null && result.Count > 0)
+            {
+                return result[0].ListItems;
+            }
+
+            return new UserList().ListItems;
+
+        }
+
+        public async Task<List<Production>> GetProductionsInList(string listId)
+        {
+            List<ListItem> ListItems = await GetListItemsById(listId);
+            List<Production> result = new List<Production>();
+            Production prod;
+            foreach (ListItem item in ListItems)
+            {
+                if (item.Type.Equals("movie"))
+                  {
+                      prod = await productionService.GetProduction(item.ProductionId, "movie");
+                      result.Add(prod);
+                  } else
+                  {
+                      prod = await productionService.GetProduction(item.ProductionId, "tv");
+                      result.Add(prod);
+                  }      
+            }
+            return result;
+        }
+
+        //movies and tv shows with 5 star
+        public async Task<List<Production>> GetLikedProductions(string userId)
+        {
+            List<Rating> ratings= await GetUserRatings(userId);
+
+            List<Production> productions = new List<Production>();
+
+            foreach(Rating rating in ratings)
+            {
+                if(rating.UserRating == 5)
+                {
+                    Production production = await productionService.GetProduction(rating.ProductionId, rating.Type);
+                    productions.Add(production);
+                }
+            }
+            return productions;
+        }
+ 
+
     }
 }
 

@@ -2,14 +2,14 @@
 {
     public class SearchFilterItem
     {
-        public SearchFilterItem(string displayName, string url, string? type,int id)
+        public SearchFilterItem(string displayName, string url, string? type, int id)
         {
             DisplayName = displayName;
             URL = url;
             Type = type;
             Id = id;
         }
-        
+
         public SearchFilterItem(string displayName, string url, int id)
         {
             DisplayName = displayName;
