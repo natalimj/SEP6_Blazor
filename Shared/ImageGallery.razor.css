@@ -11,7 +11,7 @@ li,
     border-radius: 8px;
     color: black;
     margin: 1rem;
-    width: 20rem;
+    min-width: 20rem;
     height: 15rem;
 }
 

@@ -7,8 +7,13 @@
 @using System.Xml.XPath
 @using ArbitraryValues
 @using Microsoft.AspNetCore.Components
+@using Schemas.VisualStudio.TeamTest
+@using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
 
+@inject IDiscoveryService DiscoveryService;
+@inject IActorService ActorService;
+@inject IProductionService ProductionService;
 
 <div class="search-bar-main">
     <div class="search-bar-select">
@@ -20,9 +25,6 @@
             </button>
         </div>
     </div>
-    <div class="search-bar-input">
-        <input @bind-value="@keywordsData" @bind-value:event="oninput" @onkeydown="@Search" @onfocus="SetFocused" @onblur="SetUnfocused" type="text" placeholder="Keywords separated by commas (,)"/>
-    </div>
     <div class="search-bar-button">
         <button type="submit" @onclick="SendQuery" class="@focusClass @borderRadiusRightClass">
             <img src="Assets/magnifying-glass.svg" alt="search-button-icon"/>
@@ -32,30 +34,98 @@
         <form class="dropdown-holder">
             @foreach (var item in filtersList)
             {
-                <div class="dropdown-option">
-                    <div class="dropdown-option-item dropdown-option-label">
-                        @item.DisplayName
+                @if (!item.Type.Equals("genre") && !item.Type.Equals("people"))
+                {
+                    <div class="dropdown-option">
+                        <div class="dropdown-option-item dropdown-option-label">
+                            @item.DisplayName
+                        </div>
+                        <div class="dropdown-option-item dropdown-option-input">
+                            @switch (item.Type)
+                            {
+                                case "text":
+                                    <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="text" placeholder="Add..."/>
+                                    break;
+                                case "year":
+                                    <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="1888" max="@DateTime.Now.Year" placeholder="Add..."/>
+                                    break;
+                                case "rating":
+                                    <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="1" max="10" step="0.1" placeholder="Add..."/>
+                                    break;
+                                case "runtime":
+                                    <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0" max="1000" placeholder="Add..."/>
+                                    break;
+                                case "language":
+                                    <select @bind="@filtersList[item.Id].Value" name="language-search-options" id="language-search-options">
+                                        <option value="">Not selected</option>
+                                        @if (Languages != null)
+                                        {
+                                            @foreach (var lang in Languages)
+                                            {
+                                                @if (!lang.Name.Equals(String.Empty))
+                                                {
+                                                    <option value="@lang.Iso_639_1">
+                                                        @lang.EnglishName/@lang.Name
+                                                    </option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@lang.Iso_639_1">
+                                                        @lang.EnglishName
+                                                    </option>
+                                                }
+                                            }
+                                        }
+                                    </select>
+                                    break;
+                            }
+                        </div>
                     </div>
-                    <div class="dropdown-option-item dropdown-option-input">
-                        @switch (item.Type)
-                        {
-                            case "text":
-                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="text" placeholder="Add..."/>
-                                break;
-                            case "year":
-                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="1888" max="@DateTime.Now.Year" placeholder="Add..."/>
-                                break;
-                            case "rating":
-                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0.1" max="10" step="1" placeholder="Add..."/>
-                                break;
-                            case "runtime":
-                                <input @bind-value="@filtersList[item.Id].Value" @bind-value:event="oninput" type="number" min="0" max="5000" placeholder="Add..."/>
-                                break;
-                        }
+                }
+                else if (item.Type.Equals("genre"))
+                {
+                    <div class="dropdown-option genre-option">
+                        <div class="dropdown-option-item dropdown-option-label">
+                            @item.DisplayName
+                        </div>
+                        <div class="dropdown-option-item dropdown-option-input">
+                            @if (Genres != null)
+                            {
+                                <div class="genre-container">
+                                    @foreach (var genre in Genres)
+                                    {
+                                        <div class="genre-item">
+                                            <input type="checkbox" value="@genre.Id" @onchange="eventArgs => { OptionSelectedGenre(genre.Id, eventArgs.Value); }">
+                                            @genre.Name
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
                     </div>
-                </div>
+                }
+                else
+                {
+                    <div class="dropdown-option people-option">
+                        <div class="dropdown-option-item dropdown-option-label">
+                            @item.DisplayName
+                        </div>
+                        <div class="dropdown-option-item dropdown-option-input">
+                            <input type="text" placeholder="Add..." list="person-options" autocomplete="on" value="@SelectedPersonQuery" @oninput="PersonInputChanged"/>
+                            <datalist id="person-options">
+                                @if (Persons != null)
+                                {
+                                    @foreach (var person in Persons)
+                                    {
+                                        <option>@person.Name (@person.Id)</option>
+                                    }
+                                }
+                            </datalist>
+                        </div>
+                    </div>
+                }
             }
-            <div class="dropdown-option last-option dropdown-hint">* Multiple values supported. Must be sepparated by commas (,)</div>
+            <div class="dropdown-option last-option"></div>
         </form>
     </div>
 </div>
@@ -63,8 +133,6 @@
 @code
 {
     private List<SearchFilterItem> filtersList { get; set; } = new List<SearchFilterItem>();
-    //Keywords require extra query to get ID's
-    private string? keywordsData { get; set; }
 
     private bool isFocused = false;
     private string? focusClass => isFocused ? "searchFocused" : null;
@@ -77,11 +145,19 @@
     private bool hasInformation = false;
     private string? showCheckClass => hasInformation ? "showCheck" : null;
 
-    [Parameter]
-    public Results Result { get; set; }
+    private List<Language> Languages { get; set; }
+    private List<Genre> Genres { get; set; }
+    private List<int> selectedGenres { get; set; } = new List<int>();
+    private List<Person> Persons { get; set; }
+    private string SelectedPersonQuery { get; set; } = "";
 
     [Parameter]
-    public EventCallback<Results> ResultChanged { get; set; }
+    public string Type { get; set; }
+
+    [Parameter]
+    public ComplexResultMultisearch ComplexResult { get; set; } = new ComplexResultMultisearch(new Results(), new Results(), new Results());
+    [Parameter]
+    public EventCallback<ComplexResultMultisearch> ComplexResultChanged { get; set; }
 
     private int i = 0;
 
@@ -90,20 +166,56 @@
         return i++;
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        Languages = await DiscoveryService.GetLanguages();
+        Genres = await DiscoveryService.GetGenres(Type);
+    }
+
     protected override void OnInitialized()
     {
         filtersList.AddRange(new List<SearchFilterItem>
         {
-            new("Movie Language", "language", getId()),
+            new("Movie Language", "language", "language", getId()),
             new("Primary Release Year", "primary_release_year", "year", getId()),
             new("Minimum Average Rating", "vote_average.gte", "rating", getId()),
             new("Maximum Average Rating", "vote_average.lte", "rating", getId()),
             new("Minimum Runtime", "with_runtime.gte", "runtime", getId()),
             new("Maximum Runtime", "with_runtime.lte", "runtime", getId()),
-    //Items below require extra queries to get ID's
-            new("People*", "with_people", getId()),
-            new("Genre*", "with_genre", getId()),
+            new("Includes person", "with_people", "people", getId()),
+            new("Genre(s)", "with_genre", "genre", getId()),
         });
+    }
+
+    private void OptionSelectedGenre(int id, object checkedValue)
+    {
+        if ((bool) checkedValue)
+        {
+            if (!selectedGenres.Contains(id))
+            {
+                selectedGenres.Add(id);
+            }
+        }
+        else
+        {
+            if (selectedGenres.Contains(id))
+            {
+                selectedGenres.Remove(id);
+            }
+        }
+    }
+
+    private async Task PersonInputChanged(ChangeEventArgs e)
+    {
+        SelectedPersonQuery = e.Value as string;
+        if (SelectedPersonQuery != null)
+        {
+            if (!SelectedPersonQuery.Equals(String.Empty))
+            {
+                Persons = await ActorService.SearchPerson(SelectedPersonQuery);
+            }
+        }
+        StateHasChanged();
     }
 
     private void ToggleDropdown()
@@ -121,24 +233,54 @@
         isFocused = false;
     }
 
-    //TODO: needs to be added in html
-    private void ShowCheck()
-    {
-        hasInformation = true;
-    }
-
-    private async Task Search(KeyboardEventArgs e)
-    {
-        if (e.Code is "Enter" or "NumpadEnter")
-        {
-            await SendQuery();
-        }
-    }
-
     private async Task<Task> SendQuery()
     {
-        Result = new Results();
-        Result.ProductionResults = new List<Production>();
-        return ResultChanged.InvokeAsync(Result);
+        string genres = "";
+        for (var i = 0; i < selectedGenres.Count; i++)
+        {
+            if (i != selectedGenres.Count - 1)
+            {
+                genres += selectedGenres[i] + ",";
+            }
+            else
+            {
+                genres += selectedGenres[i];
+            }
+        }
+
+        string personID = "";
+        List<Person> possiblePeople = new List<Person>();
+        if (SelectedPersonQuery != null)
+        {
+            if (!SelectedPersonQuery.Equals(String.Empty))
+            {
+                if (SelectedPersonQuery.Contains('('))
+                {
+                    personID = SelectedPersonQuery.Split('(')[1].Replace(")","");
+                }
+                else
+                {
+                    possiblePeople = await ActorService.SearchPerson(SelectedPersonQuery);
+                    if (possiblePeople.Count > 0)
+                    {
+                        personID = possiblePeople[0].Id.ToString();
+                    }
+                }
+            }
+        }
+        ComplexResult.ProductionResults = await DiscoveryService.DiscoveryProduction(Type, filtersList[0].Value, filtersList[1].Value, filtersList[2].Value,
+            filtersList[3].Value, filtersList[4].Value, filtersList[5].Value, personID, genres);
+
+        if (ComplexResult.ProductionResults.ProductionResults.Count > 0)
+        {
+            ComplexResult.RecommendedResults = await ProductionService.GetRecommendedProductions(ComplexResult.ProductionResults.ProductionResults[0].Id.ToString(),Type);
+            ComplexResult.SimilarResults = await ProductionService.GetSimilarProductions(ComplexResult.ProductionResults.ProductionResults[0].Id.ToString(),Type);
+        }
+
+        if (dropdownToggled)
+        {
+            ToggleDropdown(); 
+        }
+        return ComplexResultChanged.InvokeAsync(ComplexResult);
     }
 }

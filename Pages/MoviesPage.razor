@@ -1,25 +1,119 @@
 ﻿@page "/MoviesPage"
 @using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+
+@inject IProductionService ProductionService;
+
 
 <div class="main-content-article">
-    <MultiSearchBar @bind-Result="SearchResults"/>
-    <div>
-        @if (SearchResults.ProductionResults.Count > 0)
-        {
-            @foreach (var result in SearchResults.ProductionResults)
+    <MultiSearchBar @bind-ComplexResult="ComplexSearchResults" Type="movie"/>
+    @if (ComplexSearchResults.ProductionResults.ProductionResults.Count > 0)
+    {
+        <div class="content">
+            <div class="content-header-title">
+                <span>Discover Movies - Search Results</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in ComplexSearchResults.ProductionResults.ProductionResults)
+                {
+                    <ProductionPosterItem result="result"/>
+                }
+            </ul>
+
+            @if (ComplexSearchResults.SimilarResults.ProductionResults.Count > 0)
             {
-                <div>@result.MovieName@result.TVShowName - @result.Overview</div>
+                <div class="content-header-title">
+                    <span>Similar Movies for Search result</span>
+                </div>
+                <ul class="hs full">
+                    @foreach (var result in ComplexSearchResults.SimilarResults.ProductionResults)
+                    {
+                        <ProductionPosterItem result="result"/>
+                    }
+                </ul>
             }
+            @if (ComplexSearchResults.RecommendedResults.ProductionResults.Count > 0)
+            {
+                <div class="content-header-title">
+                    <span>Recommended Movies for Search result</span>
+                </div>
+                <ul class="hs full">
+                    @foreach (var result in ComplexSearchResults.RecommendedResults.ProductionResults)
+                    {
+                        <ProductionPosterItem result="result"/>
+                    }
+                </ul>
+            }
+        </div>
+    }
+    <div class="content">
+        @if (UpcomingMovies.ProductionResults.Count > 0)
+        {
+            <div class="content-header-title">
+                <span>Upcoming Movies</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in UpcomingMovies.ProductionResults)
+                {
+                    <ProductionPosterItem result="result"/>
+                }
+            </ul>
+        }
+        @if (PopularProductions.ProductionResults.Count > 0)
+        {
+            <div class="content-header-title">
+                <span>Popular Movies</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in PopularProductions.ProductionResults)
+                {
+                    <ProductionPosterItem result="result"/>
+                }
+            </ul>
+        }
+        @if (TopRatedProductions.ProductionResults.Count > 0)
+        {
+            <div class="content-header-title">
+                <span>Top Rated Movies</span>
+            </div>
+            <ul class="hs full">
+                @foreach (var result in TopRatedProductions.ProductionResults)
+                {
+                    <ProductionPosterItem result="result"/>
+                }
+            </ul>
+        }
+        @if (LatestProduction.Id != 0)
+        {
+            <div class="content-header-title">
+                <span>Latest Movie</span>
+            </div>
+            <ul class="hs full">
+                <ProductionPosterItem result="@LatestProduction"/>
+            </ul>
         }
     </div>
 </div>
 
 @code {
-    private Results SearchResults { get; set; } = new Results();
+
+    private ComplexResultMultisearch ComplexSearchResults { get; set; } = new ComplexResultMultisearch(new Results(), new Results(), new Results());
+    private Results UpcomingMovies { get; set; } = new Results();
+
+    private Results PopularProductions { get; set; } = new Results();
+    private Results TopRatedProductions { get; set; } = new Results();
+    private Production LatestProduction { get; set; } = new Production();
 
     protected override void OnInitialized()
     {
-        SearchResults.ProductionResults = new List<Production>();
+        ComplexSearchResults.ProductionResults.ProductionResults = new List<Production>();
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        UpcomingMovies = await ProductionService.GetUpcomingMovies();
+        PopularProductions = await ProductionService.GetPopularProductions("movie");
+        TopRatedProductions = await ProductionService.GetTopRatedProduction("movie");
+        LatestProduction = await ProductionService.GetLatestProduction("movie");
+    }
 }
