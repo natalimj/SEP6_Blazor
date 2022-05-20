@@ -19,7 +19,7 @@ namespace SEP6_Blazor.Data
         Task<List<Review>> GetUserReviews(string userId);
 
         // user review for a production - for movie and tv series page
-        Task<Review> GetUserReview(string userId, string productionId, string productionType);
+        Task<List<Review>> GetUserReview(string userId, string productionId, string productionType);
 
         // create a new list and add movie
         Task AddList(UserList userList);
