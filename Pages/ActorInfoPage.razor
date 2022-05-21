@@ -9,7 +9,9 @@
     <div class="content">
         @if (Person == null)
         {
-            <p>Loading...</p>
+            <div class="loader-holder">
+                <div class="loader"></div>
+            </div>
         }
         else
         {
@@ -32,6 +34,10 @@
                 @if (Person.Biography != null)
                 {
                     <p class="header-desc-text">@Person.Biography</p>
+                }
+                else
+                {
+                    <p class="header-desc-text">No official biography found.</p>
                 }
             </div>
             <div class="content-header-title">

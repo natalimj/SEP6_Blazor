@@ -62,7 +62,7 @@ figure.icon-item {
     display: none;
     position: absolute;
     right: 0;
-    background-color: #FFFFFF;
+    background-color: #FFF6E9;
     border-radius: 5%;
     z-index: 10;
     max-width: 10rem;
@@ -78,7 +78,7 @@ figure.icon-item {
 .dropdown-content a, span {
     cursor: default;
     display: block;
-    color: #000000;
+    color: #086788;
     padding: 0.4rem;
     text-decoration: none;
 }
@@ -100,7 +100,8 @@ figure.icon-item {
 }
 
 .dropdown-content a:hover {
-    background-color: #FFF6E9;
+    background-color: #FFEBD4;
+    color: #FF7D00;
     cursor: pointer;
 }
 

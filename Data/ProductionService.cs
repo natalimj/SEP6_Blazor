@@ -84,11 +84,11 @@ namespace SEP6_Blazor.Data
             return result;
         }
 
-        public async Task<Results> GetLatestProductions(string productionType)
+        public async Task<Production> GetLatestProduction(string productionType)
         {
             Task<string> stringAsync = client.GetStringAsync(uri + productionType + "/latest" + apiKey);
             string message = await stringAsync;
-            Results result = JsonSerializer.Deserialize<Results>(message);
+            Production result = JsonSerializer.Deserialize<Production>(message);
             return result;
         }
 

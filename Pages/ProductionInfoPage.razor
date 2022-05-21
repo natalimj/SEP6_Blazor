@@ -56,7 +56,15 @@
                     }
                 </div>
             }
-            <div class="header-desc-text">@Production.Overview</div>
+
+            @if (!Production.Overview.Equals(String.Empty))
+            {
+                <div class="header-desc-text">@Production.Overview</div>
+            }
+            else
+            {
+                <div class="header-desc-text">No official description found.</div>
+            }
 
             <AuthorizeView>
                 <Authorized>
@@ -144,7 +152,9 @@
 <div class="content">
     @if (Production == null)
     {
-        <p>Loading...</p>
+        <div class="loader-holder">
+            <div class="loader"></div>
+        </div>
     }
     else
     {
@@ -325,6 +335,7 @@
 
     private async Task AddToList(UserList list, bool newList)
     {
+        ToggleDropdown();
         if (newList)
         {
             list.ListItems.Add(new ListItem(Id, Type));
@@ -336,7 +347,6 @@
             await UserService.AddProductionToList(list, Id, Type);
         }
         NewListName = null;
-        ToggleDropdown();
     }
 
     private async Task AddReview()

@@ -56,7 +56,7 @@ namespace SEP6_Blazor.Data
             }
             if (!minRuntime.Equals(""))
             {
-                baseUrl += "with_runtime.gte" + minRuntime;
+                baseUrl += "&with_runtime.gte=" + minRuntime;
             }
             if (!maxRuntime.Equals(""))
             {

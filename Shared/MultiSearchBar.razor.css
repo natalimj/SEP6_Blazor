@@ -8,14 +8,16 @@
     margin-right: auto;
 }
 
+.search-bar-select, .search-bar-button {
+    width: 50%;
+}
+
 #search-options {
     color: #086788;
-    width: 7rem;
-    padding-inline-start: 15px;
     height: 100%;
     background: url("Assets/caret-down-blue.svg") no-repeat right #FFF6E9;
     background-size: 20px;
-    background-position-x: 5.5rem;
+    background-position-x: 0.5rem;
     border-right: 1px solid;
     border-radius: 30px 0 0 30px;
 }
@@ -25,17 +27,18 @@
 }
 
 #search-options button {
-    width: inherit;
+    width: 100%;
     border-radius: inherit;
     background: transparent no-repeat;
     text-align: start;
+    padding-inline-start: 2rem;
 }
 
 #search-options:hover, #search-options:active {
     cursor: pointer;
     background: url("Assets/caret-down-orange.svg") no-repeat right #FFF6E9;
     background-size: 20px;
-    background-position-x: 5.5rem;
+    background-position-x: 0.5rem;
 }
 
 .search-bar-input {
@@ -56,7 +59,7 @@
 
 .search-bar-main button {
     background-color: #FFF6E9;
-    width: 2.5rem;
+    width: 100%;
     height: 100%;
     padding: 0;
     border: 0;
@@ -69,6 +72,10 @@
 
 .search-bar-button button:hover img, .search-bar-button button:active img {
     filter: invert(55%) sepia(18%) saturate(7314%) hue-rotate(0deg) brightness(102%) contrast(106%);
+}
+
+.search-bar-button button:hover {
+    background-color: #FFEBD4;
 }
 
 .search-bar-button button img {
@@ -170,21 +177,57 @@
     background-color: #FFEBD4;
 }
 
-.dropdown-content .dropdown-hint:hover, .dropdown-content .first-option:hover{
+.dropdown-content .first-option:hover{
     color: #7FB069;
     background-color: #FFF6E9;
     cursor: default;
 }
 
-.dropdown-hint {
-    color: #7FB069;
-    font-size: small;
-    justify-content: end;
-    padding-right: 1.4rem !important;
+.genre-option, .people-option {
     width: 100% !important;
 }
 
+.people-option .dropdown-option-label {
+    width: 15% !important;
+}
+
+.genre-option .dropdown-option-label {
+    width: 10% !important;
+}
+
+.genre-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.genre-item {
+    margin: 3px;
+    font-size: small;
+}
+
+.people-option .dropdown-option-input {
+    width: 100%;
+}
+
+#language-search-options{
+    width: 100%;
+    color: black;
+    padding-inline-start: 10px;
+    margin-inline-start: -2px;
+    border: 1px solid #086788;
+    background: transparent no-repeat;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    font-size: smaller;
+    height: 24px;
+}
+
 @media (max-width: 670px) {
+    .search-bar-main {
+        width: 80%;
+    }
+    
     .dropdown-option .dropdown-option-label {
         width: 30%;
     }
@@ -195,5 +238,9 @@
 
     .dropdown-hint {
         justify-content: center;
+    }
+
+    .genre-option .dropdown-option-label {
+        width: 25% !important;
     }
 }
