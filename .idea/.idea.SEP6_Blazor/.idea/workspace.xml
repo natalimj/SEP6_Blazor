@@ -5,8 +5,22 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-21 discovery search and loading spinners">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/Index.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/MoviesPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MoviesPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/TvSeriesPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/TvSeriesPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/PersonPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/PersonPosterItem.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,15 +30,15 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-23-reviews-component" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
   </component>
@@ -50,8 +64,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
     <configuration name="SEP6_Blazor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -102,7 +115,7 @@
       <workItem from="1652904334055" duration="9288000" />
       <workItem from="1652958451897" duration="59278000" />
       <workItem from="1653120901235" duration="3735000" />
-      <workItem from="1653127863207" duration="8653000" />
+      <workItem from="1653127863207" duration="17473000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -293,7 +306,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653140385860</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="TC-25 workspace commit">
+      <created>1653160238415</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1653160238415</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,6 +356,7 @@
     <MESSAGE value="TC-23 fixed loading issue" />
     <MESSAGE value="TC-21 added the mockup for discovery search" />
     <MESSAGE value="TC-21 discovery search and loading spinners" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-21 discovery search and loading spinners" />
+    <MESSAGE value="TC-12 WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 WIP" />
   </component>
 </project>

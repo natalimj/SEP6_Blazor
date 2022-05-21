@@ -11,7 +11,7 @@
 <h3>My Lists</h3>
 <div id="content">
     <div id="leftList">
-        <ul>
+        <ul class="list">
             @foreach (var result in @UserListResults)
             {
                 <li @onclick="() => OnListSelected(result.Id)">@result.ListName</li>
@@ -19,31 +19,25 @@
         </ul>
     </div>
     <div id="rightItems">
-        <ul>
-            @if (CurrentlyDisplayedMoviesList == null)
+        <div class="wrapper">
+            @if (CurrentlyDisplayedMoviesList == null || CurrentlyDisplayedMoviesList.Count == 0)
             {
+                <p>Select a list</p>
             }
             else
             {
                 @foreach (var result in CurrentlyDisplayedMoviesList)
                 {
-                    @if (result.MovieName != null)
-                    {
-                        <li>@result.MovieName</li>
-                    }
-                    else
-                    {
-                        <li>@result.TVShowName</li>
-                    }
+                    <ProductionPosterItem result="result"/>
                 }
             }
-        </ul>
+        </div>
     </div>
 </div>
 
 
 @code {
-
+    
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
     private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
     private string userId { get; set; }
@@ -58,5 +52,4 @@
     {
         CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(id);
     }
-
 }

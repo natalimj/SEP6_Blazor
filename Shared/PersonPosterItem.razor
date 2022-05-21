@@ -14,7 +14,13 @@
                 <img src="https://image.tmdb.org/t/p/original/@result.ProfilePath" alt="movie-poster" class="poster-image">
             }
             <div class="poster-title-container">
-                <div class="poster-title">@result.Name "@result.Character"</div>
+                <div class="poster-title">
+                    <span>@result.Name </span>
+                    @if (!result.Character.Equals(String.Empty))
+                    {
+                        <span> "@result.Character"</span>
+                    }
+                </div>
             </div>
         </div>
     </li>
@@ -40,10 +46,13 @@ else
 
 
 @code {
-    
-    [Parameter] public Actor result { get; set; }
-    [Parameter] public Person personResult { get; set; }
-    
+
+    [Parameter]
+    public Actor result { get; set; }
+
+    [Parameter]
+    public Person personResult { get; set; }
+
     private void GoToDetailsPage(int id)
     {
         Navigation.NavigateTo("/ActorInfoPage/" + id);
