@@ -47,6 +47,10 @@ li,
     opacity: 0.3;
 }
 
+.poster-container:hover{
+    cursor: pointer;
+}
+
 .poster-container:hover .poster-title-container {
     opacity: 1;
 }

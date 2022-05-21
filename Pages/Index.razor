@@ -8,58 +8,12 @@
 <PageTitle>Index</PageTitle>
 
 <div class="main-content-article">
-    <SimpleSearchBar @bind-Result="SearchResults" @bind-Actors="SearchResultsActors" @bind-ComplexResult="ComplexSearchResults"/>
+    <SimpleSearchBar @bind-ComplexResult="ComplexSearchResults"/>
 
-    @if (SearchResults == null)
+    @if (ComplexSearchResults.actorResuls.Count > 0 ||
+         ComplexSearchResults.movieResults.ProductionResults.Count > 0 ||
+         ComplexSearchResults.tvSeriesResult.ProductionResults.Count > 0)
     {
-    }
-    else if (SearchResults.ProductionResults.Count > 0)
-    {
-        SearchResultsActors = null;
-        ComplexSearchResults = null;
-        
-        <div class="content">
-            <div class="content-header-title">
-                <span>Search Results</span>
-            </div>
-            <ul class="hs full">
-                @foreach (var result in SearchResults.ProductionResults)
-                {
-                    <ProductionPosterItem result="result"/>
-                }
-            </ul>
-        </div>
-    }
-    @if (SearchResultsActors == null)
-    {
-    }
-    else if (SearchResultsActors.Count > 0)
-    {
-        ComplexSearchResults = null;
-        SearchResults = null;
-        
-        <div class="content">
-            <div class="content-header-title">
-                <span>Search Results - Actors</span>
-            </div>
-            <ul class="hs full">
-                @foreach (var result in SearchResultsActors)
-                {
-                    <PersonPosterItem personResult="result"/>
-                }
-            </ul>
-        </div>
-    }
-    @if (ComplexSearchResults == null)
-    {
-    }
-    else if (ComplexSearchResults.actorResuls.Count > 0 ||
-             ComplexSearchResults.movieResults.ProductionResults.Count > 0 ||
-             ComplexSearchResults.tvSeriesResult.ProductionResults.Count > 0)
-    {
-        SearchResults = null;
-        SearchResultsActors = null;
-        
         <div class="content">
             @if (ComplexSearchResults.actorResuls.Count > 0)
             {
@@ -100,22 +54,20 @@
         </div>
     }
 
-
     @if (PopularProductions == null)
     {
-        <p>Loading...</p>
+        <div class="loader-holder">
+            <div class="loader"></div>
+        </div>
     }
     else
     {
         <div class="content">
-            @if (PopularProductions.ProductionResults.Count == 0)
-            {
-                <p>Nothing to show :(</p>
-            }
-            else
+
+            @if (PopularProductions.ProductionResults.Count > 0)
             {
                 <div class="content-header-title">
-                    <span>Popular Movies</span>
+                    <span>Popular Productions</span>
                 </div>
                 <ul class="hs full">
                     @foreach (var result in PopularProductions.ProductionResults)
@@ -125,37 +77,26 @@
                 </ul>
             }
 
-            @if (UpcomingMovies.ProductionResults.Count == 0)
-            {
-                <p>Nothing to show :(</p>
-            }
-            else
+            @if (TopRatedProductions.ProductionResults.Count > 0)
             {
                 <div class="content-header-title">
-                    <span>Upcoming Movies</span>
-                </div>
-                <ul class="hs full">
-                    @foreach (var result in UpcomingMovies.ProductionResults)
-                    {
-                        <ProductionPosterItem result="result"/>
-                    }
-                </ul>
-            }
-
-            @if (TopRatedProductions.ProductionResults.Count == 0)
-            {
-                <p>Nothing to show :(</p>
-            }
-            else
-            {
-                <div class="content-header-title">
-                    <span>Top Rated Movies</span>
+                    <span>Top Rated Production</span>
                 </div>
                 <ul class="hs full">
                     @foreach (var result in TopRatedProductions.ProductionResults)
                     {
                         <ProductionPosterItem result="result"/>
                     }
+                </ul>
+            }
+
+            @if (LatestProduction.Id != 0)
+            {
+                <div class="content-header-title">
+                    <span>Latest Production</span>
+                </div>
+                <ul class="hs full">
+                    <ProductionPosterItem result="@LatestProduction"/>
                 </ul>
             }
         </div>
@@ -167,26 +108,20 @@
 
 @code
 {
-    private Results? SearchResults { get; set; } = new Results();
-    private List<Person>? SearchResultsActors { get; set; } = new List<Person>();
-    private ComplexResult? ComplexSearchResults { get; set; } = new ComplexResult(new Results(), new Results(), new List<Person>());
-    private bool queryMade { get; set; }
+    private ComplexResult ComplexSearchResults { get; set; } = new ComplexResult(new Results(), new Results(), new List<Person>());
 
-    private Results PopularProductions { get; set; }
-    private Results UpcomingMovies { get; set; }
-    private Results TopRatedProductions { get; set; }
-    private Results LatestProductions { get; set; }
+    private Results PopularProductions { get; set; } = new Results();
+    private Results TopRatedProductions { get; set; } = new Results();
+    private Production LatestProduction { get; set; } = new Production();
 
     protected override async Task OnInitializedAsync()
     {
         PopularProductions = await ProductionService.GetPopularProductions("movie");
-        UpcomingMovies = await ProductionService.GetUpcomingMovies();
         TopRatedProductions = await ProductionService.GetTopRatedProduction("movie");
-        LatestProductions = await ProductionService.GetLatestProductions("movie");
+        LatestProduction = await ProductionService.GetLatestProduction("movie");
     }
 
     protected override void OnInitialized()
     {
-        SearchResults.ProductionResults = new List<Production>();
     }
 }

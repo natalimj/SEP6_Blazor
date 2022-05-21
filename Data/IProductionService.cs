@@ -14,8 +14,9 @@ namespace SEP6_Blazor.Data
         Task<Results> GetRecommendedProductions(string id, string productionType);
         Task<Results> GetSimilarProductions(string id, string productionType);
         Task<Results> GetPopularProductions(string productionType);
-        Task<Results> GetLatestProductions(string productionType);
+        Task<Production> GetLatestProduction(string productionType);
         Task<Results> GetTopRatedProduction(string productionType);
         Task<Results> GetUpcomingMovies();
+        Task<TMDBReview> GetProductionReviews(string id, string productionType);
     }
 }

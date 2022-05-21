@@ -1,0 +1,469 @@
+﻿.main-content-article {
+    margin-top: 2.5rem;
+}
+
+.crew-member {
+    margin: 2rem;
+}
+
+.crew-member-name {
+    color: #FF7D00;
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #012436;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #086788;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #075876;
+}
+
+/*horizontal scroll*/
+:root {
+    --gutter: 20px;
+}
+
+.content {
+    padding: var(--gutter) 0;
+    padding-bottom: 1rem;
+}
+
+.content > * {
+    grid-column: 2 / -2;
+}
+
+.content > .full {
+    grid-column: 1 / -1;
+}
+
+.hs {
+    display: grid;
+    grid-gap: calc(var(--gutter) / 2);
+    grid-template-columns: 10px;
+    grid-template-rows: minmax(10rem, 1fr);
+    grid-auto-flow: column;
+    grid-auto-columns: calc(50% - var(--gutter) * 2);
+
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: calc(.75 * var(--gutter));
+    margin-bottom: calc(-.25 * var(--gutter));
+
+    overflow-y: hidden;
+    justify-content: space-between;
+}
+
+.hs::before,
+.hs::after {
+    content: '';
+    width: 10px;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.content-header-title {
+    margin-top: 1rem;
+}
+
+.content-header-title span {
+    font-size: larger;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+/*movie info header*/
+
+.header-main {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3rem;
+}
+
+.header-image {
+    width: 40%;
+    max-height: 30rem;
+    max-width: 25rem;
+    min-width: 10rem;
+}
+
+.header-image img {
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    margin-inline-start: 2rem;
+    background-color: #012436;
+}
+
+.header-description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    justify-content: space-around;
+    align-items: center;
+    margin-inline-start: 3rem;
+    margin-inline-end: 2rem;
+}
+
+.header-desc-text {
+    height: auto;
+    width: 100%;
+    text-align: center;
+    font-size: large;
+    color: #FF7D00;
+    font-family: "Book Antiqua", serif;
+}
+
+.nothing-to-show {
+    color: #FF7D00;
+    margin-inline-start: 2rem;
+    margin-top: 1rem;
+}
+
+.header-name {
+    font-size: xx-large;
+    color: #FFF6E9;
+}
+
+.header-rating {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.header-rating-small {
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+}
+
+/*rating - author: https://codepen.io/hesguru/pen/BaybqXv*/
+
+.rate {
+    float: left;
+    height: 46px;
+    padding: 0 10px;
+}
+
+.rate:not(:checked) > input {
+    position: absolute;
+    top: -9999px;
+}
+
+.rate:not(:checked) > label {
+    float: right;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    cursor: pointer;
+    font-size: 30px;
+    color: #ccc;
+}
+
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rate > input:checked ~ label {
+    color: #ffc700;
+}
+
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+}
+
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+}
+
+/*add to list*/
+
+.add-list {
+    margin-inline-start: 2rem;
+}
+
+.add-list-button {
+    width: 3rem;
+    height: 3rem;
+    -webkit-appearance: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+.add-list-button img {
+    height: 80%;
+    filter: invert(21%) sepia(50%) saturate(5998%) hue-rotate(181deg) brightness(81%) contrast(94%);
+}
+
+.add-list-button:hover img {
+    filter: invert(55%) sepia(18%) saturate(7314%) hue-rotate(0deg) brightness(102%) contrast(106%);
+}
+
+.select-list-holder {
+    display: none;
+    position: relative;
+    z-index: 9999;
+    margin-left: auto;
+    margin-right: auto;
+    right: 0;
+    left: 0;
+    width: 60%;
+    height: auto;
+    top: 50%;
+    background-size: contain;
+    background-repeat: no-repeat no-repeat;
+    background-position: center center;
+    background-color: #FFF6E9;
+    color: #086788;
+    border-radius: 20px;
+}
+
+.dropdown-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1rem;
+}
+
+.showDropdown {
+    display: block;
+}
+
+.existing-lists {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.dropdown-content a {
+    cursor: default;
+    display: block;
+    color: #FF7D00;
+    padding: 0.4rem;
+    text-decoration: none;
+    min-width: 7rem;
+    text-align: center;
+}
+
+.dropdown-content a:hover, a:focus {
+    background-color: #FFEBD4;
+    cursor: pointer;
+}
+
+.add-new-list-holder input {
+    width: 100%;
+    border: 1px solid #086788;
+    border-radius: 10px;
+    background-color: #FFF6E9;
+    padding: 0.4rem;
+    color: #FF7D00;
+}
+
+.add-new-list-holder input:focus-visible {
+    outline: #FF7D00 1px solid;
+    color: #086788;
+}
+
+.add-to-list-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-top: 0.5rem;
+}
+
+.add-to-list-button {
+    margin-inline-end: 1rem;
+}
+
+.add-to-list-buttons button {
+    background-color: #FF7D00;
+    color: #FFF6E9;
+    width: 8rem;
+    height: 2rem;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+}
+
+.add-to-list-buttons button:hover {
+    background-color: #E97B0C;
+}
+
+/*reviews*/
+
+.reviews-content {
+    max-height: 25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 1rem;
+    border: 2px solid rgb(8 103 106 / 70%);
+}
+
+.reviews-header {
+    font-size: large;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #FFF6E9;
+    border-radius: 10px;
+    min-height: 5.5rem;
+    margin: 1rem;
+    color: #086788;
+    padding: 1rem;
+}
+
+.reviews-header span {
+    color: #FF7D00;
+}
+
+.reviews-text {
+    height: 100%;
+    padding: 0 2rem;
+    font-size: medium;
+    font-style: italic;
+}
+
+.footer {
+    position: sticky;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 4rem;
+    background-color: #086788;
+    color: #FFF6E9;
+    text-align: center;
+}
+
+.add-review-content {
+    display: flex;
+    min-height: 4rem;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.add-review-text {
+    color: #FFF6E9;
+}
+
+.add-review-input {
+    width: 70%;
+    border: 1px solid #086788;
+    border-radius: 10px;
+    background-color: #FFF6E9;
+    padding: 0.4rem;
+    color: #086788;
+}
+
+.add-review-input:focus-visible {
+    outline: #FF7D00 1px solid;
+    color: #FF7D00;
+}
+
+.add-review-button {
+    width: 4rem;
+    background-color: #FFF6E9;
+    color: #086788;
+    padding: 0;
+    border: 0;
+    border-radius: 5px;
+}
+
+.add-review-button:hover {
+    color: #FF7D00;
+}
+
+/*genre tags*/
+
+.header-genre {
+    font-size: medium;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.header-genre div {
+    background-color: #FFF6E9;
+    border-radius: 5px;
+    padding: 2px;
+    margin: 2px;
+}
+
+/*spinner*/
+.loader-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    width: 100%;
+}
+
+.loader {
+    border: 0.5rem solid #FFF6E9;
+    border-radius: 50%;
+    border-top: 0.5rem solid #FF7D00;
+    width: 40px;
+    height: 40px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+
+@media (max-width: 640px) {
+    .header-desc-text {
+        font-size: small;
+    }
+
+    .header-name {
+        font-size: large;
+    }
+
+    .header-rating {
+        display: none;
+    }
+
+    .header-rating-small {
+        display: flex;
+        padding-inline-start: 1rem;
+    }
+
+    .add-list {
+        margin-inline-start: 1rem;
+    }
+}

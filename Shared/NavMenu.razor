@@ -28,14 +28,24 @@
             </figure>
         </a>
     </div>
-    <div class="nav-item">
-        <a href="/ListsPage" @onclick="() => ToggleIconSelection(2)">
-            <figure class="icon-item @iconSelectedClass[2]">
-                <img class="icon-item-img" src="Assets/list.svg" alt="my-lists-menu-item"/>
-                <figcaption class="icon-item-caption">My Lists</figcaption>
-            </figure>
-        </a>
-    </div>
+    <AuthorizeView>
+        <Authorizing>
+            <div class="nav-item"></div>
+        </Authorizing>
+        <Authorized>
+            <div class="nav-item">
+                <a href="/ListsPage" @onclick="() => ToggleIconSelection(2)">
+                    <figure class="icon-item @iconSelectedClass[2]">
+                        <img class="icon-item-img" src="Assets/list.svg" alt="my-lists-menu-item"/>
+                        <figcaption class="icon-item-caption">My Lists</figcaption>
+                    </figure>
+                </a>
+            </div>
+        </Authorized>
+        <NotAuthorized>
+            <div class="nav-item"></div>
+        </NotAuthorized>
+    </AuthorizeView>
     <AuthorizeView>
         <Authorizing>
             <div class="nav-item"></div>
@@ -53,7 +63,6 @@
                         <span>@context.User.Identity.Name</span>
                         <hr/>
                         <a class="first-option" href="/ContributionsPage">My Contributions</a>
-                        <a href="">Settings</a>
                         <hr/>
                         <a href="#" @onclick="BeginSignOut" class="last-option">Log out</a>
                     </div>
@@ -79,8 +88,8 @@
     //private string user_id = "";
     protected override async Task OnInitializedAsync()
     {
-        //var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-        /*user_id = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
+    //var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+    /*user_id = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
         Console.WriteLine(user_id);*/
     }
 
@@ -106,4 +115,5 @@
         await SignOutManager.SetSignOutState();
         Navigation.NavigateTo("authentication/logout");
     }
+
 }

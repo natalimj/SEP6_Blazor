@@ -8,6 +8,10 @@ h1:focus {
     outline: none;
 }
 
+.auth-message {
+    padding-inline-start: 1rem;
+}
+
 a, .btn-link {
     color: #0071c1;
 }

@@ -9,33 +9,75 @@
     <div class="content">
         @if (Person == null)
         {
-            <p>Nothing to show :(</p>
+            <div class="loader-holder">
+                <div class="loader"></div>
+            </div>
         }
         else
         {
+            <div class="header-main">
+                <div class="header-image">
+                    @if (Person.ProfilePath == null)
+                    {
+                        <img src="Assets/user.svg" alt="actor-poster" class="poster-image">
+                    }
+                    else
+                    {
+                        <img src="https://image.tmdb.org/t/p/original/@Person.ProfilePath" alt="movie-poster" class="poster-image">
+                    }
+                </div>
+                <div class="header-desc-text header-name">@Person.Name</div>
+                @if (Person.PlaceOfBirth != null)
+                {
+                    <p class="header-desc-text header-birthplace">Born in @Person.PlaceOfBirth</p>
+                }
+                @if (Person.Biography != null)
+                {
+                    <p class="header-desc-text">@Person.Biography</p>
+                }
+                else
+                {
+                    <p class="header-desc-text">No official biography found.</p>
+                }
+            </div>
             <div class="content-header-title">
                 <span>Movie Roles</span>
             </div>
             <div>
-                @foreach (var result in MovieCredits.Roles)
+                @if (MovieCredits.Roles.Count > 0)
                 {
-                    <div class="crew-member">
-                        <span class="crew-member-name">@result.Character</span>
-                        <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id))"> in "@result.OriginalTitle"</span>
-                    </div>
+                    @foreach (var result in MovieCredits.Roles)
+                    {
+                        <div class="crew-member">
+                            <span class="crew-member-name">@result.Character</span>
+                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "movie"))"> in "@result.OriginalTitle"</span>
+                        </div>
+                    }
                 }
+                else
+                {
+                    <div class="crew-member">No roles found.</div>
+                }
+
             </div>
 
             <div class="content-header-title">
                 <span>TV Series Roles</span>
             </div>
             <div>
-                @foreach (var result in TVCredits.Roles)
+                @if (TVCredits.Roles.Count > 0)
                 {
-                    <div class="crew-member">
-                        <span class="crew-member-name">@result.Character</span>
-                        <span> in "@result.OriginalTitle"</span>
-                    </div>
+                    @foreach (var result in TVCredits.Roles)
+                    {
+                        <div class="crew-member">
+                            <span class="crew-member-name">@result.Character</span>
+                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "tv"))"> in "@result.OriginalName"</span>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="crew-member">No roles found.</div>
                 }
             </div>
         }
@@ -57,10 +99,10 @@
         MovieCredits = await ActorService.GetMovieCredits(Id);
         TVCredits = await ActorService.GetTVCredits(Id);
     }
-    
-    private void GoToDetailsPage(int id)
+
+    private void GoToDetailsPage(int id, string type)
     {
-        Navigation.NavigateTo("/MovieInfoPage/" + id);
+        Navigation.NavigateTo("/MovieInfoPage/" + id + "/" + type);
     }
 
 }
