@@ -5,12 +5,10 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-14 multi search main design and filter model">
-      <change afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,6 +90,8 @@
       <workItem from="1652535708189" duration="20155000" />
       <workItem from="1652615337662" duration="22700000" />
       <workItem from="1652807231650" duration="23073000" />
+      <workItem from="1652897657722" duration="3398000" />
+      <workItem from="1653044481456" duration="7651000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -170,7 +170,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652877175798</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="TC-12 WIP">
+      <created>1652888243533</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1652888243533</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -202,6 +209,7 @@
     <MESSAGE value="TC-14 multi search main design and filter model - add basic form validation" />
     <MESSAGE value="TC-14 TC-12 frontend and test part" />
     <MESSAGE value="TC-14 TC-12 frontend and test part + simple search fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-14 TC-12 frontend and test part + simple search fix" />
+    <MESSAGE value="TC-12 WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 WIP" />
   </component>
 </project>
