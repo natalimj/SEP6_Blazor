@@ -36,20 +36,3 @@
 .list {
     list-style: none;
 }
-
-/* scrollbar */
-::-webkit-scrollbar {
-    width: 1rem;
-}
-
-::-webkit-scrollbar-track {
-    background: #012436;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #086788;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #075876;
-}
