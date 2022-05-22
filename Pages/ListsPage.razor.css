@@ -4,6 +4,7 @@
     justify-content: flex-start;
     height: 80vh;
     overflow: hidden;
+    padding: 20px;
 }
 
 #leftList {
@@ -19,7 +20,6 @@
 #rightItems {
     width: 70vw;
     height: 100vh;
-    float: left;
 
 }
 .wrapper {
@@ -29,12 +29,13 @@
     justify-content: flex-start;
     overflow-y: scroll;
     height: 100vh;
-    float: left;
     gap: 10px;
 }
 
 .list {
     list-style: none;
+    font-size: xx-large;
+    text-align: center;
 }
 
 /* scrollbar */

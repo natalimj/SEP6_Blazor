@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,6 +91,8 @@
       <workItem from="1652807231650" duration="23073000" />
       <workItem from="1652897657722" duration="3398000" />
       <workItem from="1653044481456" duration="7651000" />
+      <workItem from="1653158405050" duration="870000" />
+      <workItem from="1653224321486" duration="312000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -177,7 +178,14 @@
       <option name="project" value="LOCAL" />
       <updated>1652888243533</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="TC-12 List Page Basic">
+      <created>1653158453757</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1653158453757</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -210,6 +218,7 @@
     <MESSAGE value="TC-14 TC-12 frontend and test part" />
     <MESSAGE value="TC-14 TC-12 frontend and test part + simple search fix" />
     <MESSAGE value="TC-12 WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 WIP" />
+    <MESSAGE value="TC-12 List Page Basic" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 List Page Basic" />
   </component>
 </project>
