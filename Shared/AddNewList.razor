@@ -1,7 +1,9 @@
 ﻿@using SEP6_Blazor.Models
 @using SEP6_Blazor.Data
+
 @inject IUserService UserService
 @inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IModalService ModalService
 
 <EditForm Model="@userList" OnValidSubmit="@OnValidSubmit">
     <DataAnnotationsValidator/>
@@ -18,7 +20,8 @@
 </EditForm>
 
 @code {
-    UserList userList { get; set; }
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    UserList userList { get; set; } = new UserList();
 
     protected override async Task OnInitializedAsync()
     {
@@ -29,6 +32,7 @@
     {
         userList = new UserList(userList.UserId,userList.ListName,new List<ListItem>());
         await UserService.AddList(userList);
+        ModalInstance.CloseAsync(ModalResult.Ok<UserList>(userList));
     }
     
 }

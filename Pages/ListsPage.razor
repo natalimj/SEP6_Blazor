@@ -1,6 +1,7 @@
 @page "/ListsPage"
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
+@using BootstrapBlazor.Components
 @attribute [Authorize]
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -16,6 +17,7 @@
             {
                 <li @onclick="() => OnListSelected(result.Id)">@result.ListName</li>
             }
+            <li @onclick="(() => ShowAddNewListModal())">Add new list</li>
         </ul>
     </div>
     <div id="rightItems">
@@ -37,7 +39,7 @@
 
 
 @code {
-    
+    [CascadingParameter] public IModalService Modal { get; set; }
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
     private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
     private string userId { get; set; }
@@ -51,5 +53,21 @@
     private async Task OnListSelected(string id)
     {
         CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(id);
+    }
+
+    private async Task ShowAddNewListModal()
+    {
+        var newListModal = Modal.Show<AddNewList>("New List");
+        var result = await newListModal.Result;
+
+        if (result.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+        }
+    }
     }
 }

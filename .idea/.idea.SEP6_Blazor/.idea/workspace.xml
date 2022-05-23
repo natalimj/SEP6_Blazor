@@ -5,10 +5,9 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 BlazoredModal Installation">
-      <change afterPath="$PROJECT_DIR$/Shared/AddNewList.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/AddNewList.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 AddNewList Component created">
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/AddNewList.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/AddNewList.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1653044481456" duration="7651000" />
       <workItem from="1653158405050" duration="870000" />
       <workItem from="1653224321486" duration="1822000" />
-      <workItem from="1653305753066" duration="2667000" />
+      <workItem from="1653305753066" duration="3159000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -204,7 +203,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653307150929</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="TC-12 AddNewList Component created">
+      <created>1653308464815</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1653308464815</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +246,7 @@
     <MESSAGE value="TC-12 List Page Basic" />
     <MESSAGE value="TC-12 List Styling" />
     <MESSAGE value="TC-12 BlazoredModal Installation" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 BlazoredModal Installation" />
+    <MESSAGE value="TC-12 AddNewList Component created" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 AddNewList Component created" />
   </component>
 </project>
