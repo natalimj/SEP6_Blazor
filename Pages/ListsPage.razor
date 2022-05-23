@@ -67,6 +67,8 @@
         else
         {
             System.Console.WriteLine("Modal was closed");
+            UserList callbackList = (UserList) result.Data;
+            UserListResults = await UserService.GetUserLists(userId);
         }
     }
     }
