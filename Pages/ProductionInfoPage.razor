@@ -234,6 +234,25 @@
                             </div>
                         }
                     }
+
+                    @if (OtherUserReviews.Count > 0)
+                    {
+                        @foreach (var review in OtherUserReviews)
+                        {
+                            @if (!review.UserId.Equals(userId))
+                            {
+                                <div class="review-item review-item-user">
+                                    <div class="reviews-header reviews-header-user">
+                                        <span>Other FLIXDB user </span> said:
+                                    </div>
+                                    <div class="reviews-text reviews-text-user">
+                                        @review.UserReview
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+
                     @foreach (var review in ProductionReviews.Reviews)
                     {
                         <div class="review-item">
@@ -287,8 +306,9 @@
     private List<UserList> UserLists { get; set; }
     private string? NewListName { get; set; }
 
-    private TMDBReview ProductionReviews { get; set; }
-    private List<Review> UserReviews { get; set; }
+    private TMDBReview ProductionReviews { get; set; } = new TMDBReview();
+    private List<Review> UserReviews { get; set; } = new List<Review>();
+    private List<Review> OtherUserReviews { get; set; } = new List<Review>();
     private string? UserReviewText { get; set; }
 
     protected override async Task OnInitializedAsync()
@@ -298,6 +318,7 @@
         Cast = await ProductionService.GetCast(Id, Type);
         Images = await ProductionService.GetProductionImagesUrl(Id, Type);
         ProductionReviews = await ProductionService.GetProductionReviews(Id, Type);
+        OtherUserReviews = await UserService.GetProductionReviews(Id, Type);
 
         userId = await UserService.GetUserId(AuthenticationStateProvider);
         if (!userId.Equals(String.Empty))
