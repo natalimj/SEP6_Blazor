@@ -1,0 +1,38 @@
+﻿@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+
+@inject IUserService UserService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IModalService ModalService
+
+<EditForm Model="@userList" OnValidSubmit="@OnValidSubmit">
+    <DataAnnotationsValidator/>
+    <div class="form-group">
+        <label>List Name:</label>
+        <div>
+            <InputText @bind-Value="@userList.ListName" class="form-control col-sm-3"/>
+            <ValidationMessage For="@(() => userList.ListName)"/>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">
+        Create new list
+    </button>
+</EditForm>
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    UserList userList { get; set; } = new UserList();
+
+    protected override async Task OnInitializedAsync()
+    {
+        userList.UserId = await UserService.GetUserId(AuthenticationStateProvider);
+    }
+    
+    private async Task OnValidSubmit()
+    {
+        userList = new UserList(userList.UserId,userList.ListName,new List<ListItem>());
+        await UserService.AddList(userList);
+        ModalInstance.CloseAsync(ModalResult.Ok<UserList>(userList));
+    }
+    
+}
