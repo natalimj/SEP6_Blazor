@@ -17,6 +17,8 @@ namespace SEP6_Blazor.Models
         [JsonPropertyName("poster_path")] public string Poster_path { get; set; }
 
         [JsonPropertyName("vote_average")] public double VoteAverage { get; set; }
+        
+        [JsonPropertyName("vote_count")] public int VoteCount { get; set; }
 
         [JsonPropertyName("genres")]
         public List<Genre> MovieGenres { get; set; } //only for movies! - don't use for tvshow

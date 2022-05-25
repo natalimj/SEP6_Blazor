@@ -1,0 +1,98 @@
+﻿@page "/ContributionsPage"
+@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+@attribute [Authorize]
+
+@inject IProductionService ProductionService;
+@inject IUserService UserService;
+@inject AuthenticationStateProvider AuthenticationStateProvider;
+@inject NavigationManager Navigation
+
+<div class="main-content-article">
+    @if (UserRatings.Count == 0 && UserReviews.Count == 0)
+    {
+        <div class="loader-holder">
+            <div class="no-contribution">No contributions to show.</div>
+        </div>
+    }
+    else
+    {
+        <div class="content">
+
+            @if (UserRatings.Count > 0)
+            {
+                <div class="content-header-title">
+                    <span>Productions Rated</span>
+                </div>
+                <ul class="hs full">
+                    @for (int i = 0; i < UserRatings.Count; i++)
+                    {
+                        <ProductionPosterItem result="@UserRatedProductions[i]" ratingValue="@UserRatings[i].UserRating.ToString()"/>
+                    }
+                </ul>
+            }
+
+            @if (UserReviews.Count > 0)
+            {
+                <div id="reviews-body">
+                    <div class="content-header-title">
+                        <span>Your Reviews</span>
+                    </div>
+                    <div class="reviews-content">
+                        @foreach (var review in UserReviews)
+                        {
+                            <div class="review-item review-item-user">
+                                <div class="reviews-header reviews-header-user">
+                                    When reviewing <span class="movie-review-link" @onclick="()=> GoToDetailsPage(review)">@review.ProductionId</span>, <span>YOU </span> said:
+                                </div>
+                                <div class="reviews-text reviews-text-user">
+                                    @review.UserReview
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+
+@code {
+
+    private string userId { get; set; } = "";
+    private List<Rating> UserRatings { get; set; } = new List<Rating>();
+    private List<Review> UserReviews { get; set; } = new List<Review>();
+    private List<Production> UserRatedProductions { get; set; } = new List<Production>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        userId = await UserService.GetUserId(AuthenticationStateProvider);
+
+        if (!userId.Equals(String.Empty))
+        {
+            UserRatings = await UserService.GetUserRatings(userId);
+            UserReviews = await UserService.GetUserReviews(userId);
+
+            Production production = new Production();
+            foreach (var rating in UserRatings)
+            {
+                production = await ProductionService.GetProduction(rating.ProductionId, rating.Type);
+                UserRatedProductions.Add(production);
+            }
+        }
+    }
+    
+    private void GoToDetailsPage(Review review)
+    {
+        if (review.Type.Equals("movie"))
+        {
+            Navigation.NavigateTo("/MovieInfoPage/" + review.ProductionId + "/movie");
+        }
+        else
+        {
+            Navigation.NavigateTo("/MovieInfoPage/" + review.ProductionId + "/tv");
+        }
+    }
+
+}
