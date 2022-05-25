@@ -6,21 +6,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Index.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/Index.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/Index.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/MoviesPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/MoviesPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/TvSeriesPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/TvSeriesPage.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ImageGallery.razor.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/PersonPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/PersonPosterItem.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Production.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Production.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +41,6 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Pages/ActorInfoPage.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -64,7 +51,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
     <configuration name="SEP6_Blazor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
@@ -115,7 +104,9 @@
       <workItem from="1652904334055" duration="9288000" />
       <workItem from="1652958451897" duration="59278000" />
       <workItem from="1653120901235" duration="3735000" />
-      <workItem from="1653127863207" duration="17473000" />
+      <workItem from="1653127863207" duration="18324000" />
+      <workItem from="1653228429580" duration="1105000" />
+      <workItem from="1653475654159" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -313,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653160238415</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="TC-25 contributions page done">
+      <created>1653226242573</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1653226242573</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -357,6 +355,7 @@
     <MESSAGE value="TC-21 added the mockup for discovery search" />
     <MESSAGE value="TC-21 discovery search and loading spinners" />
     <MESSAGE value="TC-12 WIP" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 WIP" />
+    <MESSAGE value="TC-25 contributions page done" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-25 contributions page done" />
   </component>
 </project>
