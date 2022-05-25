@@ -1,0 +1,42 @@
+﻿@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+
+@inject IUserService UserService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IModalService ModalService
+
+<div>
+    @if (result.MovieName != null)
+    {
+        <h3>Are you sure you want to delete the movie "@result.MovieName" from the list "@userList.ListName"?</h3>
+    }
+    else
+    {
+        <h3>Are you sure you want to delete the movie "@result.TVShowName" from the list "@userList.ListName"?</h3>
+    }
+    <button type="submit" class="btn btn-success" @onclick="() => OnConfirm()">
+        Confirm
+    </button>
+    <button type="submit" class="btn btn-success" @onclick="() => OnCancel()">
+        Cancel
+    </button>
+</div>
+
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    [Parameter] public UserList userList { get; set; }
+    [Parameter] public Production result { get; set; }
+
+    private async Task OnConfirm()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok<bool>(true));
+    }
+    
+    private async Task OnCancel()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok<bool>(false));
+    }
+    
+}

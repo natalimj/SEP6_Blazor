@@ -41,7 +41,9 @@ namespace SEP6_Blazor.Data
         // reviews for a production from cosmos db.  
         Task<List<Review>> GetProductionReviews(string productionId, string productionType);
         // all ratings for a production - only from cosmos db 
-        Task<List<Rating>> GetProductionRatings(string productionId, string productionType); 
+        Task<List<Rating>> GetProductionRatings(string productionId, string productionType);
+
+        Task DeleteProductionFromList(UserList userList, string productionId, string productionType);
 
 
     }

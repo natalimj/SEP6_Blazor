@@ -17,11 +17,17 @@
     
 }
 
+.icon-item-img {
+    filter: invert(21%) sepia(50%) saturate(5998%) hue-rotate(181deg) brightness(81%) contrast(94%);
+    height: 2.25rem;
+}
+
 #rightItems {
     width: 70vw;
     height: 100vh;
 
 }
+
 .wrapper {
     display: flex;
     flex-direction: row;
@@ -36,6 +42,18 @@
     list-style: none;
     font-size: xx-large;
     text-align: center;
+}
+
+.couple {
+    display: flex;
+    flex-direction: column;
+}
+
+.couple button {
+    background-color: #FFF6E9;
+    padding: 3px;
+    border: 0;
+    border-radius: 20px;
 }
 
 /* scrollbar */

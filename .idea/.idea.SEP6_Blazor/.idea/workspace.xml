@@ -5,9 +5,15 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 Add list form added">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/DeleteProductionConfirm.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/IUserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/IUserService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Data/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/UserService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/ProductionPosterItem.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,10 +34,6 @@
         <entry key="$PROJECT_DIR$" value="TC-12_Whatever" />
       </map>
     </option>
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/Shared/AddNewList.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/_Imports.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -97,7 +99,8 @@
       <workItem from="1653044481456" duration="7651000" />
       <workItem from="1653158405050" duration="870000" />
       <workItem from="1653224321486" duration="1822000" />
-      <workItem from="1653305753066" duration="4593000" />
+      <workItem from="1653305753066" duration="5879000" />
+      <workItem from="1653475269282" duration="7387000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -218,7 +221,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653309236354</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="TC-12 Reloading lists on new addition">
+      <created>1653310475441</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1653310475441</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +266,7 @@
     <MESSAGE value="TC-12 BlazoredModal Installation" />
     <MESSAGE value="TC-12 AddNewList Component created" />
     <MESSAGE value="TC-12 Add list form added" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 Add list form added" />
+    <MESSAGE value="TC-12 Reloading lists on new addition" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 Reloading lists on new addition" />
   </component>
 </project>

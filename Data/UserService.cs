@@ -225,6 +225,17 @@ namespace SEP6_Blazor.Data
             }
             return productions;
         }
+        
+        public async Task DeleteProductionFromList(UserList userList, string productionId, string productionType)
+        {
+            int index = userList.ListItems.FindIndex(a => (a.ProductionId== productionId && a.Type.Equals(productionType)));
+            userList.ListItems.RemoveAt(index);
+
+            string listJson = JsonSerializer.Serialize(userList);
+            HttpContent content = new StringContent(listJson, Encoding.UTF8, "application/json");      
+            HttpResponseMessage response = await client.PostAsync(uri + "/UpdateList", content);      
+            Console.WriteLine(response.ToString());   
+        }
  
 
     }
