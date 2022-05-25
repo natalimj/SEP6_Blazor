@@ -5,7 +5,11 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 Deleting lists and items in lists" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 small fix">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +29,11 @@
         <entry key="$PROJECT_DIR$" value="TC-12_Whatever" />
       </map>
     </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/Shared/DeleteProductionConfirm.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/Shared/ProductionPosterItem.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/Shared/ProductionPosterItem.razor" root0="SKIP_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -91,7 +100,7 @@
       <workItem from="1653158405050" duration="870000" />
       <workItem from="1653224321486" duration="1822000" />
       <workItem from="1653305753066" duration="5879000" />
-      <workItem from="1653475269282" duration="7833000" />
+      <workItem from="1653475269282" duration="12244000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -226,7 +235,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653482857267</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="TC-12 small fix">
+      <created>1653483282556</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1653483282556</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,6 +282,7 @@
     <MESSAGE value="TC-12 Add list form added" />
     <MESSAGE value="TC-12 Reloading lists on new addition" />
     <MESSAGE value="TC-12 Deleting lists and items in lists" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 Deleting lists and items in lists" />
+    <MESSAGE value="TC-12 small fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-12 small fix" />
   </component>
 </project>
