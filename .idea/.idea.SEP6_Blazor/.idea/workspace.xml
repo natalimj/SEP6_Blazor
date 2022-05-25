@@ -5,7 +5,11 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 Deleting lists and items in lists" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Production.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Production.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -26,6 +30,18 @@
       </map>
     </option>
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -34,12 +50,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
     <configuration name="SEP6_Blazor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SEP6_Blazor.csproj" />
@@ -86,12 +101,12 @@
       <workItem from="1652535708189" duration="20155000" />
       <workItem from="1652615337662" duration="22700000" />
       <workItem from="1652807231650" duration="23073000" />
-      <workItem from="1652897657722" duration="3398000" />
-      <workItem from="1653044481456" duration="7651000" />
-      <workItem from="1653158405050" duration="870000" />
-      <workItem from="1653224321486" duration="1822000" />
-      <workItem from="1653305753066" duration="5879000" />
-      <workItem from="1653475269282" duration="7833000" />
+      <workItem from="1652904334055" duration="9288000" />
+      <workItem from="1652958451897" duration="59278000" />
+      <workItem from="1653120901235" duration="3735000" />
+      <workItem from="1653127863207" duration="18324000" />
+      <workItem from="1653228429580" duration="1105000" />
+      <workItem from="1653475654159" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -170,12 +185,131 @@
       <option name="project" value="LOCAL" />
       <updated>1652877175798</updated>
     </task>
-    <task id="LOCAL-00012" summary="TC-12 WIP">
-      <created>1652888243533</created>
+    <task id="LOCAL-00012" summary="TC-12 adding mock rating">
+      <created>1652904748250</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1652888243533</updated>
+      <updated>1652904748250</updated>
+    </task>
+    <task id="LOCAL-00013" summary="TC-12 productionDetailsPage + adding/viewing reviews">
+      <created>1652907727469</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1652907727469</updated>
+    </task>
+    <task id="LOCAL-00014" summary="TC-12 productionDetailsPage + adding/viewing reviews">
+      <created>1652907764114</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1652907764114</updated>
+    </task>
+    <task id="LOCAL-00015" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup">
+      <created>1652909510584</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1652909510584</updated>
+    </task>
+    <task id="LOCAL-00016" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup">
+      <created>1652958413520</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1652958413520</updated>
+    </task>
+    <task id="LOCAL-00017" summary="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup + add to list">
+      <created>1652963496611</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1652963496611</updated>
+    </task>
+    <task id="LOCAL-00018" summary="TC-12 Adding to list + reviews + actors info page">
+      <created>1652984048717</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1652984048717</updated>
+    </task>
+    <task id="LOCAL-00019" summary="TC-12 Adding to list + reviews + actors info page">
+      <created>1652994881225</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1652994881225</updated>
+    </task>
+    <task id="LOCAL-00020" summary="TC-12 reviews,lists, and actors detail page">
+      <created>1652995414042</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1652995414042</updated>
+    </task>
+    <task id="LOCAL-00021" summary="TC-23 added reviews">
+      <created>1653048421073</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1653048421073</updated>
+    </task>
+    <task id="LOCAL-00022" summary="TC-23 fixed loading issue">
+      <created>1653052120662</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1653052120662</updated>
+    </task>
+    <task id="LOCAL-00023" summary="TC-21 added the mockup for discovery search">
+      <created>1653070589739</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1653070589739</updated>
+    </task>
+    <task id="LOCAL-00024" summary="TC-21 added the mockup for discovery search">
+      <created>1653075815741</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1653075815741</updated>
+    </task>
+    <task id="LOCAL-00025" summary="TC-21 added the mockup for discovery search">
+      <created>1653118178496</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1653118178496</updated>
+    </task>
+    <task id="LOCAL-00026" summary="TC-21 added the mockup for discovery search">
+      <created>1653124715692</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1653124715692</updated>
+    </task>
+    <task id="LOCAL-00027" summary="TC-21 discovery search and loading spinners">
+      <created>1653140385860</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1653140385860</updated>
+    </task>
+    <task id="LOCAL-00028" summary="TC-25 workspace commit">
+      <created>1653160238415</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1653160238415</updated>
+    </task>
+    <task id="LOCAL-00029" summary="TC-25 contributions page done">
+      <created>1653226242573</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1653226242573</updated>
     </task>
     <task id="LOCAL-00013" summary="TC-12 List Page Basic">
       <created>1653158453757</created>
@@ -258,14 +392,19 @@
     <MESSAGE value="TC-14 multi search main design and filter model - add basic form validation" />
     <MESSAGE value="TC-14 TC-12 frontend and test part" />
     <MESSAGE value="TC-14 TC-12 frontend and test part + simple search fix" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/natalimj/SEP6_Blazor into TC-12_Test&#10;&#10; Conflicts:&#10;&#9;Pages/MoviesPage.razor&#10;&#9;Shared/MultiSearchBar.razor" />
+    <MESSAGE value="TC-12 adding mock rating" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup" />
+    <MESSAGE value="TC-12 productionDetailsPage + adding/viewing reviews + actor info mockup + add to list" />
+    <MESSAGE value="TC-12 Adding to list + reviews + actors info page" />
+    <MESSAGE value="TC-12 reviews,lists, and actors detail page" />
+    <MESSAGE value="TC-23 added reviews" />
+    <MESSAGE value="TC-23 fixed loading issue" />
+    <MESSAGE value="TC-21 added the mockup for discovery search" />
+    <MESSAGE value="TC-21 discovery search and loading spinners" />
     <MESSAGE value="TC-12 WIP" />
-    <MESSAGE value="TC-12 List Page Basic" />
-    <MESSAGE value="TC-12 List Styling" />
-    <MESSAGE value="TC-12 BlazoredModal Installation" />
-    <MESSAGE value="TC-12 AddNewList Component created" />
-    <MESSAGE value="TC-12 Add list form added" />
-    <MESSAGE value="TC-12 Reloading lists on new addition" />
-    <MESSAGE value="TC-12 Deleting lists and items in lists" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 Deleting lists and items in lists" />
+    <MESSAGE value="TC-25 contributions page done" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-25 contributions page done" />
   </component>
 </project>

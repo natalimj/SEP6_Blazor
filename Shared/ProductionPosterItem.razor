@@ -4,37 +4,71 @@
 @inject IUserService UserService
 
 
-<li class="item" @onclick="@(() => GoToDetailsPage(result.Id))">
-    <div class="poster-container">
-        @if (result.Poster_path == null)
-        {
-            <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
-        }
-        else
-        {
-            <img src="https://image.tmdb.org/t/p/original/@result.Poster_path" alt="movie-poster" class="poster-image">
-        }
-        <div class="poster-title-container">
-            @if (result.MovieName == null)
+@inject IProductionService ProductionService;
+
+@if (ratingValue.Equals(""))
+{
+    <li class="item" @onclick="@(() => GoToDetailsPage(result.Id))">
+        <div class="poster-container">
+            @if (result.Poster_path == null)
             {
-                <div class="poster-title">@result.TVShowName</div>
+                <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
             }
             else
             {
-                <div class="poster-title">@result.MovieName</div>
+                <img src="https://image.tmdb.org/t/p/original/@result.Poster_path" alt="movie-poster" class="poster-image">
             }
+            <div class="poster-title-container">
+                @if (result.MovieName == null)
+                {
+                    <div class="poster-title">@result.TVShowName</div>
+                }
+                else
+                {
+                    <div class="poster-title">@result.MovieName</div>
+                }
+            </div>
         </div>
-    </div>
-</li>
+    </li>
+}
+else
+{
+    <li class="item" @onclick="@(() => GoToDetailsPage(result.Id))">
+        <div class="poster-container">
+            @if (result.Poster_path == null)
+            {
+                <img src="Assets/film-slate.svg" alt="movie-poster" class="poster-image">
+            }
+            else
+            {
+                <img src="https://image.tmdb.org/t/p/original/@result.Poster_path" alt="movie-poster" class="poster-image">
+            }
+            <div class="poster-title-container">
+                @if (result.MovieName == null)
+                {
+                    <div class="poster-title">@result.TVShowName</div>
+                }
+                else
+                {
+                    <div class="poster-title">@result.MovieName</div>
+                }
+                <div class="poster-title poster-rating">Given rating: @ratingValue/5</div>
+            </div>
+        </div>
+    </li>
+}
+
 
 
 @code {
-
     [CascadingParameter]
     public IModalService Modal { get; set; }
-
+                      
     [Parameter]
     public Production result { get; set; }
+
+    [Parameter]
+    public string ratingValue { get; set; } = "";
 
     private void GoToDetailsPage(int id)
     {

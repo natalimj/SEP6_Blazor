@@ -5,8 +5,6 @@
 @inject NavigationManager Navigation
 @inject IProductionService ProductionService;
 
-<PageTitle>Index</PageTitle>
-
 <div class="main-content-article">
     <SimpleSearchBar @bind-ComplexResult="ComplexSearchResults"/>
 
@@ -80,7 +78,7 @@
             @if (TopRatedProductions.ProductionResults.Count > 0)
             {
                 <div class="content-header-title">
-                    <span>Top Rated Production</span>
+                    <span>Top Rated Productions</span>
                 </div>
                 <ul class="hs full">
                     @foreach (var result in TopRatedProductions.ProductionResults)
@@ -90,19 +88,20 @@
                 </ul>
             }
 
-            @if (LatestProduction.Id != 0)
+            @if (LatestProduction.ProductionResults.Count > 0)
             {
                 <div class="content-header-title">
-                    <span>Latest Production</span>
+                    <span>Latest Productions</span>
                 </div>
                 <ul class="hs full">
-                    <ProductionPosterItem result="@LatestProduction"/>
+                    @foreach (var result in LatestProduction.ProductionResults)
+                    {
+                        <ProductionPosterItem result="result"/>
+                    }
                 </ul>
             }
         </div>
     }
-
-
 </div>
 
 
@@ -112,16 +111,22 @@
 
     private Results PopularProductions { get; set; } = new Results();
     private Results TopRatedProductions { get; set; } = new Results();
-    private Production LatestProduction { get; set; } = new Production();
+    private Results LatestProduction { get; set; } = new Results();
 
     protected override async Task OnInitializedAsync()
     {
         PopularProductions = await ProductionService.GetPopularProductions("movie");
-        TopRatedProductions = await ProductionService.GetTopRatedProduction("movie");
-        LatestProduction = await ProductionService.GetLatestProduction("movie");
-    }
+        var others = await ProductionService.GetPopularProductions("tv");
+        PopularProductions.ProductionResults.AddRange(others.ProductionResults);
 
-    protected override void OnInitialized()
-    {
+        TopRatedProductions = await ProductionService.GetTopRatedProduction("movie");
+        others = await ProductionService.GetTopRatedProduction("tv");
+        TopRatedProductions.ProductionResults.AddRange(others.ProductionResults);
+
+        LatestProduction.ProductionResults = new List<Production>();
+        var other = await ProductionService.GetLatestProduction("movie");
+        LatestProduction.ProductionResults.Add(other);
+        other = await ProductionService.GetLatestProduction("tv");
+        LatestProduction.ProductionResults.Add(other);
     }
 }

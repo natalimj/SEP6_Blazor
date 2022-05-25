@@ -34,7 +34,7 @@
                     </div>
                     @if (Production.VoteAverage != 0)
                     {
-                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage</div>
+                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage out of @Production.VoteCount ratings</div>
                     }
                     else
                     {
@@ -48,7 +48,7 @@
                     @Production.TVShowName
                     @if (Production.VoteAverage != 0)
                     {
-                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage</div>
+                        <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage out of @Production.VoteCount ratings</div>
                     }
                     else
                     {
