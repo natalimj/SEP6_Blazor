@@ -1,6 +1,7 @@
 @page "/ListsPage"
 @using SEP6_Blazor.Data
 @using SEP6_Blazor.Models
+@using BootstrapBlazor.Components
 @attribute [Authorize]
 
 @inject AuthenticationStateProvider AuthenticationStateProvider
@@ -8,27 +9,32 @@
 @inject IUserService UserService
 
 
-<h3>My Lists</h3>
 <div id="content">
     <div id="leftList">
         <ul class="list">
             @foreach (var result in @UserListResults)
             {
-                <li @onclick="() => OnListSelected(result.Id)">@result.ListName</li>
+                <li @onclick="() => OnListSelected(result)"><span>@result.ListName</span><img class="icon-item-img" src="Assets/x.svg" @onclick="() => ConfirmDeleteList(result)"/></li>
             }
+            <li @onclick="(() => ShowAddNewListModal())"><span>Add new list</span></li>
         </ul>
     </div>
     <div id="rightItems">
         <div class="wrapper">
             @if (CurrentlyDisplayedMoviesList == null || CurrentlyDisplayedMoviesList.Count == 0)
             {
-                <p>Select a list</p>
+                <div class="center">
+                    <p>Select a list</p>
+                </div>
             }
             else
             {
                 @foreach (var result in CurrentlyDisplayedMoviesList)
                 {
-                    <ProductionPosterItem result="result"/>
+                    <div class="couple">
+                        <ProductionPosterItem result="result"/>
+                        <button @onclick="() => ConfirmDeleteProductionFromList(result, currentList)">DELETE</button>
+                    </div>
                 }
             }
         </div>
@@ -37,10 +43,11 @@
 
 
 @code {
-    
+    [CascadingParameter] public IModalService Modal { get; set; }
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
     private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
     private string userId { get; set; }
+    private UserList currentList { get; set; } = new UserList();
 
     protected override async Task OnInitializedAsync()
     {
@@ -48,8 +55,74 @@
         UserListResults = await UserService.GetUserLists(userId);
     }
 
-    private async Task OnListSelected(string id)
+    private async Task OnListSelected(UserList userList)
     {
-        CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(id);
+        CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(userList.Id);
+        currentList = userList;
+    }
+
+    private async Task ShowAddNewListModal()
+    {
+        var newListModal = Modal.Show<AddNewList>("New List");
+        var result = await newListModal.Result;
+
+        if (result.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+            UserList callbackList = (UserList) result.Data;
+            UserListResults = await UserService.GetUserLists(userId);
+        }
+    }
+    
+    private async Task ConfirmDeleteList(UserList userList)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(UserList), userList);
+        
+        var newListModal = Modal.Show<DeleteListConfirm>("Confirm Deletion",parameters);
+        var result = await newListModal.Result;
+
+        if (result.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+            bool callBackConfirm = (bool) result.Data;
+            if (callBackConfirm)
+            {
+                await UserService.DeleteList(userList.Id);
+            }
+            UserListResults = await UserService.GetUserLists(userId);
+        }
+    }
+    private async Task ConfirmDeleteProductionFromList(Production result, UserList userList)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(UserList), userList);
+        parameters.Add("result", result);
+        
+        var newListModal = Modal.Show<DeleteProductionConfirm>("Confirm Deletion",parameters);
+        var modalResult = await newListModal.Result;
+
+        if (modalResult.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+            bool callBackConfirm = (bool) modalResult.Data;
+            if (callBackConfirm)
+            {
+                await UserService.DeleteProductionFromList(userList,result.Id.ToString(),result.MovieName != null ? "movie" : "tv" );
+            }
+            CurrentlyDisplayedMoviesList = await UserService.GetProductionsInList(userList.Id);
+        }
     }
 }

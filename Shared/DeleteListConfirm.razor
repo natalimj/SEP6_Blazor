@@ -1,0 +1,34 @@
+﻿@using SEP6_Blazor.Models
+@using SEP6_Blazor.Data
+
+@inject IUserService UserService
+@inject AuthenticationStateProvider AuthenticationStateProvider
+@inject IModalService ModalService
+
+<div>
+    <h3>Are you sure you want to delete the list "@userList.ListName"?</h3>
+    <button type="submit" class="btn btn-success" @onclick="() => OnConfrim()">
+        Confirm
+    </button>
+    <button type="submit" class="btn btn-success" @onclick="() => OnCancel()">
+        Cancel
+    </button>
+</div>
+
+
+
+@code {
+    [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
+    [Parameter] public UserList userList { get; set; }
+
+    private async Task OnConfrim()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok<bool>(true));
+    }
+    
+    private async Task OnCancel()
+    {
+        ModalInstance.CloseAsync(ModalResult.Ok<bool>(false));
+    }
+    
+}
