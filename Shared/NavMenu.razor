@@ -62,7 +62,7 @@
                     <div class="dropdown-content">
                         <span>@context.User.Identity.Name</span>
                         <hr/>
-                        <a class="first-option" href="/ContributionsPage">My Contributions</a>
+                        <a class="first-option" @onclick="() => ToggleIconSelection(-1)" href="/ContributionsPage">My Contributions</a>
                         <hr/>
                         <a href="#" @onclick="BeginSignOut" class="last-option">Log out</a>
                     </div>

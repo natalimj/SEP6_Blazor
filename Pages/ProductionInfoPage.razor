@@ -278,7 +278,7 @@
                             <div class="footer add-review">
                                 <div class="add-review-content">
                                     <div class="add-review-text">Write a review:</div>
-                                    <input class="add-review-input" @bind-value="@UserReviewText" @bind-value:event="oninput" type="text" placeholder="Add..."/>
+                                    <input class="add-review-input" @bind-value="@UserReviewText" @bind-value:event="oninput" type="text" placeholder="Add..." @onkeydown="HandleKeydown"/>
                                     <button class="add-review-button" @onclick="AddReview">Add</button>
                                 </div>
                             </div>
@@ -378,6 +378,14 @@
         NewListName = null;
     }
 
+    private async Task HandleKeydown(KeyboardEventArgs e)
+    {
+        if (e.Code is "Enter" or "NumpadEnter")
+        {
+            await AddReview();
+        }
+    }
+    
     private async Task AddReview()
     {
         if (UserReviewText != null)
@@ -386,6 +394,7 @@
             {
                 await UserService.AddReview(new Review(userId, Id, Type, UserReviewText));
                 UserReviews = await UserService.GetUserReview(userId, Id, Type);
+                UserReviewText = "";
             }
         }
     }

@@ -9,12 +9,12 @@
     <DataAnnotationsValidator/>
     <div class="form-group">
         <label>List Name:</label>
-        <div>
+        <div class="form-input">
             <InputText @bind-Value="@userList.ListName" class="form-control col-sm-3"/>
             <ValidationMessage For="@(() => userList.ListName)"/>
         </div>
     </div>
-    <button type="submit" class="btn btn-success">
+    <button type="submit" class="add-list-button">
         Create new list
     </button>
 </EditForm>
