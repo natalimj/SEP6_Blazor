@@ -5,8 +5,13 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-29 added nr of votes">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-29 added the reviews of other database users">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/MovieRole.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/MovieRole.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/Production.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/Production.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ActorInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ActorInfoPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ActorInfoPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-25-contributions-page" />
+        <entry key="$PROJECT_DIR$" value="TC-29-nr-of-votes" />
       </map>
     </option>
   </component>
@@ -39,7 +44,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Models/Production.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -106,7 +110,9 @@
       <workItem from="1653120901235" duration="3735000" />
       <workItem from="1653127863207" duration="18324000" />
       <workItem from="1653228429580" duration="1105000" />
-      <workItem from="1653475654159" duration="4728000" />
+      <workItem from="1653475654159" duration="6885000" />
+      <workItem from="1653571080864" duration="1365000" />
+      <workItem from="1653656495267" duration="4207000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -318,7 +324,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653480493206</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="TC-29 added the reviews of other database users">
+      <created>1653484336449</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1653484336449</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,6 +377,7 @@
     <MESSAGE value="TC-12 WIP" />
     <MESSAGE value="TC-25 contributions page done" />
     <MESSAGE value="TC-29 added nr of votes" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-29 added nr of votes" />
+    <MESSAGE value="TC-29 added the reviews of other database users" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-29 added the reviews of other database users" />
   </component>
 </project>

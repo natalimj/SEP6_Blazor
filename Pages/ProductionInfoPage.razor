@@ -26,6 +26,10 @@
             {
                 <div class="header-desc-text header-name">
                     @Production.MovieName
+                    @if (!Production.OriginalLanguage.Equals("en") && !Production.MovieName.Equals(Production.EnglishTitle))
+                    {
+                        <span> (@Production.EnglishTitle)</span>
+                    }
                     <div class="header-desc-text header-genre">
                         @foreach (var item in @Production.MovieGenres)
                         {
@@ -46,6 +50,10 @@
             {
                 <div class="header-desc-text header-name">
                     @Production.TVShowName
+                    @if (!Production.OriginalLanguage.Equals("en") && !Production.TVShowName.Equals(Production.EnglishName))
+                    {
+                        <span> (@Production.EnglishName)</span>
+                    }
                     @if (Production.VoteAverage != 0)
                     {
                         <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage out of @Production.VoteCount ratings</div>

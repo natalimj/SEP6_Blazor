@@ -13,6 +13,9 @@
     {
         <div class="loader-holder">
             <div class="no-contribution">No contributions to show.</div>
+            <div class="loader-holder">
+                <div class="loader"></div>
+            </div>
         </div>
     }
     else
@@ -43,7 +46,7 @@
                         {
                             <div class="review-item review-item-user">
                                 <div class="reviews-header reviews-header-user">
-                                    When reviewing <span class="movie-review-link" @onclick="()=> GoToDetailsPage(review)">@review.ProductionId</span>, <span>YOU </span> said:
+                                    When reviewing <span class="movie-review-link" @onclick="() => GoToDetailsPage(review)">@review.ProductionId</span>, <span>YOU </span> said:
                                 </div>
                                 <div class="reviews-text reviews-text-user">
                                     @review.UserReview
@@ -82,7 +85,7 @@
             }
         }
     }
-    
+
     private void GoToDetailsPage(Review review)
     {
         if (review.Type.Equals("movie"))
