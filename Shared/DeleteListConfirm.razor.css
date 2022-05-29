@@ -1,4 +1,15 @@
-﻿.delete-text {
+﻿.main-delete-body {
+    max-width: 40rem;
+}
+
+.delete-text {
     font-size: large;
     margin-bottom: 1rem;
+    word-wrap: break-word;
+}
+
+@media (max-width: 640px) {
+    .main-delete-body {
+        max-width: 20rem;
+    }
 }

@@ -37,8 +37,19 @@
     padding: 0 2rem;
     font-size: medium;
     font-style: italic;
+    word-wrap: break-word;
 }
 
 .delete-text {
     font-size: large;
+}
+
+.main-delete-body {
+    max-width: 40rem;
+}
+
+@media (max-width: 640px) {
+    .main-delete-body {
+        max-width: 20rem;
+    }
 }

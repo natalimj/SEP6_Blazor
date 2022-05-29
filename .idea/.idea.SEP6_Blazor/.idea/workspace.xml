@@ -5,9 +5,14 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-28 final code cleanup">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-28 blazoredmodal js">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wwwroot/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/wwwroot/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +30,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-29-nr-of-votes" />
+        <entry key="$PROJECT_DIR$" value="TC-28-code-improvements-and-cleanup" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -271,7 +276,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653828719361</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="TC-28 blazoredmodal js">
+      <created>1653834431136</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1653834431136</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +305,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="TC-14 added main navigation bar mockup" />
     <MESSAGE value="TC-14 added main navigation bar mockup + profile auth options part1" />
     <MESSAGE value="TC-14 added main navigation bar mockup + profile auth button" />
     <MESSAGE value="TC-14 added main navigation bar mockup + profile auth button + removed old auth bar" />
@@ -318,6 +329,7 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/natalimj/SEP6_Blazor into TC-28-code-improvements-and-cleanup&#10;&#10; Conflicts:&#10;&#9;.idea/.idea.SEP6_Blazor/.idea/workspace.xml" />
     <MESSAGE value="TC-28 cleaned up more styling" />
     <MESSAGE value="TC-28 final code cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-28 final code cleanup" />
+    <MESSAGE value="TC-28 blazoredmodal js" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-28 blazoredmodal js" />
   </component>
 </project>
