@@ -1,0 +1,40 @@
+﻿/*reviews*/
+.reviews-content {
+    max-height: 25rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin: 0 1rem;
+    border: 2px solid rgb(8 103 106 / 70%);
+}
+
+.reviews-header {
+    font-size: large;
+}
+
+.review-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #FFF6E9;
+    border-radius: 10px;
+    min-height: 5.5rem;
+    margin: 1rem;
+    color: #086788;
+    padding: 1rem;
+}
+
+.reviews-header span {
+    color: #FF7D00;
+}
+
+.movie-review-link {
+    cursor: pointer;
+    text-decoration: underline #086788;
+}
+
+.reviews-text {
+    height: 100%;
+    padding: 0 2rem;
+    font-size: medium;
+    font-style: italic;
+}

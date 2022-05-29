@@ -6,9 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 small fix">
+      <change afterPath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Shared/EditReviewPopup.razor" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ListsPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ListsPage.razor.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,8 +34,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/popad/UNI/SIXTH_SEMESTER/SEP6/Code/frontend-Sep6/SEP6_Blazor/Models/Production.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -101,6 +101,7 @@
       <workItem from="1653127863207" duration="18324000" />
       <workItem from="1653228429580" duration="1105000" />
       <workItem from="1653475654159" duration="4728000" />
+      <workItem from="1653823312464" duration="2534000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
