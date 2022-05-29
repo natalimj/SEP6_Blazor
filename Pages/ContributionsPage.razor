@@ -48,6 +48,8 @@
                                 <div class="reviews-text reviews-text-user">
                                     @review.UserReview
                                 </div>
+                                <button @onclick="() => OpenEditPopup(review)">Edit</button>
+                                <button @onclick="() => OpenDeletePopup(review)">Delete</button>
                             </div>
                         }
                     </div>
@@ -59,7 +61,7 @@
 
 
 @code {
-
+    [CascadingParameter] public IModalService Modal { get; set; }
     private string userId { get; set; } = "";
     private List<Rating> UserRatings { get; set; } = new List<Rating>();
     private List<Review> UserReviews { get; set; } = new List<Review>();
@@ -92,6 +94,44 @@
         else
         {
             Navigation.NavigateTo("/MovieInfoPage/" + review.ProductionId + "/tv");
+        }
+    }
+    
+    private async Task OpenEditPopup(Review review)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Review), review);
+        
+        var newListModal = Modal.Show<EditReviewPopup>("Edit Review",parameters);
+        var result = await newListModal.Result;
+
+        if (result.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+            UserReviews = await UserService.GetUserReviews(userId);
+        }
+    }
+    
+    private async Task OpenDeletePopup(Review review)
+    {
+        var parameters = new ModalParameters();
+        parameters.Add(nameof(Review), review);
+        
+        var newListModal = Modal.Show<DeleteReviewConfirm>("Delete Review",parameters);
+        var result = await newListModal.Result;
+
+        if (result.Cancelled)
+        {
+            System.Console.WriteLine("Modal was cancelled");
+        }
+        else
+        {
+            System.Console.WriteLine("Modal was closed");
+            UserReviews = await UserService.GetUserReviews(userId);
         }
     }
 
