@@ -6,7 +6,9 @@
 @inject IModalService ModalService
 
 <div>
-    <div class="delete-text">Are you sure you want to delete the list "@userList.ListName"?</div>
+    <div>
+        <textarea class="add-review-input" @bind-value="@review.UserReview" @bind-value:event="oninput" type="text" cols="40" rows="4"></textarea>
+    </div>
     <button type="submit" class="button" @onclick="() => OnConfrim()">
         Confirm
     </button>
@@ -19,16 +21,17 @@
 
 @code {
     [CascadingParameter] BlazoredModalInstance ModalInstance { get; set; }
-    [Parameter] public UserList userList { get; set; }
+    [Parameter] public Review review { get; set; }
 
     private async Task OnConfrim()
     {
-        await ModalInstance.CloseAsync(ModalResult.Ok<bool>(true));
+        await UserService.UpdateReview(review);
+        await ModalInstance.CloseAsync();
     }
     
     private async Task OnCancel()
     {
-        await ModalInstance.CloseAsync(ModalResult.Ok<bool>(false));
+        await ModalInstance.CloseAsync();
     }
     
 }

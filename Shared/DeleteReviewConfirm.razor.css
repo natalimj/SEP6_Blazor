@@ -1,23 +1,4 @@
-﻿.main-content-article {
-    margin-top: 2.5rem;
-}
-
-.no-contribution {
-    color: #FF7D00;
-    font-size: large;
-}
-
-/*horizontal scroll*/
-:root {
-    --gutter: 20px;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-/*reviews*/
+﻿/*reviews*/
 .reviews-content {
     max-height: 25rem;
     overflow-y: auto;
@@ -58,18 +39,6 @@ ul {
     font-style: italic;
 }
 
-.button-holder {
-    display: flex;
-    flex-direction: row;
-    margin-top: 0.5rem;
-    justify-content: end;
-    align-items: center;
+.delete-text {
+    font-size: large;
 }
-
-.button {
-    min-width: 10%;
-    margin: 0 1rem;
-}
-
-
-

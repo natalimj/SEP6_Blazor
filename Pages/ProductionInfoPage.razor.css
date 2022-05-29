@@ -249,6 +249,10 @@ ul {
     background-color: #E97B0C;
 }
 
+.existing-list-name {
+    word-wrap: break-word;
+}
+
 /*reviews*/
 
 .reviews-content {

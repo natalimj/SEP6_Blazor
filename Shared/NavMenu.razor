@@ -85,14 +85,6 @@
 @code {
     private string[]? iconSelectedClass = new string[4];
 
-    //private string user_id = "";
-    protected override async Task OnInitializedAsync()
-    {
-    //var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-    /*user_id = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
-        Console.WriteLine(user_id);*/
-    }
-
     private void ToggleIconSelection(int value)
     {
         Array.Clear(iconSelectedClass, 0, iconSelectedClass.Length);

@@ -139,7 +139,7 @@
                     {
                         @foreach (var item in UserLists)
                         {
-                            <a @onclick="() => AddToList(item, false)">@item.ListName</a>
+                            <a class="existing-list-name" @onclick="() => AddToList(item, false)">@item.ListName</a>
                         }
                     }
                 </div>

@@ -5,9 +5,9 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-28 cleaned up more styling">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/MultiSearchBar.razor" afterDir="false" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-28 final code cleanup">
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,10 +100,8 @@
       <workItem from="1653120901235" duration="3735000" />
       <workItem from="1653127863207" duration="18324000" />
       <workItem from="1653228429580" duration="1105000" />
-      <workItem from="1653475654159" duration="6885000" />
-      <workItem from="1653571080864" duration="1365000" />
-      <workItem from="1653656495267" duration="4207000" />
-      <workItem from="1653823651349" duration="591000" />
+      <workItem from="1653475654159" duration="4728000" />
+      <workItem from="1653823312464" duration="2534000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -259,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653484336449</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="TC-28 final code cleanup">
+      <created>1653828252522</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1653828252522</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,6 +310,7 @@
     <MESSAGE value="TC-29 added the reviews of other database users" />
     <MESSAGE value="Merge branch 'master' of https://github.com/natalimj/SEP6_Blazor into TC-28-code-improvements-and-cleanup&#10;&#10; Conflicts:&#10;&#9;.idea/.idea.SEP6_Blazor/.idea/workspace.xml" />
     <MESSAGE value="TC-28 cleaned up more styling" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-28 cleaned up more styling" />
+    <MESSAGE value="TC-28 final code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-28 final code cleanup" />
   </component>
 </project>

@@ -31,9 +31,7 @@ namespace SEP6_Blazor.Data
 
         Task<List<Production>> GetLikedProductions(string userId);
         Task<string> GetUserId(AuthenticationStateProvider authenticationStateProvider);
-
-
-        /* probably we don't need these methods - delete later */
+        
         Task DeleteRating(string ratingId);
         Task DeleteList(string listId);
         Task DeleteReview(string reviewId);
@@ -42,7 +40,6 @@ namespace SEP6_Blazor.Data
         Task<List<Review>> GetProductionReviews(string productionId, string productionType);
         // all ratings for a production - only from cosmos db 
         Task<List<Rating>> GetProductionRatings(string productionId, string productionType);
-
         Task DeleteProductionFromList(UserList userList, string productionId, string productionType);
 
 
