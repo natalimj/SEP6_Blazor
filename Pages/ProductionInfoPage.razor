@@ -26,6 +26,10 @@
             {
                 <div class="header-desc-text header-name">
                     @Production.MovieName
+                    @if (!Production.OriginalLanguage.Equals("en") && !Production.MovieName.Equals(Production.EnglishTitle))
+                    {
+                        <span> (@Production.EnglishTitle)</span>
+                    }
                     <div class="header-desc-text header-genre">
                         @foreach (var item in @Production.MovieGenres)
                         {
@@ -46,6 +50,10 @@
             {
                 <div class="header-desc-text header-name">
                     @Production.TVShowName
+                    @if (!Production.OriginalLanguage.Equals("en") && !Production.TVShowName.Equals(Production.EnglishName))
+                    {
+                        <span> (@Production.EnglishName)</span>
+                    }
                     @if (Production.VoteAverage != 0)
                     {
                         <div class="header-desc-text">Average IMDB Rating: @Production.VoteAverage out of @Production.VoteCount ratings</div>
@@ -131,7 +139,7 @@
                     {
                         @foreach (var item in UserLists)
                         {
-                            <a @onclick="() => AddToList(item, false)">@item.ListName</a>
+                            <a class="existing-list-name" @onclick="() => AddToList(item, false)">@item.ListName</a>
                         }
                     }
                 </div>
@@ -270,7 +278,7 @@
                             <div class="footer add-review">
                                 <div class="add-review-content">
                                     <div class="add-review-text">Write a review:</div>
-                                    <input class="add-review-input" @bind-value="@UserReviewText" @bind-value:event="oninput" type="text" placeholder="Add..."/>
+                                    <input class="add-review-input" @bind-value="@UserReviewText" @bind-value:event="oninput" type="text" placeholder="Add..." @onkeydown="HandleKeydown"/>
                                     <button class="add-review-button" @onclick="AddReview">Add</button>
                                 </div>
                             </div>
@@ -370,6 +378,14 @@
         NewListName = null;
     }
 
+    private async Task HandleKeydown(KeyboardEventArgs e)
+    {
+        if (e.Code is "Enter" or "NumpadEnter")
+        {
+            await AddReview();
+        }
+    }
+    
     private async Task AddReview()
     {
         if (UserReviewText != null)
@@ -378,6 +394,7 @@
             {
                 await UserService.AddReview(new Review(userId, Id, Type, UserReviewText));
                 UserReviews = await UserService.GetUserReview(userId, Id, Type);
+                UserReviewText = "";
             }
         }
     }

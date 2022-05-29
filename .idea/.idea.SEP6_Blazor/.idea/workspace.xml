@@ -5,12 +5,9 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-12 small fix">
-      <change afterPath="$PROJECT_DIR$/Shared/DeleteReviewConfirm.razor" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shared/EditReviewPopup.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.SEP6_Blazor/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pages/ContributionsPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ContributionsPage.razor" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Shared/DeleteListConfirm.razor" afterDir="false" />
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-28 final code cleanup">
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" beforeDir="false" afterPath="$PROJECT_DIR$/Pages/ProductionInfoPage.razor.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +25,14 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-25-contributions-page" />
+        <entry key="$PROJECT_DIR$" value="TC-29-nr-of-votes" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e5e5812bcb3ee482897e3e3e763d1c9f3126148885be293c882d4deee7c/SelectedItem.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -43,12 +42,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
   <component name="RunManager" selected=".NET Launch Settings Profile.SEP6_Blazor">
     <configuration name="SEP6_Blazor" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/SEP6_Blazor.csproj" />
@@ -250,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1653480493206</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="TC-29 added the reviews of other database users">
+      <created>1653484336449</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1653484336449</updated>
+    </task>
+    <task id="LOCAL-00032" summary="TC-28 final code cleanup">
+      <created>1653828252522</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1653828252522</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,6 +305,12 @@
     <MESSAGE value="TC-12 Reloading lists on new addition" />
     <MESSAGE value="TC-12 Deleting lists and items in lists" />
     <MESSAGE value="TC-12 small fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-12 small fix" />
+    <MESSAGE value="TC-25 contributions page done" />
+    <MESSAGE value="TC-29 added nr of votes" />
+    <MESSAGE value="TC-29 added the reviews of other database users" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/natalimj/SEP6_Blazor into TC-28-code-improvements-and-cleanup&#10;&#10; Conflicts:&#10;&#9;.idea/.idea.SEP6_Blazor/.idea/workspace.xml" />
+    <MESSAGE value="TC-28 cleaned up more styling" />
+    <MESSAGE value="TC-28 final code cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-28 final code cleanup" />
   </component>
 </project>

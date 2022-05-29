@@ -58,6 +58,18 @@ ul {
     font-style: italic;
 }
 
+.button-holder {
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5rem;
+    justify-content: end;
+    align-items: center;
+}
+
+.button {
+    min-width: 10%;
+    margin: 0 1rem;
+}
 
 
 

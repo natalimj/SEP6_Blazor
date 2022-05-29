@@ -8,16 +8,16 @@
 <div>
     @if (result.MovieName != null)
     {
-        <h3>Are you sure you want to delete the movie "@result.MovieName" from the list "@userList.ListName"?</h3>
+        <div class="delete-text">Are you sure you want to delete the movie "@result.MovieName" from the list "@userList.ListName"?</div>
     }
     else
     {
-        <h3>Are you sure you want to delete the series "@result.TVShowName" from the list "@userList.ListName"?</h3>
+        <div class="delete-text">Are you sure you want to delete the series "@result.TVShowName" from the list "@userList.ListName"?</div>
     }
-    <button type="submit" class="btn btn-success" @onclick="() => OnConfirm()">
+    <button type="submit" class="button" @onclick="() => OnConfirm()">
         Confirm
     </button>
-    <button type="submit" class="btn btn-success" @onclick="() => OnCancel()">
+    <button type="submit" class="button" @onclick="() => OnCancel()">
         Cancel
     </button>
 </div>

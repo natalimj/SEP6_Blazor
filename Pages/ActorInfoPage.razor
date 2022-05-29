@@ -31,6 +31,10 @@
                 {
                     <p class="header-desc-text header-birthplace">Born in @Person.PlaceOfBirth</p>
                 }
+                @if (actorRating != 0)
+                {
+                    <p class="header-desc-text header-rating">Average actor rating: @actorRating</p>
+                }
                 @if (Person.Biography != null)
                 {
                     <p class="header-desc-text">@Person.Biography</p>
@@ -42,6 +46,10 @@
             </div>
             <div class="content-header-title">
                 <span>Movie Roles</span>
+                @if (averageMovieRating != 0)
+                {
+                    <span class="header-rating"> - Average Rating: @averageMovieRating</span>
+                }
             </div>
             <div>
                 @if (MovieCredits.Roles.Count > 0)
@@ -50,7 +58,13 @@
                     {
                         <div class="crew-member">
                             <span class="crew-member-name">@result.Character</span>
-                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "movie"))"> in "@result.OriginalTitle"</span>
+                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "movie"))">
+                                in "@result.OriginalTitle"
+                            </span>
+                            @if (!result.OriginalLanguage.Equals("en"))
+                            {
+                                <span> (@result.EnglishTitle)</span>
+                            }
                         </div>
                     }
                 }
@@ -58,11 +72,14 @@
                 {
                     <div class="crew-member">No roles found.</div>
                 }
-
             </div>
 
             <div class="content-header-title">
                 <span>TV Series Roles</span>
+                @if (averageTvRating != 0)
+                {
+                    <span class="header-rating"> - Average Rating: @averageTvRating</span>
+                }
             </div>
             <div>
                 @if (TVCredits.Roles.Count > 0)
@@ -71,7 +88,13 @@
                     {
                         <div class="crew-member">
                             <span class="crew-member-name">@result.Character</span>
-                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "tv"))"> in "@result.OriginalName"</span>
+                            <span class="crew-member-movie" onclick="@(() => GoToDetailsPage(result.Id, "tv"))">
+                                in "@result.OriginalName"
+                            </span>
+                            @if (!result.OriginalLanguage.Equals("en"))
+                            {
+                                <span> (@result.EnglishName)</span>
+                            }
                         </div>
                     }
                 }
@@ -93,11 +116,28 @@
     private MovieCredits MovieCredits { get; set; }
     private MovieCredits TVCredits { get; set; }
 
+    private double actorRating { get; set; } = 0.0;
+    private double averageMovieRating { get; set; } = 0.0;
+    private double averageTvRating { get; set; } = 0.0;
+
     protected override async Task OnInitializedAsync()
     {
         Person = await ActorService.GetPerson(Id);
         MovieCredits = await ActorService.GetMovieCredits(Id);
         TVCredits = await ActorService.GetTVCredits(Id);
+
+        foreach (var role in MovieCredits.Roles)
+        {
+            averageMovieRating += role.VoteAverage;
+        }
+        averageMovieRating = Math.Round(averageMovieRating / MovieCredits.Roles.Count, 2) is Double.NaN ? 0 : Math.Round(averageMovieRating / MovieCredits.Roles.Count, 2);
+
+        foreach (var role in TVCredits.Roles)
+        {
+            averageTvRating += role.VoteAverage;
+        }
+        averageTvRating = Math.Round(averageTvRating / TVCredits.Roles.Count, 2) is Double.NaN ? 0 : Math.Round(averageTvRating / TVCredits.Roles.Count, 2);
+        actorRating = averageMovieRating!=0 && averageTvRating!=0 ? Math.Round((averageMovieRating + averageTvRating) / 2.0, 2) : (averageMovieRating + averageTvRating);
     }
 
     private void GoToDetailsPage(int id, string type)
