@@ -5,12 +5,12 @@
 @inject AuthenticationStateProvider AuthenticationStateProvider
 @inject IModalService ModalService
 
-<div>
-    <h3>Are you sure you want to delete the list "@userList.ListName"?</h3>
-    <button type="submit" class="btn btn-success" @onclick="() => OnConfrim()">
+<div class="main-delete-body">
+    <div class="delete-text">Are you sure you want to delete the list "@userList.ListName"?</div>
+    <button type="submit" class="button" @onclick="() => OnConfrim()">
         Confirm
     </button>
-    <button type="submit" class="btn btn-success" @onclick="() => OnCancel()">
+    <button type="submit" class="button" @onclick="() => OnCancel()">
         Cancel
     </button>
 </div>

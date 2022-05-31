@@ -159,3 +159,17 @@ a, .btn-link {
 ::-webkit-scrollbar-thumb:hover {
     background: #075876;
 }
+
+/*basic buttons*/
+
+.button {
+    background-color: #086788;
+    color: white;
+    border: 0;
+    border-radius: 10px;
+}
+
+.button:hover {
+    background-color: #FF7D00;
+    color: black;
+}

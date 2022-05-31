@@ -62,7 +62,7 @@
                     <div class="dropdown-content">
                         <span>@context.User.Identity.Name</span>
                         <hr/>
-                        <a class="first-option" href="/ContributionsPage">My Contributions</a>
+                        <a class="first-option" @onclick="() => ToggleIconSelection(-1)" href="/ContributionsPage">My Contributions</a>
                         <hr/>
                         <a href="#" @onclick="BeginSignOut" class="last-option">Log out</a>
                     </div>
@@ -84,14 +84,6 @@
 
 @code {
     private string[]? iconSelectedClass = new string[4];
-
-    //private string user_id = "";
-    protected override async Task OnInitializedAsync()
-    {
-    //var state = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-    /*user_id = state.User.Claims.Where(claim => claim.Type.Equals("sub")).Select(claim => claim.Value).FirstOrDefault() ?? String.Empty;
-        Console.WriteLine(user_id);*/
-    }
 
     private void ToggleIconSelection(int value)
     {

@@ -77,3 +77,14 @@ ul {
 .header-birthplace {
     color: #FFF6E9;
 }
+
+.header-rating {
+    color: #086788;
+    margin-inline-start: 0!important;
+}
+
+.content-header-title span {
+    font-size: x-large;
+    margin: 0;
+    margin-inline-start: 1rem;
+}

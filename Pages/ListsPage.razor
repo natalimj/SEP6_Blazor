@@ -12,19 +12,25 @@
 <div id="content">
     <div id="leftList">
         <ul class="list">
-            @foreach (var result in @UserListResults)
+            @foreach (var result in UserListResults)
             {
-                <li @onclick="() => OnListSelected(result)"><span>@result.ListName</span><img class="icon-item-img" src="Assets/x.svg" @onclick="() => ConfirmDeleteList(result)"/></li>
+                <li class="list-name-element"><span class="list-name" @onclick="() => OnListSelected(result)">@result.ListName</span><img class="icon-item-img" src="Assets/x.svg" @onclick="() => ConfirmDeleteList(result)" alt="delete-list-image-button"/></li>
             }
-            <li @onclick="(() => ShowAddNewListModal())"><span>Add new list</span></li>
+            <li class="new-list-container" @onclick="(() => ShowAddNewListModal())">
+                <div class="new-list-item">Add new list</div></li>
         </ul>
     </div>
     <div id="rightItems">
         <div class="wrapper">
-            @if (CurrentlyDisplayedMoviesList == null || CurrentlyDisplayedMoviesList.Count == 0)
+            @if (CurrentlyDisplayedMoviesList == null)
             {
                 <div class="center">
                     <p>Select a list</p>
+                </div>
+            }else if (CurrentlyDisplayedMoviesList.Count == 0)
+            {
+                <div class="center">
+                    <p>This list is empty</p>
                 </div>
             }
             else
@@ -45,7 +51,7 @@
 @code {
     [CascadingParameter] public IModalService Modal { get; set; }
     private List<UserList>? UserListResults { get; set; } = new List<UserList>();
-    private List<Production>? CurrentlyDisplayedMoviesList { get; set; } = new List<Production>();
+    private List<Production>? CurrentlyDisplayedMoviesList { get; set; }
     private string userId { get; set; }
     private UserList currentList { get; set; } = new UserList();
 
