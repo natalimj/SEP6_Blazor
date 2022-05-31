@@ -23,4 +23,12 @@
         </PackageReference>
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\SEP6_Blazor.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="obj" />
+    </ItemGroup>
+
 </Project>
