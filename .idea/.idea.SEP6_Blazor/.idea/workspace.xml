@@ -5,7 +5,7 @@
     <projectFile profileName="IIS Express">SEP6_Blazor.csproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-20 ProductionService Unit Tests">
+    <list default="true" id="32e6b3c1-2996-4f89-997c-01c92187076b" name="Changes" comment="TC-20 ActorService Unit Tests">
       <change beforePath="$PROJECT_DIR$/BlazorUnitTests/UnitTest1.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BlazorUnitTests/UnitTest1.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -24,12 +24,13 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="TC-25-contributions-page" />
+        <entry key="$PROJECT_DIR$" value="TC-12_List_Page" />
       </map>
     </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.nuget/packages/microsoft.net.test.sdk/16.11.0/build/netcoreapp2.1/Microsoft.NET.Test.Sdk.Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/BlazorUnitTests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/bogda/RiderProjects/SEP6_Blazor/BlazorUnitTests/UnitTest1.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -101,7 +102,7 @@
       <workItem from="1653823312464" duration="3446000" />
       <workItem from="1653907919921" duration="3754000" />
       <workItem from="1653999875907" duration="4194000" />
-      <workItem from="1654007649717" duration="5881000" />
+      <workItem from="1654007649717" duration="6532000" />
     </task>
     <task id="LOCAL-00001" summary="TC-14 added main navigation bar mockup">
       <created>1652390470931</created>
@@ -271,7 +272,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654036840859</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="TC-20 ActorService Unit Tests">
+      <created>1654037260279</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1654037260279</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,6 +323,7 @@
     <MESSAGE value="TC-12 Edit, delete reviews" />
     <MESSAGE value="TC-20 Unit test" />
     <MESSAGE value="TC-20 ProductionService Unit Tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="TC-20 ProductionService Unit Tests" />
+    <MESSAGE value="TC-20 ActorService Unit Tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="TC-20 ActorService Unit Tests" />
   </component>
 </project>

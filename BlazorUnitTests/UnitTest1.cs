@@ -49,9 +49,30 @@ public class UnitTest1
     }
     // DiscoveryService
     [Fact]
-    public void Test2()
+    public void GetLanguages()
     {
-        Assert.True(true);
+        var discoveryService = new DiscoveryService();
+        var resultGet = discoveryService.GetLanguages().Result;
+        Assert.NotNull(resultGet);
+        Assert.NotEmpty(resultGet);
+        Assert.IsType<List<Language>>(resultGet);
+    }
+    [Fact]
+    public void GetGenres()
+    {
+        var discoveryService = new DiscoveryService();
+        var resultGet = discoveryService.GetGenres("movie").Result;
+        Assert.NotNull(resultGet);
+        Assert.NotEmpty(resultGet);
+        Assert.IsType<List<Genre>>(resultGet);
+    }
+    [Fact]
+    public void DiscoveryProduction()
+    {
+        var discoveryService = new DiscoveryService();
+        var resultGet = discoveryService.DiscoveryProduction("movie","","","","","","","","").Result;
+        Assert.NotNull(resultGet);
+        Assert.IsType<Results>(resultGet);
     }
     
     // ProductionService
