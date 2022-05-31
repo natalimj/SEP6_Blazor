@@ -10,14 +10,41 @@ public class UnitTest1
 {
     // ActorService
     [Fact]
-    public void SearchAndGetPerson()
+    public void GetPerson()
     {
         var actorService = new ActorService();
         var searchResult = actorService.SearchPerson("Johnny Depp").Result[0].Id;
         var getPersonResult = actorService.GetPerson(searchResult.ToString()).Result.Id;
-        Console.Write(searchResult);
-        Console.Write(getPersonResult);
         Assert.Equal(searchResult, getPersonResult);
+        
+    }
+    [Fact]
+    public void SearchPerson()
+    {
+        var actorService = new ActorService();
+        var searchResult = actorService.SearchPerson("Johnny Depp").Result[0].Id;
+        var getPersonResult = actorService.GetPerson(searchResult.ToString()).Result.Id;
+        Assert.Equal(searchResult, getPersonResult);
+        
+    }
+    [Fact]
+    public void GetMovieCredits()
+    {
+        var actorService = new ActorService();
+        var resultSearch = actorService.SearchPerson("Johnny Depp").Result[0].Id.ToString();
+        var resultGet = actorService.GetMovieCredits(resultSearch).Result;
+        Assert.NotNull(resultGet);
+        Assert.IsType<MovieCredits>(resultGet);
+        
+    }
+    [Fact]
+    public void GetTVCredits()
+    {
+        var actorService = new ActorService();
+        var resultSearch = actorService.SearchPerson("Johnny Depp").Result[0].Id.ToString();
+        var resultGet = actorService.GetTVCredits(resultSearch).Result;
+        Assert.NotNull(resultGet);
+        Assert.IsType<MovieCredits>(resultGet);
         
     }
     // DiscoveryService
