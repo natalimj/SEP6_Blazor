@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="Blazored.Modal" Version="7.0.0-preiew.2" />
+        <PackageReference Include="DeepEqual" Version="2.0.0" />
         <PackageReference Include="LiquidTestReports.Markdown" Version="1.3.2-beta" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.11.0" />
         <PackageReference Include="xunit" Version="2.4.1" />
@@ -21,6 +22,14 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SEP6_Blazor.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="obj" />
     </ItemGroup>
 
 </Project>
