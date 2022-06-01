@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DeepEqual.Syntax;
 using SEP6_Blazor.Data;
 using SEP6_Blazor.Models;
 using Xunit;
@@ -183,8 +184,73 @@ public class UnitTest1
     }
     // UserService
     [Fact]
-    public void Test4()
+    public async void RatingCRUD()
     {
-        Assert.True(true);
+        var userService = new UserService();
+        Rating nullRating = new Rating();
+        Rating rating1 = new Rating("0000","1111","movie",1);
+        Rating rating2 = new Rating("0000","2222","movie",2);
+        await userService.AddRating(rating1); 
+        await userService.AddRating(rating2);
+        var getResult1 = userService.GetUserRating("0000", "1111", "movie").Result;
+        var getResult2 = userService.GetUserRating("0000", "2222", "movie").Result;
+        rating1.Id = getResult1.Id;
+        rating2.Id = getResult2.Id;
+        getResult1.ShouldDeepEqual(rating1);
+        getResult2.ShouldDeepEqual(rating2);
+        var getMultipleResults = userService.GetUserRatings("0000").Result;
+        getMultipleResults[0].ShouldDeepEqual(rating1);
+        getMultipleResults[1].ShouldDeepEqual(rating2);
+        await userService.DeleteRating(getResult1.Id);
+        var getResult1Deleted = userService.GetUserRating("0000", "1111", "movie").Result;
+        getResult1Deleted.ShouldDeepEqual(nullRating);
+        await userService.DeleteRating(getResult2.Id);
+        var getResult2Deleted = userService.GetUserRating("0000", "2222", "movie").Result;
+        getResult1Deleted.ShouldDeepEqual(nullRating);
+    }
+
+    [Fact]
+    public async void ReviewCRUD()
+    {
+        var userService = new UserService();
+        Review nullRating = new Review();
+        Review review1 = new Review("0000","1111","movie","review1");
+        Review review2 = new Review("0000","2222","movie","review2");
+        await userService.AddReview(review1); 
+        await userService.AddReview(review2);
+        var getResult1 = userService.GetUserReview("0000", "1111", "movie").Result[0];
+        var getResult2 = userService.GetUserReview("0000", "2222", "movie").Result[0];
+        review1.Id = getResult1.Id;
+        review2.Id = getResult2.Id;
+        getResult1.ShouldDeepEqual(review1);
+        getResult2.ShouldDeepEqual(review2);
+        var getMultipleResults = userService.GetUserReviews("0000").Result;
+        getMultipleResults[0].ShouldDeepEqual(review1);
+        getMultipleResults[1].ShouldDeepEqual(review2);
+        await userService.DeleteReview(getResult1.Id);
+        var getResult1Deleted = userService.GetUserReview("0000", "1111", "movie").Result;
+        Assert.Empty(getResult1Deleted);
+        await userService.DeleteReview(getResult2.Id);
+        var getResult2Deleted = userService.GetUserReview("0000", "2222", "movie").Result;
+        Assert.Empty(getResult2Deleted);
+    }
+    
+    [Fact]
+    public async void ListCRUD()
+    {
+        var userService = new UserService();
+        UserList list1 = new UserList("0000","list1",new List<ListItem>());
+        UserList list2 = new UserList("0000","list2",new List<ListItem>());
+        await userService.AddList(list1); 
+        await userService.AddList(list2);
+        var getMultipleResults = userService.GetUserLists("0000").Result;
+        list1.Id = getMultipleResults[0].Id;
+        list2.Id = getMultipleResults[1].Id;
+        getMultipleResults[0].ShouldDeepEqual(list1);
+        getMultipleResults[1].ShouldDeepEqual(list2);
+        await userService.DeleteList(getMultipleResults[0].Id);
+        await userService.DeleteList(getMultipleResults[1].Id);
+        var getResultsDeleted = userService.GetUserLists("0000").Result;
+        Assert.Empty(getResultsDeleted);
     }
 }
