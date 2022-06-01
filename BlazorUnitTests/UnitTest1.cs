@@ -252,5 +252,6 @@ public class UnitTest1
         await userService.DeleteList(getMultipleResults[1].Id);
         var getResultsDeleted = userService.GetUserLists("0000").Result;
         Assert.Empty(getResultsDeleted);
+        
     }
 }
